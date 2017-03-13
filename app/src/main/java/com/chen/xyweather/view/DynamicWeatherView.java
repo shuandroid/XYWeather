@@ -6,13 +6,15 @@ import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.PorterDuff.Mode;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.animation.AnimationUtils;
 
 import com.chen.xyweather.utils.DebugLog;
-import com.chen.xyweather.view.BaseDrawer.Type;
+import com.chen.xyweather.view.drawer.BaseDrawer;
+
+import com.chen.xyweather.view.drawer.BaseDrawer.Type;
+
 /**
  * Created by chen on 17-3-13.
  * 天气主界面 参考
@@ -28,7 +30,6 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
     private float curDrawerAlpha = 0f;
     private Type curType = Type.DEFAULT;
     private int mWidth, mHeight;
-
 
     public DynamicWeatherView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -63,9 +64,33 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
         if (type == null) {
             return;
         }
-         if (type != curType) {
-             setDrawer(BaseDrawer.makeDrawerByType(getContext(), curType));
-         }
+        if (type != curType) {
+            setDrawer(BaseDrawer.makeDrawerByType(getContext(), curType));
+        }
+    }
+
+    //状态变化
+    public void onResume() {
+
+        synchronized (mDrawThread) {
+            mDrawThread.mRunning = true;
+            mDrawThread.notify();
+        }
+        DebugLog.i("onResume");
+    }
+
+    public void onPause() {
+        synchronized (mDrawThread) {
+            mDrawThread.mRunning = false;
+            mDrawThread.notify();
+        }
+    }
+
+    public void onDestroy() {
+        synchronized (mDrawThread) {
+            mDrawThread.mQuit = true;
+            mDrawThread.notify();
+        }
     }
 
 
@@ -75,7 +100,6 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
         mWidth = w;
         mHeight = h;
     }
-
 
 
     @Override
@@ -124,7 +148,7 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
         boolean needDrawNextFrame = false;
 
         if (curDrawer != null) {
-            curDrawer.setSize(w,h);
+            curDrawer.setSize(w, h);
             needDrawNextFrame = curDrawer.draw(canvas, curDrawerAlpha);
 
         }
@@ -146,7 +170,7 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
     }
 
     // TODO: 17-3-13  非 static 是否会造成内存泄露
-    private  class DrawThread extends Thread {
+    private class DrawThread extends Thread {
 
         SurfaceHolder mSurface;
         boolean mRunning;
@@ -163,13 +187,13 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
 
                         //三种状态
                         if (mActive) {
-                            mActive =  false;
+                            mActive = false;
                             notify();
                         }
 
                         if (mQuit)
                             return;
-                        try{
+                        try {
                             wait();
                         } catch (Exception e) {
 
@@ -204,7 +228,6 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
                 }
             }
         }
-
 
 
     }
