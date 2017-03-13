@@ -3,11 +3,31 @@ package com.chen.xyweather;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.chen.xyweather.base.BaseActivity;
+
+import butterknife.ButterKnife;
+
+public class MainActivity extends BaseActivity {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void setupContentView() {
         setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    protected void findViews() {
+
+        ButterKnife.bind(this);
+    }
+
+    @Override
+    protected void setupActionbar() {
+
+    }
+
+    @Override
+    protected void setupViews() {
+
     }
 }
