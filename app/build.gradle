@@ -27,5 +27,6 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
 //    json
     compile 'com.alibaba:fastjson:1.1.45.android'
+    compile 'com.squareup.okhttp3:okhttp:3.6.0'
 
 }

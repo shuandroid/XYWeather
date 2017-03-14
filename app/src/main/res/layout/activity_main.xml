@@ -16,6 +16,21 @@
         android:layout_width="match_parent" >
 
 
+    <com.chen.xyweather.view.pager.MyPagerTitleStrip
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/title_template"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:layout_gravity="top"
+        android:textSize="18sp"
+        app:pts_background="#55ffffff"
+        app:pts_gravity="center"
+        app:pts_margin="6dp"
+        app:pts_radius="2dp"
+        app:pts_selected_background="@color/colorText" >
+
+
+    </com.chen.xyweather.view.pager.MyPagerTitleStrip>
 
     </com.chen.xyweather.view.pager.MyViewPager>
 
