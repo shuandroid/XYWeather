@@ -1,7 +1,12 @@
 package com.chen.xyweather.api;
 
 
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.OkHttpClient;
+import okhttp3.Response;
 
 /**
  * Created by chen on 17-3-14.
@@ -26,8 +31,23 @@ public class ApiManger {
     static final String API_SCENIC = URL + "scenic";
     static final String API_HISTORY = URL + "historical";
     static final String API_SEARCH = URL + "search";
+    static final String API_FIND  = URL + "find";
+    static final String API_FINDE = URL + "FIND";
 
-    OkHttpClient okHttpClient = new OkHttpClient();
+
+
+    static OkHttpClient okHttpClient = new OkHttpClient();
+
+    private static OkHttpClient getInstance() {
+        if (okHttpClient == null) {
+            synchronized (ApiManger.class) {
+                if (okHttpClient == null) {
+                    okHttpClient = new OkHttpClient();
+                }
+            }
+        }
+        return okHttpClient;
+    }
 
 
     public interface ApiCallback {
@@ -50,8 +70,18 @@ public class ApiManger {
         }
     }
 
-//    static class OkHttpCallbackWrapper implements Callback {
+    static class OkHttpCallbackWrapper implements Callback {
 
-//    }
+
+        @Override
+        public void onFailure(Call call, IOException e) {
+
+        }
+
+        @Override
+        public void onResponse(Call call, Response response) throws IOException {
+
+        }
+    }
 
 }
