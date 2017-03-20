@@ -43,7 +43,6 @@ public class ApiManger {
     static final OkHttpClient CLIENT = new OkHttpClient();
 
 
-
     public interface ApiCallback {
         void onFailure(Throwable t);
 
