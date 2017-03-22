@@ -1,5 +1,4 @@
-<com.chen.xyweather.view.widget.PullRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.chen.xyweather.view.widget.PullRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/pull_refresh"
     android:layout_width="match_parent"
@@ -13,18 +12,80 @@
         android:layout_height="match_parent"
         android:fadingEdge="none"
         android:overScrollMode="never"
-        android:scrollbars="none" >
+        android:scrollbars="none">
 
         <com.chen.xyweather.view.widget.FirstMatchInScrollViewLinearLayout
             android:id="@+id/linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="520dp">
+
+                <com.chen.xyweather.view.widget.FontTextView
+                    android:id="@+id/now_tmp_minus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="56dp"
+                    android:paddingStart="0dp"
+                    android:text="-"
+                    android:textColor="@color/xy_text_primary"
+                    android:textSize="32sp"
+                    android:visibility="gone" />
+
+
+                <com.chen.xyweather.view.widget.FontTextView
+                    android:id="@+id/now_tmp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="56dp"
+                    android:paddingStart="0dp"
+                    android:text="-"
+                    android:textColor="@color/xy_text_primary"
+                    android:textSize="32sp"
+                     />
+
+                <com.chen.xyweather.view.widget.FontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="56dp"
+                    android:layout_toEndOf="@+id/now_tmp"
+                    android:text="°"
+                    android:textColor="@color/xy_text_primary"
+                    android:textSize="32sp" />
+
+                <TextView
+                    android:id="@+id/w_now_cond_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/now_tmp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:text=""
+                    android:textColor="@color/w_text_secondary"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/w_aqi_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/w_now_cond_text"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"
+                    android:text=""
+                    android:textColor="@color/w_text_secondary"
+                    android:textSize="15sp" />
+
+
+            </RelativeLayout>
 
 
         </com.chen.xyweather.view.widget.FirstMatchInScrollViewLinearLayout>
     </ScrollView>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
