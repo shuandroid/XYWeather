@@ -15,13 +15,16 @@ import static com.chen.xyweather.api.ApiManger.CLIENT;
  */
 public class Weather {
 
+    /**
+     * 正确API使用
+     */
     static final String API_WEATHER = ApiManger.URL + "weather";
 
     public interface WeatherApiCallback extends ApiManger.ApiCallback {
 
     }
 
-    public static void searchWeatherByCity(String city, WeatherApiCallback weatherApiCallback) {
+    public  void searchWeatherByCity(String city, WeatherApiCallback weatherApiCallback) {
 
         if (TextUtils.isEmpty(city)) {
             throw new IllegalArgumentException("City shouldn't be null or empty!");
@@ -47,25 +50,26 @@ public class Weather {
     }
 
 
-    public static void main(String  args[]) {
-        System.out.println("debug->message----->");
-
-        Weather.searchWeatherByCity("武汉", new WeatherApiCallback() {
-            @Override
-            public void onFailure(Throwable t) {
-
-                DebugLog.e("throwable" + t);
-            }
-
-            @Override
-            public void onResponse(int code, String message) {
-                DebugLog.e("debug->message----->" + message);
-                System.out.println("debug->message----->" + message);
-            }
-        });
-
-        System.out.println("debug->message--last--->");
-
-    }
+    //test
+//    public static void main(String  args[]) {
+//        System.out.println("debug->message----->");
+//
+//        Weather.searchWeatherByCity("武汉", new WeatherApiCallback() {
+//            @Override
+//            public void onFailure(Throwable t) {
+//
+//                DebugLog.e("throwable" + t);
+//            }
+//
+//            @Override
+//            public void onResponse(int code, String message) {
+//                DebugLog.e("debug->message----->" + message);
+//                System.out.println("debug->message----->" + message);
+//            }
+//        });
+//
+//        System.out.println("debug->message--last--->");
+//
+//    }
 
 }
