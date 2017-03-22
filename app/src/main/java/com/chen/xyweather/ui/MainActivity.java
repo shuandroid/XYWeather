@@ -1,4 +1,4 @@
-package com.chen.xyweather;
+package com.chen.xyweather.ui;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -10,6 +10,7 @@ import android.os.Build;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
+import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
 import com.chen.xyweather.view.DynamicWeatherView;
 import com.chen.xyweather.view.pager.MyViewPager;

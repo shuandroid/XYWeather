@@ -1,0 +1,80 @@
+package com.chen.xyweather.view.widget;
+
+import android.content.Context;
+import android.graphics.ColorFilter;
+import android.graphics.PixelFormat;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+
+/**
+ * Created by chen on 17-3-22.
+ *
+ */
+public abstract class RefreshDrawable extends Drawable implements Drawable.Callback, Animatable {
+    private PullRefreshLayout mPullRefreshLayout;
+
+    public RefreshDrawable(Context context, PullRefreshLayout layout) {
+
+        this.mPullRefreshLayout = layout;
+    }
+
+
+    public Context getContext() {
+        return mPullRefreshLayout != null ? mPullRefreshLayout.getContext() : null;
+    }
+
+    public PullRefreshLayout getPullRefreshLayout() {
+        return mPullRefreshLayout;
+    }
+
+    /**
+     *  抽象方法
+     */
+    public abstract void setPercent(float percent);
+
+    public abstract void setColorSchemeColors(int[] colorSchemeColors);
+
+    public abstract void offsetTopAndBottom(int offset);
+
+    /**
+     *
+     */
+    @Override
+    public void invalidateDrawable(Drawable who) {
+        final Callback callback = getCallback();
+        if (callback != null) {
+            callback.invalidateDrawable(this);
+        }
+    }
+
+    @Override
+    public void scheduleDrawable(Drawable who, Runnable what, long when) {
+        final Callback callback = getCallback();
+        if (callback != null) {
+            callback.scheduleDrawable(this, what, when);
+        }
+    }
+
+    @Override
+    public void unscheduleDrawable(Drawable who, Runnable what) {
+        final Callback callback = getCallback();
+        if (callback != null) {
+            callback.unscheduleDrawable(this, what);
+        }
+    }
+
+    @Override
+    public int getOpacity() {
+        return PixelFormat.TRANSLUCENT;
+    }
+
+    @Override
+    public void setAlpha(int alpha) {
+
+    }
+
+    @Override
+    public void setColorFilter(ColorFilter cf) {
+
+    }
+}
