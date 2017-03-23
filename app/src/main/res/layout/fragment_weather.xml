@@ -45,8 +45,7 @@
                     android:paddingStart="0dp"
                     android:text="-"
                     android:textColor="@color/xy_text_primary"
-                    android:textSize="32sp"
-                     />
+                    android:textSize="32sp" />
 
                 <com.chen.xyweather.view.widget.FontTextView
                     android:layout_width="wrap_content"
@@ -78,6 +77,21 @@
                     android:text=""
                     android:textColor="@color/w_text_secondary"
                     android:textSize="15sp" />
+
+                <com.chen.xyweather.view.widget.FontTextView
+                    android:id="@+id/w_basic_update_loc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="228dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text=""
+                    android:textColor="@color/w_text_secondary"
+                    android:textSize="12sp" />
+
 
 
             </RelativeLayout>
