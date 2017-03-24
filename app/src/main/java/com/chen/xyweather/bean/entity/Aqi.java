@@ -8,29 +8,29 @@ import com.chen.xyweather.bean.City;
 
 /**
  * Created by chen on 17-3-23.
- * api
+ * aqi
  */
-public class Api  implements Parcelable {
+public class Aqi implements Parcelable {
 
     public City city;
 
-    public Api() {
+    public Aqi() {
 
     }
 
-    protected Api(Parcel in) {
+    protected Aqi(Parcel in) {
         city = in.readParcelable(City.class.getClassLoader());
     }
 
-    public static final Creator<Api> CREATOR = new Creator<Api>() {
+    public static final Creator<Aqi> CREATOR = new Creator<Aqi>() {
         @Override
-        public Api createFromParcel(Parcel in) {
-            return new Api(in);
+        public Aqi createFromParcel(Parcel in) {
+            return new Aqi(in);
         }
 
         @Override
-        public Api[] newArray(int size) {
-            return new Api[size];
+        public Aqi[] newArray(int size) {
+            return new Aqi[size];
         }
     };
 

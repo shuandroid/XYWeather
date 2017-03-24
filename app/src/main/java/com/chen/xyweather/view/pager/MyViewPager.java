@@ -6,7 +6,7 @@ import android.view.View;
 
 /**
  * Created by chen
- * Date
+ * Data
  */
 public class MyViewPager extends ViewPager {
 

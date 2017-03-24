@@ -4,9 +4,12 @@ package com.chen.xyweather.api;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.text.TextUtils;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -15,12 +18,12 @@ import okhttp3.Response;
 
 /**
  * Created by chen on 17-3-14.
- * api manger
+ * aqi manger
  */
 public class ApiManger {
 
 
-    static final String URL = "https://free-api.heweather.com/v5/";
+    static final String URL = "https://free-aqi.heweather.com/v5/";
 
     static final String KEY = "2af7a47e6e8342ba928c6fff2a569e8e";
 
@@ -198,6 +201,24 @@ public class ApiManger {
                 callback.onResponse(statusCode, message);
             }
         }
+    }
+
+
+    public static boolean isToday(String date) {
+        if (TextUtils.isEmpty(date) || date.length() < 10) {
+            return false;
+        }
+
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String today = format.format(new Date());
+            if (TextUtils.equals(today, date.substring(0, 10))) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 }

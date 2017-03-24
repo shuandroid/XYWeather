@@ -79,7 +79,7 @@ public class City implements Parcelable {
         return so2;
     }
 
-    @JSONField(name = "api")
+    @JSONField(name = "aqi")
     public void setApi(String api) {
         this.api = api;
     }
