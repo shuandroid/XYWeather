@@ -93,8 +93,37 @@
                     android:textSize="12sp" />
 
 
+                <com.chen.xyweather.view.DailyForecastView
+                    android:id="@+id/w_dailyForecast"
+                    android:layout_width="match_parent"
+                    android:layout_height="216dp"
+                    android:layout_alignParentBottom="true" />
+
 
             </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@color/w_divider" />
+
+            <TextView
+                style="@style/section_title"
+                android:text="24h预报" />
+
+            <com.chen.xyweather.view.HourlyForecastView
+                android:id="@+id/hourly_forecast"
+                android:layout_width="match_parent"
+                android:layout_height="144dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@color/w_divider" />
+
+            <TextView
+                style="@style/section_title"
+                android:text="详细信息" />
 
 
         </com.chen.xyweather.view.widget.FirstMatchInScrollViewLinearLayout>
