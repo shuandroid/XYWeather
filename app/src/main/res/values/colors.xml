@@ -14,9 +14,6 @@
     <color name="w_divider">#30ffffff</color>
     <color name="w_divider_secondary">#10ffffff</color>
 
-    <dimen name="w_divider_size">0.5dp</dimen>
-    <dimen name="w_divider_size_secondary">0.5dp</dimen>
-
     <color name="xy_cell_divider">#ffd5d6d9</color>
     <color name="xy_cell_normal">#ffffffff</color>
     <color name="xy_cell_pressed">#ffe0e0e0</color>
