@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Build;
@@ -13,13 +14,21 @@ import android.view.animation.Animation;
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
 import com.chen.xyweather.view.DynamicWeatherView;
+import com.chen.xyweather.view.pager.MainViewPagerAdapter;
 import com.chen.xyweather.view.pager.MyViewPager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity {
 
+
+    protected MainViewPagerAdapter viewPagerAdapter;
+
+    protected List<Fragment> fragments;
 
     public static Typeface typeface;
 
@@ -61,12 +70,23 @@ public class MainActivity extends BaseActivity {
         initAlpha();
 
         loadAreaToViewPager();
+
+        setupViewPager();
+    }
+
+    private void setupViewPager() {
+        fragments = new ArrayList<>();
+        fragments.add(new WeatherFragment());
+        viewPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager(), fragments);
+
+//        mViewPager.setAdapter(new );
     }
 
     /**
      *  load
      */
     private void loadAreaToViewPager() {
+
 
 
     }

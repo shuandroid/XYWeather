@@ -595,7 +595,6 @@
             <View style="@style/suggestion_divider" />
 
 
-
         </com.chen.xyweather.view.widget.FirstMatchInScrollViewLinearLayout>
     </ScrollView>
 

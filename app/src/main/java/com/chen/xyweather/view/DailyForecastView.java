@@ -14,6 +14,7 @@ import com.chen.xyweather.api.ApiManger;
 import com.chen.xyweather.bean.DailyForecast;
 import com.chen.xyweather.bean.Weather;
 import com.chen.xyweather.ui.MainActivity;
+import com.chen.xyweather.utils.UtilManger;
 
 import java.util.ArrayList;
 
@@ -114,7 +115,7 @@ public class DailyForecastView extends View{
             canvas.drawText(d.tmp_max + "°", x[i], yMax[i] - textSize + textOffset, paint);
             canvas.drawText(d.tmp_min + "°", x[i], yMin[i] + textSize + textOffset, paint);
             //日期d.date.substring(5)
-            canvas.drawText(ApiManger.prettyDate(d.date),x[i], textSize * 13.5f + textOffset, paint);
+            canvas.drawText(UtilManger.prettyDate(d.date),x[i], textSize * 13.5f + textOffset, paint);
             //晴, 天气的描述
             canvas.drawText(d.cond_txt_d + "", x[i], textSize * 15f + textOffset, paint);
             //风

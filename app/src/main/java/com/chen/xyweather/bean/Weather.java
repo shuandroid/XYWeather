@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.chen.xyweather.api.ApiManger;
 import com.chen.xyweather.bean.entity.WeatherData;
+import com.chen.xyweather.utils.UtilManger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,7 +94,7 @@ public class Weather implements Parcelable {
         }
         final WeatherData weatherData = get();
         for (int i = 0; i < weatherData.dailyForecasts.size(); i++) {
-            if (ApiManger.isToday(weatherData.dailyForecasts.get(i).date)) {
+            if (UtilManger.isToday(weatherData.dailyForecasts.get(i).date)) {
                 todayIndex = i;
                 break;
             }
@@ -131,7 +132,7 @@ public class Weather implements Parcelable {
     public static String updateTime(WeatherData w) {
         try {
 
-            if (ApiManger.isToday(w.basic.update.loc)) {
+            if (UtilManger.isToday(w.basic.update.loc)) {
                 return w.basic.update.loc.substring(11) + " 发布";
             } else
                 return w.basic.update.loc.substring(5) + " 发布";
