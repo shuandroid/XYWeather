@@ -14,6 +14,7 @@ import com.chen.xyweather.api.ApiManger;
 import com.chen.xyweather.bean.HourlyForecast;
 import com.chen.xyweather.bean.Weather;
 import com.chen.xyweather.ui.MainActivity;
+import com.chen.xyweather.utils.UtilManger;
 
 import java.util.ArrayList;
 
@@ -179,7 +180,7 @@ public class HourlyForecastView extends View {
                 return;
             }
 
-            if (!ApiManger.isToday(wHourlyForecast.get(0).date)) {
+            if (!UtilManger.isToday(wHourlyForecast.get(0).date)) {
                 return;
             }
 

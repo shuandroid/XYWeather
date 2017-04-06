@@ -13,6 +13,7 @@ import com.chen.xyweather.api.Weather;
 import com.chen.xyweather.base.BaseFragment;
 import com.chen.xyweather.bean.HourlyForecast;
 import com.chen.xyweather.view.DailyForecastView;
+import com.chen.xyweather.view.HourlyForecastView;
 import com.chen.xyweather.view.drawer.BaseDrawer;
 import com.chen.xyweather.view.widget.AqiView;
 import com.chen.xyweather.view.widget.AstroView;
@@ -39,7 +40,7 @@ public class WeatherFragment extends BaseFragment {
     protected DailyForecastView dailyForecastView;
 
     @Bind(R.id.hourly_forecast)
-    protected HourlyForecast hourlyForecast;
+    protected HourlyForecastView hourlyForecastView;
 
     @Bind(R.id.w_astro_view)
     protected AstroView astroView;

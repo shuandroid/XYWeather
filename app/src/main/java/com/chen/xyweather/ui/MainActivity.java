@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
+import com.chen.xyweather.utils.DepthPageTransformer;
 import com.chen.xyweather.view.DynamicWeatherView;
 import com.chen.xyweather.view.pager.MainViewPagerAdapter;
 import com.chen.xyweather.view.pager.MyViewPager;
@@ -78,16 +79,15 @@ public class MainActivity extends BaseActivity {
         fragments = new ArrayList<>();
         fragments.add(new WeatherFragment());
         viewPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager(), fragments);
+        mViewPager.setAdapter(viewPagerAdapter);
+        mViewPager.setPageTransformer(true, new DepthPageTransformer());
 
-//        mViewPager.setAdapter(new );
     }
 
     /**
      *  load
      */
     private void loadAreaToViewPager() {
-
-
 
     }
 
