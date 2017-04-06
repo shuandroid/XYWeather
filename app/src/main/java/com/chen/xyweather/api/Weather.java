@@ -50,6 +50,11 @@ public class Weather {
     }
 
 
+
+
+    private void test(){
+
+    }
     //test
 //    public static void main(String  args[]) {
 //        System.out.println("debug->message----->");
