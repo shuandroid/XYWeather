@@ -16,6 +16,7 @@ public class Cond implements Parcelable {
 
     public Cond() {
 
+
     }
 
     protected Cond(Parcel in) {
