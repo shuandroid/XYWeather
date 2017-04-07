@@ -14,6 +14,10 @@ public class Sport implements Parcelable {
     public String brf;
     public String txt;
 
+    public Sport() {
+
+    }
+
     protected Sport(Parcel in) {
         brf = in.readString();
         txt = in.readString();

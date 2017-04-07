@@ -30,7 +30,7 @@ import com.chen.xyweather.view.drawer.BaseDrawer.Type;
 public class ApiManger {
 
 
-    static final String URL = "https://free-aqi.heweather.com/v5/";
+    static final String URL = "https://free-api.heweather.com/v5/";
 
     static final String KEY = "2af7a47e6e8342ba928c6fff2a569e8e";
 
@@ -107,8 +107,11 @@ public class ApiManger {
         public void onResponse(Call call, Response response) throws IOException {
             ApiCallback apiCallback = OkHttpCallbackWrapper.this.apiCallbackWeakReference.get();
             if (null != apiCallback) {
+
+                //this is worry
+//                UI_HANDLER.handleResponse(apiCallback, response.code(), response.body().toString());
                 UI_HANDLER.handleResponse(
-                        apiCallback, response.code(), response.body().toString()
+                        apiCallback, response.code(), response.body().string()
                 );
             }
 

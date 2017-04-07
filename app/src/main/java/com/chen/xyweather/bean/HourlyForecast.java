@@ -21,6 +21,10 @@ public class HourlyForecast implements Parcelable {
     public String tmp;
     public Wind wind;
 
+    public HourlyForecast() {
+
+    }
+
     protected HourlyForecast(Parcel in) {
         cond = in.readParcelable(Cond_.class.getClassLoader());
         date = in.readString();

@@ -16,6 +16,10 @@ public class Astro implements Parcelable {
     public String sr;
     public String ss;
 
+    public Astro() {
+
+    }
+
     protected Astro(Parcel in) {
         sr = in.readString();
         ss = in.readString();

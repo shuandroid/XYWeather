@@ -8,10 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 
+import com.alibaba.fastjson.JSONObject;
 import com.chen.xyweather.R;
-import com.chen.xyweather.api.Weather;
+import com.chen.xyweather.api.ApiManger;
+import com.chen.xyweather.api.WeatherManger;
 import com.chen.xyweather.base.BaseFragment;
-import com.chen.xyweather.bean.HourlyForecast;
+import com.chen.xyweather.bean.Weather;
+import com.chen.xyweather.bean.entity.WeatherData;
+import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.view.DailyForecastView;
 import com.chen.xyweather.view.HourlyForecastView;
 import com.chen.xyweather.view.drawer.BaseDrawer;
@@ -27,7 +31,7 @@ import butterknife.ButterKnife;
  */
 public class WeatherFragment extends BaseFragment {
 
-    private Weather weather;
+    private WeatherManger weather;
 
     @Bind(R.id.pull_refresh)
     protected PullRefreshLayout pullRefreshLayout;
@@ -93,6 +97,7 @@ public class WeatherFragment extends BaseFragment {
      */
     private void updateWeatherUI() {
 
+
     }
 
     /**
@@ -102,6 +107,7 @@ public class WeatherFragment extends BaseFragment {
         pullRefreshLayout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+
 
             }
         });
@@ -114,7 +120,55 @@ public class WeatherFragment extends BaseFragment {
      */
     private void init() {
 
+
+        loadCity();
     }
+
+    /**
+     *  初始加载城市
+     */
+    private void loadCity() {
+
+        String city = "武汉";
+        DebugLog.e("load city");
+        WeatherManger.searchWeatherByCity(city, new WeatherManger.WeatherApiCallback() {
+
+            @Override
+            public void onFailure(Throwable t) {
+
+                DebugLog.e("throwable + search" + t);
+            }
+
+            @Override
+            public void onResponse(int code, String message) {
+                DebugLog.e("response" + message );
+                DebugLog.e("code" + code);
+
+                try {
+                    Weather weather = JSONObject.parseObject(message, Weather.class);
+                    if (!ApiManger.acceptWeather(weather)) {
+                        return;
+                    }
+
+                    WeatherData weatherData = weather.get();
+                    DebugLog.e("weather" + weather);
+                    DebugLog.e("weather data" + weatherData);
+
+                    updateWeatherUI();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    DebugLog.e("load city error");
+                }
+
+            }
+        });
+
+
+    }
+
+
+
 
 
 }

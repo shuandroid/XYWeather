@@ -29,6 +29,10 @@ public class DailyForecast implements Parcelable{
     public String vis;
     public Wind wind;
 
+    protected DailyForecast() {
+
+    }
+
     protected DailyForecast(Parcel in) {
         astro = in.readParcelable(Astro.class.getClassLoader());
         cond = in.readParcelable(Cond.class.getClassLoader());

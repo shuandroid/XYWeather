@@ -46,6 +46,10 @@ public class Weather implements Parcelable {
         return weatherDatas;
     }
 
+    public Weather() {
+
+    }
+
     @Override
     public int describeContents() {
         return 0;

@@ -24,6 +24,10 @@ public class WeatherData implements Parcelable{
     public String status;
     public Suggestion suggestion;
 
+    public WeatherData() {
+
+    }
+
     protected WeatherData(Parcel in) {
         alarms = in.createTypedArrayList(Alarm.CREATOR);
         aqi = in.readParcelable(Aqi.class.getClassLoader());

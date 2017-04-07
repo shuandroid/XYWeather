@@ -19,6 +19,10 @@ public class Suggestion implements Parcelable {
     public Trav trav;
     public Uv uv;
 
+    public Suggestion() {
+
+    }
+
     protected Suggestion(Parcel in) {
         comf = in.readParcelable(Comf.class.getClassLoader());
         cw = in.readParcelable(Cw.class.getClassLoader());

@@ -15,6 +15,10 @@ public class Cw implements Parcelable {
     public String brf;
     public String txt;
 
+    public Cw() {
+
+    }
+
     protected Cw(Parcel in) {
         brf = in.readString();
         txt = in.readString();

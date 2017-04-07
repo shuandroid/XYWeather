@@ -13,7 +13,7 @@ import static com.chen.xyweather.api.ApiManger.CLIENT;
  * Created by chen on 17-3-20.
  *
  */
-public class Weather {
+public class WeatherManger {
 
     /**
      * 正确API使用
@@ -24,7 +24,14 @@ public class Weather {
 
     }
 
-    public  void searchWeatherByCity(String city, WeatherApiCallback weatherApiCallback) {
+    public static void searchWeatherByCity(String city) {
+        if (TextUtils.isEmpty(city)) {
+            throw new IllegalArgumentException("City shouldn't be null or empty!");
+        }
+
+    }
+
+    public  static void searchWeatherByCity(String city, WeatherApiCallback weatherApiCallback) {
 
         if (TextUtils.isEmpty(city)) {
             throw new IllegalArgumentException("City shouldn't be null or empty!");
@@ -33,6 +40,7 @@ public class Weather {
         StringBuilder sb = new StringBuilder();
         sb.append("?").append("city=").append(city);
         sb.append("&").append("key=").append(ApiManger.KEY);
+
         Request request = new Request.Builder().url(API_WEATHER + sb.toString()).get().build();
 
         executeRequest(request, weatherApiCallback);
@@ -59,7 +67,7 @@ public class Weather {
 //    public static void main(String  args[]) {
 //        System.out.println("debug->message----->");
 //
-//        Weather.searchWeatherByCity("武汉", new WeatherApiCallback() {
+//        WeatherManger.searchWeatherByCity("武汉", new WeatherApiCallback() {
 //            @Override
 //            public void onFailure(Throwable t) {
 //

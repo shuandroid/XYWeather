@@ -12,6 +12,10 @@ public class Flu implements Parcelable {
     public String brf;
     public String txt;
 
+    public Flu() {
+
+    }
+
     protected Flu(Parcel in) {
         brf = in.readString();
         txt = in.readString();

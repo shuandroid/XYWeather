@@ -14,6 +14,9 @@ public class Drsg implements Parcelable {
     public String brf;
     public String txt;
 
+    public Drsg() {
+
+    }
     protected Drsg(Parcel in) {
         brf = in.readString();
         txt = in.readString();

@@ -14,6 +14,10 @@ public class Cond implements Parcelable {
     public String txt_d;
     public String txt_n;
 
+    public Cond() {
+
+    }
+
     protected Cond(Parcel in) {
         code_d = in.readString();
         code_n = in.readString();

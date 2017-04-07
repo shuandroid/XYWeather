@@ -21,6 +21,10 @@ public class Now implements Parcelable{
 
     public Wind wind;
 
+    public Now() {
+
+    }
+
     protected Now(Parcel in) {
         cond_ = in.readParcelable(Cond_.class.getClassLoader());
         fl = in.readString();

@@ -16,6 +16,10 @@ public class Wind implements Parcelable{
     public String sc;
     public String spd;
 
+    public Wind(){
+
+    }
+
     protected Wind(Parcel in) {
         deg = in.readString();
         dir = in.readString();
