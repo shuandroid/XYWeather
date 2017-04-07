@@ -14,6 +14,7 @@ import com.chen.xyweather.api.ApiManger;
 import com.chen.xyweather.bean.HourlyForecast;
 import com.chen.xyweather.bean.Weather;
 import com.chen.xyweather.ui.MainActivity;
+import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.UtilManger;
 
 import java.util.ArrayList;
@@ -99,6 +100,8 @@ public class HourlyForecastView extends View {
 
         //没有的数据，要跳过的距离
         final int dataLengthOffset = Math.max(0, fullDataCount - length);
+
+        DebugLog.e("test length hourly" + length);
 
         for (int i = 0; i < length; i++) {
 

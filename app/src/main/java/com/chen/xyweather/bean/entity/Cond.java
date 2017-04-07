@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 /**
  * Created by chen on 17-3-23.
- *  daily forecast 中的天气状况
+ * daily forecast 中的天气状况
  */
 public class Cond implements Parcelable {
 
@@ -15,7 +15,6 @@ public class Cond implements Parcelable {
     public String txt_n;
 
     public Cond() {
-
 
     }
 

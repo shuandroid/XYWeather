@@ -6,7 +6,11 @@ import android.text.TextUtils;
 import okhttp3.Callback;
 import okhttp3.Request;
 import com.chen.xyweather.api.ApiManger;
+import com.chen.xyweather.bean.Weather;
 import com.chen.xyweather.utils.DebugLog;
+import com.chen.xyweather.view.drawer.BaseDrawer;
+import com.chen.xyweather.view.drawer.BaseDrawer.Type;
+
 
 import static com.chen.xyweather.api.ApiManger.CLIENT;
 /**
@@ -84,5 +88,15 @@ public class WeatherManger {
 //        System.out.println("debug->message--last--->");
 //
 //    }
+
+    public static Type convertWeatherType(Weather weather) {
+        if (weather == null || !weather.isOk()) {
+            return Type.DEFAULT;
+        }
+
+
+        return Type.DEFAULT;
+    }
+
 
 }

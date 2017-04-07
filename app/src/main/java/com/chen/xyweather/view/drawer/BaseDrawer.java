@@ -11,6 +11,7 @@ import com.chen.xyweather.utils.UiUtil;
 
 public abstract class BaseDrawer {
 
+    //天气的基本类型
     public enum Type {
         DEFAULT, CLEAR_D, CLEAR_N, RAIN_D, RAIN_N, SNOW_D, SNOW_N, CLOUDY_D, CLOUDY_N,
         OVERCAST_D, OVERCAST_N, FOG_D, FOG_N, HAZE_D, HAZE_N, SAND_D, SAND_N,
