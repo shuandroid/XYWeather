@@ -5,4 +5,31 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
+    <!--for text-->
+    <string name="w_tmp">体感温度</string>
+    <string name="w_sub">-</string>
+    <string name="w_degree">°</string>
+    <string name="w_24h">24h预报</string>
+    <string name="w_info">详细信息</string>
+    <string name="w_subdegree">-°</string>
+    <string name="w_hum">湿度</string>
+    <string name="w_vis">能见度</string>
+    <string name="w_rain">降雨量</string>
+    <string name="w_air">空气质量</string>
+    <string name="w_pm25">PM2.5[入肺颗粒物]</string>
+    <string name="w_dousub">--</string>
+    <string name="w_pm10">PM10[可吸入颗粒物]</string>
+    <string name="w_so2">SO₂[二氧化硫]</string>
+    <string name="w_no2">NO₂[二氧化氮]</string>
+    <string name="w_sunandwind">太阳和风</string>
+    <string name="w_lifeindex">生活指数</string>
+    <string name="w_compre">综合</string>
+    <string name="w_dress">穿衣</string>
+    <string name="w_ray">紫外线</string>
+    <string name="w_motion">运动</string>
+    <string name="w_cold">感冒</string>
+    <string name="w_tour">旅游</string>
+    <string name="w_carwash">洗车</string>
+
+
 </resources>

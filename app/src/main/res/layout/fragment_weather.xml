@@ -31,7 +31,7 @@
                     android:layout_marginTop="56dp"
                     android:paddingLeft="0dp"
                     android:paddingStart="0dp"
-                    android:text="-"
+                    android:text="@string/w_sub"
                     android:textColor="@color/xy_text_primary"
                     android:textSize="32sp"
                     android:visibility="gone" />
@@ -45,7 +45,7 @@
                     android:layout_marginTop="56dp"
                     android:paddingLeft="0dp"
                     android:paddingStart="0dp"
-                    android:text="-"
+                    android:text="@string/w_sub"
                     android:textColor="@color/xy_text_primary"
                     android:textSize="32sp" />
 
@@ -55,7 +55,7 @@
                     android:layout_marginTop="56dp"
                     android:layout_toEndOf="@+id/now_tmp"
                     android:layout_toRightOf="@+id/now_tmp"
-                    android:text="°"
+                    android:text="@string/w_degree"
                     android:textColor="@color/xy_text_primary"
                     android:textSize="32sp" />
 
@@ -112,7 +112,7 @@
 
             <TextView
                 style="@style/section_title"
-                android:text="24h预报" />
+                android:text="@string/w_24h" />
 
             <com.chen.xyweather.view.HourlyForecastView
                 android:id="@+id/hourly_forecast"
@@ -126,7 +126,7 @@
 
             <TextView
                 style="@style/section_title"
-                android:text="详细信息" />
+                android:text="@string/w_info" />
 
 
             <LinearLayout
@@ -152,7 +152,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:singleLine="true"
-                        android:text="-°"
+                        android:text="@string/w_subdegree"
                         android:textSize="52dp" />
 
                     <ImageView
@@ -172,7 +172,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         android:singleLine="true"
-                        android:text="-"
+                        android:text="@string/w_sub"
                         android:textSize="14dp" />
 
                 </LinearLayout>
@@ -188,7 +188,7 @@
 
                         <TextView
                             style="@style/today_detail_info_title"
-                            android:text="体感温度" />
+                            android:text="@string/w_tmp" />
 
                         <com.chen.xyweather.view.widget.FontTextView
                             android:id="@+id/w_now_fl"
@@ -205,7 +205,7 @@
 
                         <TextView
                             style="@style/today_detail_info_title"
-                            android:text="湿度" />
+                            android:text="@string/w_hum" />
 
                         <com.chen.xyweather.view.widget.FontTextView
                             android:id="@+id/w_now_hum"
@@ -223,7 +223,7 @@
 
                         <TextView
                             style="@style/today_detail_info_title"
-                            android:text="能见度" />
+                            android:text="@string/w_vis" />
 
                         <com.chen.xyweather.view.widget.FontTextView
                             android:id="@+id/w_now_vis"
@@ -240,7 +240,7 @@
 
                         <TextView
                             style="@style/today_detail_info_title"
-                            android:text="降雨量" />
+                            android:text="@string/w_rain" />
 
                         <com.chen.xyweather.view.widget.FontTextView
                             android:id="@+id/w_now_pcpn"
@@ -260,7 +260,7 @@
                 style="@style/w_section_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="空气质量"
+                android:text="@string/w_air"
 
                 />
 
@@ -287,7 +287,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:gravity="center_horizontal"
-                    android:text="-"
+                    android:text="@string/w_sub"
                     android:textColor="@color/w_text_primary"
                     android:textSize="22dp"
                     android:visibility="gone" />
@@ -301,13 +301,13 @@
 
                         <TextView
                             style="@style/today_detail_info_title"
-                            android:text="PM2.5[入肺颗粒物]" />
+                            android:text="@string/w_pm25" />
 
                         <com.chen.xyweather.view.widget.FontTextView
                             android:id="@+id/w_aqi_pm25"
 
                             style="@style/today_detail_info_content"
-                            android:text="--" />
+                            android:text="@string/w_dousub" />
 
                     </LinearLayout>
 
@@ -320,13 +320,13 @@
 
                         <TextView
                             style="@style/today_detail_info_title"
-                            android:text="PM10[可吸入颗粒物]" />
+                            android:text="@string/w_pm10" />
 
                         <com.chen.xyweather.view.widget.FontTextView
                             android:id="@+id/w_aqi_pm10"
 
                             style="@style/today_detail_info_content"
-                            android:text="--" />
+                            android:text="@string/w_dousub" />
 
                     </LinearLayout>
 
@@ -339,13 +339,13 @@
 
                         <TextView
                             style="@style/today_detail_info_title"
-                            android:text="SO₂[二氧化硫]" />
+                            android:text="@string/w_so2" />
 
                         <com.chen.xyweather.view.widget.FontTextView
                             android:id="@+id/w_aqi_so2"
 
                             style="@style/today_detail_info_content"
-                            android:text="--" />
+                            android:text="@string/w_dousub" />
 
                     </LinearLayout>
 
@@ -358,12 +358,12 @@
 
                         <TextView
                             style="@style/today_detail_info_title"
-                            android:text="NO₂[二氧化氮]" />
+                            android:text="@string/w_no2" />
 
                         <com.chen.xyweather.view.widget.FontTextView
                             android:id="@+id/w_aqi_no2"
                             style="@style/today_detail_info_content"
-                            android:text="--" />
+                            android:text="@string/w_dousub" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -378,7 +378,7 @@
 
             <TextView
                 style="@style/w_section_title"
-                android:text="太阳和风" />
+                android:text="@string/w_sunandwind" />
 
 
             <com.chen.xyweather.view.widget.AstroView
@@ -393,7 +393,7 @@
 
             <TextView
                 style="@style/w_section_title"
-                android:text="生活指数" />
+                android:text="@string/w_lifeindex" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -406,7 +406,7 @@
 
                 <TextView
                     style="@style/suggestion_title"
-                    android:text="综合"
+                    android:text="@string/w_compre"
                     android:textColor="@color/w_text_primary"
                     android:textSize="16dp" />
 
@@ -437,7 +437,7 @@
 
                 <TextView
                     style="@style/suggestion_title"
-                    android:text="穿衣"
+                    android:text="@string/w_dress"
                     android:textColor="@color/w_text_primary"
                     android:textSize="16dp" />
 
@@ -465,7 +465,7 @@
 
                 <TextView
                     style="@style/suggestion_title"
-                    android:text="紫外线"
+                    android:text="@string/w_ray"
                     android:textColor="@color/w_text_primary"
                     android:textSize="16dp" />
 
@@ -493,7 +493,7 @@
 
                 <TextView
                     style="@style/suggestion_title"
-                    android:text="运动"
+                    android:text="@string/w_motion"
                     android:textColor="@color/w_text_primary"
                     android:textSize="16dp" />
 
@@ -521,7 +521,7 @@
 
                 <TextView
                     style="@style/suggestion_title"
-                    android:text="感冒"
+                    android:text="@string/w_cold"
                     android:textColor="@color/w_text_primary"
                     android:textSize="16dp" />
 
@@ -549,7 +549,7 @@
 
                 <TextView
                     style="@style/suggestion_title"
-                    android:text="旅游"
+                    android:text="@string/w_tour"
                     android:textColor="@color/w_text_primary"
                     android:textSize="16dp" />
 
@@ -577,7 +577,7 @@
 
                 <TextView
                     style="@style/suggestion_title"
-                    android:text="洗车"
+                    android:text="@string/w_carwash"
                     android:textColor="@color/w_text_primary"
                     android:textSize="16dp" />
 
