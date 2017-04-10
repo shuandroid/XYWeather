@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
+import com.chen.xyweather.base.BaseFragment;
+
 import java.util.List;
 
 /**
@@ -13,19 +15,22 @@ import java.util.List;
  */
 public class MainViewPagerAdapter  extends FragmentStatePagerAdapter{
 
-    private List<Fragment> mFragments;
+    private List<BaseFragment> mFragments;
     private int childCount;
 
-    public MainViewPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
+    public MainViewPagerAdapter(FragmentManager fm, List<BaseFragment> fragments) {
         super(fm);
         mFragments = fragments;
     }
 
 
     @Override
-    public Fragment getItem(int position) {
+    public BaseFragment getItem(int position) {
+        //// TODO: 17-4-10 做什么的？
+        mFragments.get(position).setRetainInstance(true);
         return mFragments.get(position);
     }
+
 
     @Override
     public int getCount() {
@@ -34,6 +39,7 @@ public class MainViewPagerAdapter  extends FragmentStatePagerAdapter{
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
+//        container.removeView(((Fragment)object).getView());
         super.destroyItem(container, position, object);
 
     }
@@ -52,5 +58,11 @@ public class MainViewPagerAdapter  extends FragmentStatePagerAdapter{
         }
 
         return super.getItemPosition(object);
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        BaseFragment fragment = mFragments.get(position);
+        return fragment.getTitle();
     }
 }

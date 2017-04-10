@@ -13,8 +13,11 @@ import android.view.animation.Animation;
 
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
+import com.chen.xyweather.base.BaseFragment;
+import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.DepthPageTransformer;
 import com.chen.xyweather.view.DynamicWeatherView;
+import com.chen.xyweather.view.drawer.BaseDrawer;
 import com.chen.xyweather.view.pager.MainViewPagerAdapter;
 import com.chen.xyweather.view.pager.MyViewPager;
 
@@ -29,7 +32,7 @@ public class MainActivity extends BaseActivity {
 
     protected MainViewPagerAdapter viewPagerAdapter;
 
-    protected List<Fragment> fragments;
+    protected List<BaseFragment> fragments;
 
     public static Typeface typeface;
 
@@ -60,7 +63,7 @@ public class MainActivity extends BaseActivity {
 
         if (Build.VERSION.SDK_INT >= 19) {
             //
-            mViewPager.setPadding(0, 64, 0,0);
+            mViewPager.setPadding(0, 64, 0, 0);
         }
 
     }
@@ -73,19 +76,44 @@ public class MainActivity extends BaseActivity {
         loadAreaToViewPager();
 
         setupViewPager();
+//        updateCurDrawerType();
     }
 
-    private void setupViewPager() {
+    public void setupViewPager() {
         fragments = new ArrayList<>();
         fragments.add(new WeatherFragment());
         viewPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager(), fragments);
         mViewPager.setAdapter(viewPagerAdapter);
         mViewPager.setPageTransformer(true, new DepthPageTransformer());
 
+        updateCurDrawerType();
+
+    }
+
+    public void updateCurDrawerType() {
+
+        DebugLog.e("test drawer chen-->");
+        int position = mViewPager.getCurrentItem();
+        DebugLog.e("test drawer chen--> " + position);
+
+        BaseFragment fragment = viewPagerAdapter.getItem(position);
+        BaseDrawer.Type type = fragment.getDrawerType();
+        if (type == null) {
+            DebugLog.e("test drawer null-->");
+
+        } else {
+            DebugLog.e("test drawer chen type--> " + type);
+            mDynamicWeatherView.setDrawerType(type);
+        }
+
+//        mDynamicWeatherView.setDrawerType((viewPagerAdapter.
+//                getItem(mViewPager.getCurrentItem()))
+//                .getDrawerType());
+
     }
 
     /**
-     *  load
+     * load
      */
     private void loadAreaToViewPager() {
 
@@ -101,21 +129,39 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onAnimationStart(Animation animation) {
                 getWindow().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
-
             }
 
             @Override
             public void onAnimationEnd(Animation animation) {
-
             }
 
             @Override
             public void onAnimationRepeat(Animation animation) {
-
             }
         });
 
         mViewPager.setAnimation(alphaAnimation);
+//        mViewPager.setCurrentItem(1, false);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        DebugLog.e("activity resume");
+        mDynamicWeatherView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        DebugLog.e("activity pause");
+//        mDynamicWeatherView.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        mDynamicWeatherView.onDestroy();
     }
 }

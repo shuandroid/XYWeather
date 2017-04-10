@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chen.xyweather.R;
+import com.chen.xyweather.ui.MainActivity;
 import com.chen.xyweather.view.drawer.BaseDrawer;
 
 /**
@@ -35,12 +36,12 @@ public abstract class BaseFragment extends Fragment {
         return textView;
     }
 
-    protected void notifyActivityUpdate() {
+    public void notifyActivityUpdate() {
         if (getUserVisibleHint()) {
             Activity activity = getActivity();
             if (activity != null) {
                 // TODO: 17-3-22
-//                ((MainActivity)activity).updateCurDrawerType();
+                ((MainActivity)activity).updateCurDrawerType();
             } else {
                 //未启动
             }

@@ -28,12 +28,11 @@
                     android:id="@+id/w_now_tmp_minus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="56dp"
                     android:paddingLeft="0dp"
                     android:paddingStart="0dp"
                     android:text="@string/w_sub"
                     android:textColor="@color/xy_text_primary"
-                    android:textSize="32sp"
+                    android:textSize="48sp"
                     android:visibility="gone" />
 
 
@@ -42,12 +41,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="56dp"
                     android:paddingLeft="0dp"
                     android:paddingStart="0dp"
                     android:text="@string/w_sub"
                     android:textColor="@color/xy_text_primary"
-                    android:textSize="32sp" />
+                    android:textSize="48sp" />
 
                 <com.chen.xyweather.view.widget.FontTextView
                     android:layout_width="wrap_content"
@@ -57,6 +55,7 @@
                     android:layout_toRightOf="@+id/now_tmp"
                     android:text="@string/w_degree"
                     android:textColor="@color/xy_text_primary"
+                    android:visibility="gone"
                     android:textSize="32sp" />
 
                 <TextView
@@ -152,7 +151,7 @@
                         android:layout_gravity="center"
                         android:singleLine="true"
                         android:text="@string/w_subdegree"
-                        android:textSize="52dp" />
+                        android:textSize="52sp" />
 
                     <ImageView
 

@@ -7,7 +7,7 @@
 
     <!--for text-->
     <string name="w_tmp">体感温度</string>
-    <string name="w_sub">-</string>
+    <string name="w_sub">-°</string>
     <string name="w_degree">°</string>
     <string name="w_24h">24h预报</string>
     <string name="w_info">详细信息</string>

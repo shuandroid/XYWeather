@@ -35,9 +35,13 @@ import butterknife.ButterKnife;
 public class WeatherFragment extends BaseFragment {
 
     private WeatherManger weather;
-    private BaseDrawer.Type drawerType;
+    private BaseDrawer.Type drawerType = BaseDrawer.Type.UNKNOWN_D;
 
     private View rootView;
+
+    private static String cityName = "Test";
+
+
 
 
     @Bind(R.id.pull_refresh)
@@ -66,7 +70,8 @@ public class WeatherFragment extends BaseFragment {
 
     @Override
     public String getTitle() {
-        return null;
+
+        return cityName;
     }
 
     @Override
@@ -76,7 +81,8 @@ public class WeatherFragment extends BaseFragment {
 
     @Override
     public BaseDrawer.Type getDrawerType() {
-        return null;
+
+        return this.drawerType;
     }
 
 
@@ -109,6 +115,7 @@ public class WeatherFragment extends BaseFragment {
         DebugLog.e("weather" + weather);
         DebugLog.e("weather data" + weatherData);
 
+        cityName = weatherData.basic.city;
         dailyForecastView.setData(weather);
         hourlyForecastView.setData(weather);
         aqiView.setData(weatherData.aqi);
@@ -278,6 +285,7 @@ public class WeatherFragment extends BaseFragment {
 
     private void updateDrawerTypeAndNotify(Weather weather) {
         drawerType = ApiManger.convertWeatherType(weather);
+        DebugLog.e("type " + drawerType);
         notifyActivityUpdate();
     }
 

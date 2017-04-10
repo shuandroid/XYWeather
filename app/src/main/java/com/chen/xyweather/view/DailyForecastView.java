@@ -75,7 +75,6 @@ public class DailyForecastView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
 
-        DebugLog.e("on draw time");
         if (isInEditMode()) {
             return;
         }
@@ -110,8 +109,6 @@ public class DailyForecastView extends View {
         final float pathPercent = (percent >= 0.6f) ? 1f : (percent / 0.6f);
 
         paint.setAlpha((int) (255 * textPercent));
-        DebugLog.e("day length" + length);
-
         for (int i = 0; i < length; i++) {
             final Data d = datas[i];
             x[i] = i * dW + dW / 2f;

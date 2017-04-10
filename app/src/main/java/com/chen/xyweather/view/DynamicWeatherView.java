@@ -49,6 +49,7 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
 
     private void setDrawer(BaseDrawer baseDrawer) {
         if (baseDrawer == null) {
+            DebugLog.e("drawer_  null");
             return;
         }
         //透明度
@@ -56,16 +57,21 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
         if (this.curDrawer != null) {
             this.preDrawer = curDrawer;
         }
-        curDrawer = baseDrawer;
+        this.curDrawer = baseDrawer;
 
     }
 
     public void setDrawerType(Type type) {
         if (type == null) {
+            DebugLog.e("drawer_ type null");
             return;
         }
         if (type != curType) {
+            DebugLog.e("view--->");
+            curType = type;
             setDrawer(BaseDrawer.makeDrawerByType(getContext(), curType));
+        } else {
+            DebugLog.e("cur type " + curType);
         }
     }
 
@@ -179,8 +185,6 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
 
         @Override
         public void run() {
-            super.run();
-
             while (true) {
                 synchronized (this) {
                     while (mSurface == null || !mRunning) {
@@ -195,8 +199,8 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
                             return;
                         try {
                             wait();
-                        } catch (Exception e) {
-
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
 
                         if (!mActive) {
