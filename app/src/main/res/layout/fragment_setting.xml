@@ -1,13 +1,74 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.chen.xyweather.ui.SettingFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/title"
+        android:textSize="25dp" />
 
-</FrameLayout>
+    <com.chen.xyweather.view.CircleImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/pic_account"
+        android:layout_gravity="center_horizontal"/>
+
+
+    <RelativeLayout
+        android:id="@+id/s_notice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/setting_item_tv"
+            android:text="@string/s_notice" />
+
+        <ImageView style="@style/setting_item_iv" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/s_changeskin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/setting_item_tv"
+            android:text="@string/s_changeskin" />
+
+        <ImageView style="@style/setting_item_iv" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/s_cleardata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/setting_item_tv"
+            android:text="@string/s_cleardata" />
+
+        <ImageView style="@style/setting_item_iv" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/s_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/setting_item_tv"
+            android:text="@string/s_about" />
+
+        <ImageView style="@style/setting_item_iv" />
+    </RelativeLayout>
+
+</LinearLayout>

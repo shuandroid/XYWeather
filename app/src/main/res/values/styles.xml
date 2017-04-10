@@ -116,4 +116,24 @@
         <item name="android:background">@color/w_divider_secondary</item>
     </style>
 
+    <!--for  setting text-->
+    <style name="setting_item_tv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="setting_item_iv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:src">@mipmap/ic_arrow_right</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+    </style>
 </resources>
