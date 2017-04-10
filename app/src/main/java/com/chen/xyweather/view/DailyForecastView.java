@@ -15,6 +15,7 @@ import android.view.View;
 
 import com.chen.xyweather.bean.DailyForecast;
 import com.chen.xyweather.bean.Weather;
+import com.chen.xyweather.bean.entity.ForecastData;
 import com.chen.xyweather.ui.MainActivity;
 import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.UtilManger;
@@ -201,6 +202,57 @@ public class DailyForecastView extends View {
         }
 
         forecastList = weather.get().dailyForecasts;
+        if (forecastList == null || forecastList.size() == 0) {
+            return;
+        }
+
+        datas = new Data[forecastList.size()];
+
+        try {
+            int allMin = Integer.MAX_VALUE;
+            int allMax = Integer.MIN_VALUE;
+            for (int i = 0; i < forecastList.size(); i++) {
+                DailyForecast forecast = forecastList.get(i);
+                int min = Integer.valueOf(forecast.tmp.min);
+                int max = Integer.valueOf(forecast.tmp.max);
+                if (allMax < max)
+                    allMax = max;
+                if (allMin > min)
+                    allMin = min;
+                final Data data = new Data();
+                data.tmp_min = min;
+                data.tmp_max = max;
+                data.date = forecast.date;
+                data.wind_sc = forecast.wind.sc;
+                data.cond_txt_d = forecast.cond.txt_d;
+                datas[i] = data;
+
+            }
+
+            //后面绘制
+            float allDistance = Math.abs(allMax - allMin);
+            float averageDistance = (allMax + allMin) / 2f;
+            for (Data data : datas) {
+                data.maxOffsetPercent = (data.tmp_max - averageDistance) / allDistance;
+                data.minOffsetPercent = (data.tmp_min - averageDistance) / allDistance;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        percent = 0f;
+
+        invalidate();
+
+    }
+
+    /**
+     * 设置数据，根据forecast data
+     * @param forecastData forecast data
+     */
+    public void setData(ForecastData forecastData) {
+
+        forecastList = forecastData.dailyForecasts;
         if (forecastList == null || forecastList.size() == 0) {
             return;
         }

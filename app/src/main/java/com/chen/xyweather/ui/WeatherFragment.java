@@ -1,26 +1,25 @@
 package com.chen.xyweather.ui;
 
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
 import com.chen.xyweather.R;
 import com.chen.xyweather.api.ApiManger;
 import com.chen.xyweather.api.WeatherManger;
 import com.chen.xyweather.base.BaseFragment;
+import com.chen.xyweather.bean.ForecastWeather;
 import com.chen.xyweather.bean.Weather;
+import com.chen.xyweather.bean.entity.ForecastData;
 import com.chen.xyweather.bean.entity.WeatherData;
 import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.UtilManger;
 import com.chen.xyweather.view.DailyForecastView;
-import com.chen.xyweather.view.DailyForecastViewTest;
 import com.chen.xyweather.view.HourlyForecastView;
 import com.chen.xyweather.view.drawer.BaseDrawer;
 import com.chen.xyweather.view.widget.AqiView;
@@ -110,8 +109,7 @@ public class WeatherFragment extends BaseFragment {
         DebugLog.e("weather" + weather);
         DebugLog.e("weather data" + weatherData);
 
-        dailyUpdate(weatherData.basic.city);
-//        dailyForecastView.setData(weather);
+        dailyForecastView.setData(weather);
         hourlyForecastView.setData(weather);
         aqiView.setData(weatherData.aqi);
         astroView.setData(weather);
@@ -190,6 +188,7 @@ public class WeatherFragment extends BaseFragment {
     /**
      * 获取更多天气预报，需要访问另外一个接口
      * @param city city
+     * 想多了，获得的数据和第一个接口放回的数据一样。暂时不用
      */
     private void dailyUpdate(String city) {
 
@@ -202,17 +201,17 @@ public class WeatherFragment extends BaseFragment {
             @Override
             public void onResponse(int code, String message) {
 
-                DebugLog.e("response" + message);
+                DebugLog.e("forecast response --->" + message);
                 DebugLog.e("code" + code);
-
                 try {
-                    Weather weather = JSONObject.parseObject(message, Weather.class);
-                    DebugLog.e("test");
-                    updateWeatherUI(weather);
+
+                    ForecastWeather forecastWeather = JSONObject.parseObject(message, ForecastWeather.class);
+                    ForecastData forecastData = forecastWeather.get();
+                    dailyForecastView.setData(forecastData);
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                    DebugLog.e("load city error");
+                    DebugLog.e("load daily error");
                 }
             }
         });
