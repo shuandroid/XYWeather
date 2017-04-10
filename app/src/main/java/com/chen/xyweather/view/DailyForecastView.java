@@ -4,28 +4,31 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.support.v4.view.ViewCompat;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.chen.xyweather.api.ApiManger;
 import com.chen.xyweather.bean.DailyForecast;
 import com.chen.xyweather.bean.Weather;
 import com.chen.xyweather.ui.MainActivity;
+import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.UtilManger;
 
 import java.util.ArrayList;
 
 /**
  * Created by chen on 17-3-23.
- *
+ * <p/>
  * 一周天气预报
  * 按文字算高度18行
  * 文字设置为12，高度是216dp
  */
-public class DailyForecastView extends View{
+public class DailyForecastView extends View {
 
 
     private int height, width;
@@ -44,7 +47,6 @@ public class DailyForecastView extends View{
 
     public DailyForecastView(Context context, AttributeSet attrs) {
         super(context, attrs);
-
         density = context.getResources().getDisplayMetrics().density;
         if (isInEditMode()) {
             return;
@@ -57,8 +59,8 @@ public class DailyForecastView extends View{
         paint.setColor(Color.WHITE);
         paint.setStrokeWidth(1f * density);
         paint.setTextSize(12f * density);
-        paint.setStyle(Paint.Style.FILL);
-        paint.setTextAlign(Paint.Align.CENTER);
+        paint.setStyle(Style.FILL);
+        paint.setTextAlign(Align.CENTER);
         paint.setTypeface(MainActivity.getTypeface(context));
 
     }
@@ -68,10 +70,11 @@ public class DailyForecastView extends View{
         invalidate();
     }
 
+    // TODO: 17-4-7 为什么会被调用多次
     @Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
 
+        DebugLog.e("on draw time");
         if (isInEditMode()) {
             return;
         }
@@ -83,7 +86,7 @@ public class DailyForecastView extends View{
         paint.setTextSize(textSize);
         final float textOffset = getTextPaintOffset(paint);
         final float dH = textSize * 8f;
-        final float dCenterY = textSize * 6f ;
+        final float dCenterY = textSize * 6f;
 
         //没有数据的情况下只画一条线
         if (datas == null || datas.length <= 1) {
@@ -102,24 +105,26 @@ public class DailyForecastView extends View{
         float[] yMax = new float[length];
         float[] yMin = new float[length];
 
-        final float textPercent = (percent >= 0.6f) ? (percent - 0.6f) / 0.4f : 0f;
-        final float paintPercent = (percent >= 0.6f) ? 1f : (percent / 0.6f);
+        final float textPercent = (percent >= 0.6f) ? ((percent - 0.6f) / 0.4f) : 0f;
+        final float pathPercent = (percent >= 0.6f) ? 1f : (percent / 0.6f);
 
         paint.setAlpha((int) (255 * textPercent));
+        DebugLog.e("day length" + length);
+
         for (int i = 0; i < length; i++) {
             final Data d = datas[i];
-            x[i] = i * dW + dW /2f;
+            x[i] = i * dW + dW / 2f;
             yMax[i] = dCenterY - d.maxOffsetPercent * dH;
             yMin[i] = dCenterY - d.minOffsetPercent * dH;
 
             canvas.drawText(d.tmp_max + "°", x[i], yMax[i] - textSize + textOffset, paint);
             canvas.drawText(d.tmp_min + "°", x[i], yMin[i] + textSize + textOffset, paint);
             //日期d.date.substring(5)
-            canvas.drawText(UtilManger.prettyDate(d.date),x[i], textSize * 13.5f + textOffset, paint);
+            canvas.drawText(UtilManger.prettyDate(d.date), x[i], textSize * 13.5f + textOffset, paint);
             //晴, 天气的描述
             canvas.drawText(d.cond_txt_d + "", x[i], textSize * 15f + textOffset, paint);
             //风
-            canvas.drawText(d.wind_sc, x[i], textSize * 15f + textOffset, paint);
+            canvas.drawText(d.wind_sc, x[i], textSize * 16.5f + textOffset, paint);
 
         }
 
@@ -129,24 +134,26 @@ public class DailyForecastView extends View{
             final float midX = (x[i] + x[i + 1]) / 2f;
             final float midYMax = (yMax[i] + yMax[i + 1]) / 2f;
             final float midYMin = (yMin[i] + yMin[i + 1]) / 2f;
-            if(i == 0){
+            if (i == 0) {
                 tmpMaxPath.moveTo(0, yMax[i]);
                 tmpMinPath.moveTo(0, yMin[i]);
             }
             //
-            tmpMaxPath.cubicTo(x[i]-1, yMax[i],x[i], yMax[i], midX, midYMax);
-            tmpMinPath.cubicTo(x[i]-1, yMin[i],x[i], yMin[i], midX, midYMin);
+            tmpMaxPath.cubicTo(x[i] - 1, yMax[i], x[i], yMax[i], midX, midYMax);
+            tmpMinPath.cubicTo(x[i] - 1, yMin[i], x[i], yMin[i], midX, midYMin);
 
-            if(i == (length - 2)){
-                tmpMaxPath.cubicTo(x[i + 1]-1, yMax[i + 1], x[i + 1], yMax[i + 1], this.width, yMax[i + 1]);
-                tmpMinPath.cubicTo(x[i + 1]-1, yMin[i + 1], x[i + 1], yMin[i + 1], this.width, yMin[i + 1]);
+            if (i == (length - 2)) {
+                tmpMaxPath.cubicTo(x[i + 1] - 1, yMax[i + 1], x[i + 1], yMax[i + 1], this.width, yMax[i + 1]);
+                tmpMinPath.cubicTo(x[i + 1] - 1, yMin[i + 1], x[i + 1], yMin[i + 1], this.width, yMin[i + 1]);
             }
         }
         paint.setStyle(Paint.Style.STROKE);
-        final boolean needClip = paintPercent < 1f;
+
+        final boolean needClip = pathPercent < 1f;
+
         if (needClip) {
             canvas.save();
-            canvas.clipRect(0, 0, this.width * paintPercent, this.height);
+            canvas.clipRect(0, 0, this.width * pathPercent, this.height);
 
         }
         canvas.drawPath(tmpMaxPath, paint);
@@ -154,9 +161,11 @@ public class DailyForecastView extends View{
         if (needClip) {
             canvas.restore();
         }
+
+        // TODO: 17-4-10 这里是调用daily的次数，若需要修改，在这里修改
         if (percent < 1) {
-            percent += 0.025f;
             percent = Math.min(percent, 1f);
+            percent += 0.2f;
             ViewCompat.postInvalidateOnAnimation(this);
         }
 
@@ -174,11 +183,9 @@ public class DailyForecastView extends View{
         public String cond_txt_d;
     }
 
-
-
-
     /**
      * 获得的数据
+     *
      * @param weather 天气
      */
     public void setData(Weather weather) {
@@ -194,13 +201,12 @@ public class DailyForecastView extends View{
         }
 
         forecastList = weather.get().dailyForecasts;
-        if (forecastList == null || forecastList.size() == 0)  {
+        if (forecastList == null || forecastList.size() == 0) {
             return;
         }
 
         datas = new Data[forecastList.size()];
 
-        //
         try {
             int allMin = Integer.MAX_VALUE;
             int allMax = Integer.MIN_VALUE;
@@ -224,16 +230,17 @@ public class DailyForecastView extends View{
 
             //后面绘制
             float allDistance = Math.abs(allMax - allMin);
-            float averageDistance = (allMax + allMin) /2f;
-            for (Data data :datas) {
-                data.maxOffsetPercent = (data.tmp_max - averageDistance) /allDistance;
-                data.minOffsetPercent = (data.tmp_min - averageDistance) /allDistance;
+            float averageDistance = (allMax + allMin) / 2f;
+            for (Data data : datas) {
+                data.maxOffsetPercent = (data.tmp_max - averageDistance) / allDistance;
+                data.minOffsetPercent = (data.tmp_min - averageDistance) / allDistance;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         percent = 0f;
+
         invalidate();
 
     }
@@ -249,7 +256,7 @@ public class DailyForecastView extends View{
      * 获取
      */
     public static float getTextPaintOffset(Paint paint) {
-        Paint.FontMetrics fontMetrics = paint.getFontMetrics();
+        FontMetrics fontMetrics = paint.getFontMetrics();
         return -(fontMetrics.bottom - fontMetrics.top) / 2f - fontMetrics.top;
     }
 

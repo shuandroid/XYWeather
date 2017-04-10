@@ -23,6 +23,7 @@ public class WeatherManger {
      * 正确API使用
      */
     static final String API_WEATHER = ApiManger.URL + "weather";
+    static final String API_FORECAST = ApiManger.URL + "forecast";
 
     public interface WeatherApiCallback extends ApiManger.ApiCallback {
 
@@ -52,6 +53,20 @@ public class WeatherManger {
     }
 
 
+    public static void searchMoreDailyForcest(String city, WeatherApiCallback weatherApiCallback) {
+        if (TextUtils.isEmpty(city)) {
+            throw new IllegalArgumentException("City shouldn't be null or empty!");
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("?").append("city=").append(city);
+        sb.append("&").append("key=").append(ApiManger.KEY);
+
+        Request request = new Request.Builder().url(API_FORECAST + sb.toString()).get().build();
+
+        executeRequest(request, weatherApiCallback);
+    }
+
     /**
      * 把请求加入队列，调度
      * @param request 请求
@@ -62,32 +77,6 @@ public class WeatherManger {
     }
 
 
-
-
-    private void test(){
-
-    }
-    //test
-//    public static void main(String  args[]) {
-//        System.out.println("debug->message----->");
-//
-//        WeatherManger.searchWeatherByCity("武汉", new WeatherApiCallback() {
-//            @Override
-//            public void onFailure(Throwable t) {
-//
-//                DebugLog.e("throwable" + t);
-//            }
-//
-//            @Override
-//            public void onResponse(int code, String message) {
-//                DebugLog.e("debug->message----->" + message);
-//                System.out.println("debug->message----->" + message);
-//            }
-//        });
-//
-//        System.out.println("debug->message--last--->");
-//
-//    }
 
     public static Type convertWeatherType(Weather weather) {
         if (weather == null || !weather.isOk()) {

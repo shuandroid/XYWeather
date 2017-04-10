@@ -20,6 +20,7 @@ import com.chen.xyweather.bean.entity.WeatherData;
 import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.UtilManger;
 import com.chen.xyweather.view.DailyForecastView;
+import com.chen.xyweather.view.DailyForecastViewTest;
 import com.chen.xyweather.view.HourlyForecastView;
 import com.chen.xyweather.view.drawer.BaseDrawer;
 import com.chen.xyweather.view.widget.AqiView;
@@ -88,11 +89,9 @@ public class WeatherFragment extends BaseFragment {
 
         ButterKnife.bind(this, rootView);
 
-
         init();
 
         pullListener();
-
         return rootView;
     }
 
@@ -111,24 +110,25 @@ public class WeatherFragment extends BaseFragment {
         DebugLog.e("weather" + weather);
         DebugLog.e("weather data" + weatherData);
 
-        dailyForecastView.setData(weather);
+        dailyUpdate(weatherData.basic.city);
+//        dailyForecastView.setData(weather);
         hourlyForecastView.setData(weather);
         aqiView.setData(weatherData.aqi);
         astroView.setData(weather);
 
-        DebugLog.e("update -------->");
         //当前温度
         final String tmp = weatherData.now.tmp;
-
         try {
             final int tmp_int = Integer.valueOf(tmp);
 
             if (tmp_int < 0) {
                 setTextView(R.id.now_tmp, String.valueOf(-tmp_int));
-                // TODO: 17-4-7 在ｌａｙｏｕｔ里添加对象
-//            rootView.findViewById()
-
+                rootView.findViewById(R.id.w_now_tmp_minus).setVisibility(View.VISIBLE);
+            } else {
+                setTextView(R.id.now_tmp, tmp);
+                rootView.findViewById(R.id.w_now_tmp_minus).setVisibility(View.GONE);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -165,10 +165,57 @@ public class WeatherFragment extends BaseFragment {
             setTextView(R.id.w_aqi_text, "");
         }
 
+        //常见建议
+        if (weatherData.suggestion != null) {
+            setTextView(R.id.w_suggestion_comf, weatherData.suggestion.comf.txt);
+            setTextView(R.id.w_suggestion_cw, weatherData.suggestion.cw.txt);
+            setTextView(R.id.w_suggestion_drsg, weatherData.suggestion.drsg.txt);
+            setTextView(R.id.w_suggestion_flu, weatherData.suggestion.flu.txt);
+            setTextView(R.id.w_suggestion_sport, weatherData.suggestion.sport.txt);
+            setTextView(R.id.w_suggestion_tarv, weatherData.suggestion.trav.txt);
+            setTextView(R.id.w_suggestion_uv, weatherData.suggestion.uv.txt);
+
+            setTextView(R.id.w_suggestion_comf_brf, weatherData.suggestion.comf.brf);
+            setTextView(R.id.w_suggestion_cw_brf, weatherData.suggestion.cw.brf);
+            setTextView(R.id.w_suggestion_drsg_brf, weatherData.suggestion.drsg.brf);
+            setTextView(R.id.w_suggestion_flu_brf, weatherData.suggestion.flu.brf);
+            setTextView(R.id.w_suggestion_sport_brf, weatherData.suggestion.sport.brf);
+            setTextView(R.id.w_suggestion_tarv_brf, weatherData.suggestion.trav.brf);
+            setTextView(R.id.w_suggestion_uv_brf, weatherData.suggestion.uv.brf);
+        }
 
 
+    }
 
+    /**
+     * 获取更多天气预报，需要访问另外一个接口
+     * @param city city
+     */
+    private void dailyUpdate(String city) {
 
+        WeatherManger.searchMoreDailyForcest(city, new WeatherManger.WeatherApiCallback() {
+            @Override
+            public void onFailure(Throwable t) {
+                DebugLog.e("throwable + search" + t);
+            }
+
+            @Override
+            public void onResponse(int code, String message) {
+
+                DebugLog.e("response" + message);
+                DebugLog.e("code" + code);
+
+                try {
+                    Weather weather = JSONObject.parseObject(message, Weather.class);
+                    DebugLog.e("test");
+                    updateWeatherUI(weather);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    DebugLog.e("load city error");
+                }
+            }
+        });
 
     }
 
@@ -246,7 +293,6 @@ public class WeatherFragment extends BaseFragment {
 
 
     }
-
 
 
 }

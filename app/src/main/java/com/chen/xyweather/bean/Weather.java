@@ -1,5 +1,6 @@
 package com.chen.xyweather.bean;
 
+import android.os.Debug;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
@@ -7,6 +8,7 @@ import android.text.TextUtils;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.chen.xyweather.api.ApiManger;
 import com.chen.xyweather.bean.entity.WeatherData;
+import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.UtilManger;
 
 import java.util.ArrayList;
@@ -39,6 +41,7 @@ public class Weather implements Parcelable {
 
     @JSONField(name = "HeWeather5")
     public void setWeatherDatas(List<WeatherData> weatherDatas) {
+        DebugLog.e("weatherDatas length" + weatherDatas.size());
         this.weatherDatas = weatherDatas;
     }
 

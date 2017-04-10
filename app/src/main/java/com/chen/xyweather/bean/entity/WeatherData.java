@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.chen.xyweather.bean.DailyForecast;
 import com.chen.xyweather.bean.HourlyForecast;
+import com.chen.xyweather.utils.DebugLog;
 
 import java.util.ArrayList;
 
@@ -100,6 +101,7 @@ public class WeatherData implements Parcelable{
 
     @JSONField(name = "daily_forecast")
     public void setDailyForecasts(ArrayList<DailyForecast> dailyForecasts) {
+        DebugLog.e("daily length" + dailyForecasts.size());
         this.dailyForecasts = dailyForecasts;
     }
 
