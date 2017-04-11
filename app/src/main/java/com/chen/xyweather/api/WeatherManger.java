@@ -29,6 +29,13 @@ public class WeatherManger {
 
     }
 
+
+    public interface ApiListener {
+        public void onReceiveWeather(Weather weather, boolean updated);
+
+        public void onUpdateError();
+    }
+
     public static void searchWeatherByCity(String city) {
         if (TextUtils.isEmpty(city)) {
             throw new IllegalArgumentException("City shouldn't be null or empty!");

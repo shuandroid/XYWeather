@@ -310,13 +310,7 @@ public class MyPagerTitleStrip extends ViewGroup implements MyViewPager.Decor {
 				canvas.drawCircle(mIndicatorRadius + i * oneCircleWidth, 0, mIndicatorRadius,
 						mPaint);
 			}
-			//画+号
-//			mPaint.setStyle(Style.STROKE);
-//			final float firstDotX = 0;
-//			canvas.drawLine(firstDotX, 0, firstDotX + mIndicatorRadius*2f, 0, mPaint);
-//			canvas.drawLine(firstDotX+ mIndicatorRadius, -mIndicatorRadius,
-//					firstDotX + mIndicatorRadius, mIndicatorRadius, mPaint);
-			
+
 			//画当前的圆
 			mPaint.setStyle(Style.FILL);
 			mPaint.setColor(mIndicatorSelectedBackground);

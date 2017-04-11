@@ -62,7 +62,6 @@ public class MainViewPagerAdapter  extends FragmentStatePagerAdapter{
 
     @Override
     public CharSequence getPageTitle(int position) {
-        BaseFragment fragment = mFragments.get(position);
-        return fragment.getTitle();
+        return mFragments.get(position).getTitle();
     }
 }

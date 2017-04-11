@@ -19,7 +19,7 @@
     <dimen name="tool_bar_height">56dp</dimen>
 
     <!--for title-->
-    <dimen name="title_height">64dp</dimen>
+    <dimen name="title_height">48dp</dimen>
 
     <dimen name="w_divider_size">0.5dp</dimen>
     <dimen name="w_divider_size_secondary">0.5dp</dimen>

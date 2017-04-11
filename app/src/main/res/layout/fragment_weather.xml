@@ -28,8 +28,10 @@
                     android:id="@+id/w_now_tmp_minus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_medium"
                     android:paddingLeft="0dp"
                     android:paddingStart="0dp"
+                    android:paddingTop="@dimen/padding_medium"
                     android:text="@string/w_sub"
                     android:textColor="@color/xy_text_primary"
                     android:textSize="48sp"
@@ -41,8 +43,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:paddingLeft="0dp"
-                    android:paddingStart="0dp"
                     android:text="@string/w_sub"
                     android:textColor="@color/xy_text_primary"
                     android:textSize="48sp" />
@@ -55,8 +55,8 @@
                     android:layout_toRightOf="@+id/now_tmp"
                     android:text="@string/w_degree"
                     android:textColor="@color/xy_text_primary"
-                    android:visibility="gone"
-                    android:textSize="32sp" />
+                    android:textSize="32sp"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/w_now_cond_text"
@@ -105,7 +105,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
+                android:layout_height="@dimen/w_divider_size"
                 android:background="@color/w_divider" />
 
             <TextView
@@ -119,7 +119,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
+                android:layout_height="@dimen/w_divider_size"
                 android:background="@color/w_divider" />
 
             <TextView
@@ -130,10 +130,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/divider_linear_layout"
                 android:orientation="horizontal"
                 android:paddingBottom="0dp"
-                android:paddingLeft="0dp"
                 android:paddingRight="16dp"
                 android:showDividers="none">
 
@@ -151,17 +149,8 @@
                         android:layout_gravity="center"
                         android:singleLine="true"
                         android:text="@string/w_subdegree"
+                        android:textColor="@color/xy_cell_normal"
                         android:textSize="52sp" />
-
-                    <ImageView
-
-                        android:id="@+id/cond_view"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:layout_gravity="center"
-                        android:scaleType="center"
-                        android:src="@mipmap/cond_icon_na"
-                        android:visibility="gone" />
 
                     <com.chen.xyweather.view.widget.FontTextView
                         android:id="@+id/w_today_bottom_line"
@@ -171,7 +160,8 @@
                         android:layout_marginTop="8dp"
                         android:singleLine="true"
                         android:text="@string/w_sub"
-                        android:textSize="14dp" />
+                        android:textColor="@color/xy_cell_normal"
+                        android:textSize="@dimen/text_size_medium" />
 
                 </LinearLayout>
 
@@ -406,7 +396,7 @@
                     style="@style/suggestion_title"
                     android:text="@string/w_compre"
                     android:textColor="@color/w_text_primary"
-                    android:textSize="16dp" />
+                    android:textSize="@dimen/text_size_huge" />
 
                 <TextView
                     android:id="@+id/w_suggestion_comf_brf"
@@ -420,14 +410,12 @@
             </RelativeLayout>
 
 
-
-
             <View style="@style/suggestion_divider" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp" >
+                android:layout_marginLeft="16dp">
 
                 <ImageView
                     style="@style/suggestion_image"
@@ -437,7 +425,7 @@
                     style="@style/suggestion_title"
                     android:text="@string/w_dress"
                     android:textColor="@color/w_text_primary"
-                    android:textSize="16dp" />
+                    android:textSize="@dimen/text_size_huge" />
 
                 <TextView
                     android:id="@+id/w_suggestion_drsg_brf"
@@ -455,7 +443,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp" >
+                android:layout_marginLeft="16dp">
 
                 <ImageView
                     style="@style/suggestion_image"
@@ -465,7 +453,7 @@
                     style="@style/suggestion_title"
                     android:text="@string/w_ray"
                     android:textColor="@color/w_text_primary"
-                    android:textSize="16dp" />
+                    android:textSize="@dimen/text_size_huge" />
 
                 <TextView
                     android:id="@+id/w_suggestion_uv_brf"
@@ -483,7 +471,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp" >
+                android:layout_marginLeft="16dp">
 
                 <ImageView
                     style="@style/suggestion_image"
@@ -493,7 +481,7 @@
                     style="@style/suggestion_title"
                     android:text="@string/w_motion"
                     android:textColor="@color/w_text_primary"
-                    android:textSize="16dp" />
+                    android:textSize="@dimen/text_size_huge" />
 
                 <TextView
                     android:id="@+id/w_suggestion_sport_brf"
@@ -511,7 +499,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp" >
+                android:layout_marginLeft="16dp">
 
                 <ImageView
                     style="@style/suggestion_image"
@@ -521,7 +509,7 @@
                     style="@style/suggestion_title"
                     android:text="@string/w_cold"
                     android:textColor="@color/w_text_primary"
-                    android:textSize="16dp" />
+                    android:textSize="@dimen/text_size_huge" />
 
                 <TextView
                     android:id="@+id/w_suggestion_flu_brf"
@@ -539,7 +527,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp" >
+                android:layout_marginLeft="16dp">
 
                 <ImageView
                     style="@style/suggestion_image"
@@ -549,7 +537,7 @@
                     style="@style/suggestion_title"
                     android:text="@string/w_tour"
                     android:textColor="@color/w_text_primary"
-                    android:textSize="16dp" />
+                    android:textSize="@dimen/text_size_huge" />
 
                 <TextView
                     android:id="@+id/w_suggestion_tarv_brf"
@@ -567,7 +555,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp" >
+                android:layout_marginLeft="16dp">
 
                 <ImageView
                     style="@style/suggestion_image"
@@ -577,7 +565,7 @@
                     style="@style/suggestion_title"
                     android:text="@string/w_carwash"
                     android:textColor="@color/w_text_primary"
-                    android:textSize="16dp" />
+                    android:textSize="@dimen/text_size_huge" />
 
                 <TextView
                     android:id="@+id/w_suggestion_cw_brf"

@@ -16,6 +16,7 @@ import com.chen.xyweather.base.BaseActivity;
 import com.chen.xyweather.base.BaseFragment;
 import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.DepthPageTransformer;
+import com.chen.xyweather.utils.UiUtil;
 import com.chen.xyweather.view.DynamicWeatherView;
 import com.chen.xyweather.view.drawer.BaseDrawer;
 import com.chen.xyweather.view.pager.MainViewPagerAdapter;
@@ -63,7 +64,7 @@ public class MainActivity extends BaseActivity {
 
         if (Build.VERSION.SDK_INT >= 19) {
             //
-            mViewPager.setPadding(0, 64, 0, 0);
+            mViewPager.setPadding(0, UiUtil.getStatusBarHeight(), 0, 0);
         }
 
     }
@@ -73,15 +74,13 @@ public class MainActivity extends BaseActivity {
 
         initAlpha();
 
-        loadAreaToViewPager();
-
         setupViewPager();
-//        updateCurDrawerType();
     }
 
     public void setupViewPager() {
         fragments = new ArrayList<>();
         fragments.add(new WeatherFragment());
+        fragments.add(new SettingFragment());
         viewPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager(), fragments);
         mViewPager.setAdapter(viewPagerAdapter);
         mViewPager.setPageTransformer(true, new DepthPageTransformer());
@@ -103,19 +102,9 @@ public class MainActivity extends BaseActivity {
 
         } else {
             DebugLog.e("test drawer chen type--> " + type);
+            type = BaseDrawer.Type.CLEAR_D;
             mDynamicWeatherView.setDrawerType(type);
         }
-
-//        mDynamicWeatherView.setDrawerType((viewPagerAdapter.
-//                getItem(mViewPager.getCurrentItem()))
-//                .getDrawerType());
-
-    }
-
-    /**
-     * load
-     */
-    private void loadAreaToViewPager() {
 
     }
 
@@ -128,7 +117,7 @@ public class MainActivity extends BaseActivity {
         alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-                getWindow().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
+//                getWindow().setBackgroundDrawable(new ColorDrawable(Color.alpha(R.color.colorPrimary)));
             }
 
             @Override
@@ -141,27 +130,25 @@ public class MainActivity extends BaseActivity {
         });
 
         mViewPager.setAnimation(alphaAnimation);
-//        mViewPager.setCurrentItem(1, false);
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        DebugLog.e("activity resume");
-        mDynamicWeatherView.onResume();
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        DebugLog.e("activity resume");
+//    }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        DebugLog.e("activity pause");
-//        mDynamicWeatherView.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-//        mDynamicWeatherView.onDestroy();
-    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        DebugLog.e("activity pause");
+////        mDynamicWeatherView.onPause();
+//    }
+//
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+////        mDynamicWeatherView.onDestroy();
+//    }
 }

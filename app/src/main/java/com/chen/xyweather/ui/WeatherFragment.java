@@ -42,8 +42,6 @@ public class WeatherFragment extends BaseFragment {
     private static String cityName = "Test";
 
 
-
-
     @Bind(R.id.pull_refresh)
     protected PullRefreshLayout pullRefreshLayout;
 
@@ -234,6 +232,8 @@ public class WeatherFragment extends BaseFragment {
             @Override
             public void onRefresh() {
 
+                loadCity();
+                pullRefreshLayout.setRefreshing(false);
             }
         });
     }
@@ -252,6 +252,7 @@ public class WeatherFragment extends BaseFragment {
     private void loadCity() {
 
         String city = "武汉";
+        cityName = city;
         DebugLog.e("load city");
         WeatherManger.searchWeatherByCity(city, new WeatherManger.WeatherApiCallback() {
 

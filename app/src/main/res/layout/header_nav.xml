@@ -7,6 +7,7 @@
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:padding="@dimen/padding_small">
+
     <com.chen.xyweather.view.CircleImageView
         android:id="@+id/nav_head_circle_view_header"
         android:layout_width="70dp"
