@@ -1,5 +1,6 @@
 <resources>
 
+    <style name="Widget" />
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -137,4 +138,13 @@
         <item name="android:paddingRight">8dp</item>
         <item name="android:layout_alignParentRight">true</item>
     </style>
+
+
+    <style name="Widget.Drawer.Main.Left" parent="Widget">
+        <item name="android:layout_width">@dimen/main_right_drawer_width</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">start</item>
+        <item name="android:background">@color/color_drawer_right</item>
+    </style>
+
 </resources>

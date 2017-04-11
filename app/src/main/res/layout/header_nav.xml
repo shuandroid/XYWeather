@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="192dp"
+    android:background="@color/xy_theme"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_small">
+    <com.chen.xyweather.view.CircleImageView
+        android:id="@+id/nav_head_circle_view_header"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="@dimen/padding_medium"
+        android:layout_marginStart="@dimen/padding_medium"
+        android:layout_marginTop="38dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <RelativeLayout
+        android:id="@+id/nav_user_layout"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="@dimen/padding_medium">
+
+
+        <TextView
+            android:id="@+id/nav_head_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/padding_small"
+            android:layout_marginLeft="@dimen/padding_medium"
+            android:layout_marginStart="@dimen/padding_medium"
+            android:layout_marginTop="@dimen/padding_small"
+            android:text="用户"
+            android:textColor="@color/xy_cell_normal"
+            android:textSize="18sp"
+
+            />
+
+        <TextView
+            android:id="@+id/nav_head_user_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nav_head_username"
+            android:layout_marginBottom="@dimen/padding_small"
+            android:layout_marginLeft="@dimen/padding_medium"
+            android:layout_marginStart="@dimen/padding_medium"
+            android:text="chenzhao@hustunique.com"
+            android:textColor="@color/xy_cell_normal"
+            android:textSize="15sp"
+
+            />
+
+        <ImageView
+            android:id="@+id/nav_head_little_mark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/nav_head_user_email"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/nav_head_username" />
+
+    </RelativeLayout>
+</LinearLayout>

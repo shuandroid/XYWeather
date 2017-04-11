@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".ui.MainActivity">
+
 
     <com.chen.xyweather.view.DynamicWeatherView
         android:id="@+id/main_weather_view"
@@ -12,25 +16,35 @@
 
     <com.chen.xyweather.view.pager.MyViewPager
         android:id="@+id/main_viewpager"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent" >
-
-
-    <com.chen.xyweather.view.pager.MyPagerTitleStrip
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/title_template"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/title_height"
-        android:layout_gravity="top"
-        android:textSize="18sp"
+        android:layout_height="match_parent">
 
-        app:pts_background="#55ffffff"
-        app:pts_gravity="center"
-        app:pts_margin="6dp"
-        app:pts_radius="2dp"
-        app:pts_selected_background="@color/colorText" >
 
-    </com.chen.xyweather.view.pager.MyPagerTitleStrip>
+        <com.chen.xyweather.view.pager.MyPagerTitleStrip xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/title_template"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_height"
+            android:layout_gravity="top"
+            android:textSize="18sp"
+
+            app:pts_background="#55ffffff"
+            app:pts_gravity="center"
+            app:pts_margin="6dp"
+            app:pts_radius="2dp"
+            app:pts_selected_background="@color/colorText">
+
+        </com.chen.xyweather.view.pager.MyPagerTitleStrip>
 
     </com.chen.xyweather.view.pager.MyViewPager>
-</FrameLayout>
+
+    <android.support.design.widget.NavigationView
+        style="@style/Widget.Drawer.Main.Left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:headerLayout="@layout/header_nav"
+        app:menu="@menu/menu_nav">
+
+    </android.support.design.widget.NavigationView>
+
+
+</android.support.v4.widget.DrawerLayout>

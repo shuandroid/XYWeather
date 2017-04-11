@@ -28,6 +28,7 @@ dependencies {
     compile 'com.alibaba:fastjson:1.1.45.android'
     compile 'com.squareup.okhttp3:okhttp:3.6.0'
     compile 'com.android.support:support-v4:23.2.1'
+    compile 'com.android.support:design:23.2.1'
     testCompile 'junit:junit:4.12'
     compile files('libs/AMap_Location_V3.3.0_20170118.jar')
 }
