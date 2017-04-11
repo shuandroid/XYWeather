@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/xy_white_background"
     tools:context="com.chen.xyweather.ui.SettingFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -14,11 +15,11 @@
         android:gravity="center"
         android:padding="8dp"
         android:text="@string/title"
-        android:textSize="25dp" />
+        android:textSize="@dimen/text_size_medium" />
 
     <com.chen.xyweather.view.CircleImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
         android:src="@mipmap/pic_account"
         android:layout_gravity="center_horizontal"/>
 

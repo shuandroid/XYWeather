@@ -120,12 +120,13 @@
     <style name="setting_item_tv">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingLeft">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:textSize">20dp</item>
-        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:paddingLeft">@dimen/padding_small</item>
+        <item name="android:paddingBottom">@dimen/padding_small</item>
+        <item name="android:paddingTop">@dimen/padding_small</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:layout_marginTop">@dimen/padding_small</item>
         <item name="android:layout_centerVertical">true</item>
+        <item name="android:textColor">@color/colorText</item>
     </style>
 
     <style name="setting_item_iv">
