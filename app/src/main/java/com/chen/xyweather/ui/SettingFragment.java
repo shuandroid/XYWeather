@@ -3,10 +3,10 @@ package com.chen.xyweather.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -17,11 +17,6 @@ import com.chen.xyweather.view.drawer.BaseDrawer;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SettingFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class SettingFragment extends BaseFragment {
 
 
@@ -45,33 +40,37 @@ public class SettingFragment extends BaseFragment {
     }
 
 
-
     @Bind(R.id.s_notice)
-    protected TextView tv_notice;
+    protected RelativeLayout tv_notice;
 
     @Bind(R.id.s_changeskin)
-    protected TextView tv_changeskin;
+    protected RelativeLayout tv_changeskin;
 
     @Bind(R.id.s_cleardata)
-    protected TextView tv_cleardata;
+    protected RelativeLayout tv_cleardata;
 
     @Bind(R.id.s_about)
-    protected TextView tv_about;
-
+    protected RelativeLayout tv_about;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_setting, container, false);
+        View view = inflater.inflate(R.layout.fragment_setting, null);
 
         ButterKnife.bind(this, view);
 
+        init(view);
+
+        return view;
+    }
+
+    private void init(View view) {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()){
+                switch (v.getId()) {
                     case R.id.s_notice:
                         break;
                     case R.id.s_changeskin:
@@ -79,7 +78,7 @@ public class SettingFragment extends BaseFragment {
                     case R.id.s_cleardata:
                         break;
                     case R.id.s_about:
-                        Intent intent=new Intent(getActivity(),MapActivity.class);
+                        Intent intent = new Intent(getActivity(), MapActivity.class);
                         startActivity(intent);
                         break;
                     default:
@@ -87,7 +86,7 @@ public class SettingFragment extends BaseFragment {
                 }
             }
         });
-        return view;
+
     }
 
 }
