@@ -43,7 +43,9 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
         mDrawThread = new DrawThread();
         final SurfaceHolder surfaceHolder = getHolder();
         surfaceHolder.addCallback(this);
-        surfaceHolder.setFormat(PixelFormat.RGBA_8888);
+        // TODO: 17-4-11
+//        surfaceHolder.setFormat(PixelFormat.RGBA_8888);
+        surfaceHolder.setFormat(PixelFormat.TRANSPARENT);
         mDrawThread.start();
     }
 
@@ -179,7 +181,7 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
     private class DrawThread extends Thread {
 
         SurfaceHolder mSurface;
-        boolean mRunning;
+        boolean mRunning = false;
         boolean mActive;
         boolean mQuit;
 
@@ -210,6 +212,7 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
 
                         final long startTime = AnimationUtils.currentAnimationTimeMillis();
                         Canvas canvas = mSurface.lockCanvas();
+                        // TODO: 17-4-18 为什么是null
                         if (canvas != null) {
                             canvas.drawColor(Color.TRANSPARENT, Mode.CLEAR);
                             drawSurface(canvas);

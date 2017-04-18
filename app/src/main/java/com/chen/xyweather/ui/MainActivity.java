@@ -18,9 +18,11 @@ import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.DepthPageTransformer;
 import com.chen.xyweather.utils.UiUtil;
 import com.chen.xyweather.view.DynamicWeatherView;
+import com.chen.xyweather.view.DynamicWeatherViewTest;
 import com.chen.xyweather.view.drawer.BaseDrawer;
 import com.chen.xyweather.view.pager.MainViewPagerAdapter;
 import com.chen.xyweather.view.pager.MyViewPager;
+import com.chen.xyweather.view.pager.ViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,26 +87,55 @@ public class MainActivity extends BaseActivity {
         mViewPager.setAdapter(viewPagerAdapter);
         mViewPager.setPageTransformer(true, new DepthPageTransformer());
 
-        updateCurDrawerType();
+        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+//                mDynamicWeatherView.setDrawerType(viewPagerAdapter.getItem(
+//                        mViewPager.getCurrentItem()).getDrawerType());
 
+            }
+        });
+
+
+//        new Thread() {
+//
+//            @Override
+//            public void run() {
+//                super.run();
+//
+//                mDynamicWeatherView.setDrawerType(viewPagerAdapter.getItem(
+//                        mViewPager.getCurrentItem()).getDrawerType());
+//
+//            }
+//        }.start();
+//        updateCurDrawerType();
     }
 
     public void updateCurDrawerType() {
 
-        DebugLog.e("test drawer chen-->");
-        int position = mViewPager.getCurrentItem();
-        DebugLog.e("test drawer chen--> " + position);
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                DebugLog.e("test drawer chen-->");
+                int position = mViewPager.getCurrentItem();
+                DebugLog.e("test drawer chen--> " + position);
 
-        BaseFragment fragment = viewPagerAdapter.getItem(position);
-        BaseDrawer.Type type = fragment.getDrawerType();
-        if (type == null) {
-            DebugLog.e("test drawer null-->");
+                BaseFragment fragment = viewPagerAdapter.getItem(position);
+                BaseDrawer.Type type = fragment.getDrawerType();
+                // TODO: 17-4-18
+                if (type == null) {
+                    DebugLog.e("test drawer null-->");
 
-        } else {
-            DebugLog.e("test drawer chen type--> " + type);
-            type = BaseDrawer.Type.CLEAR_D;
-            mDynamicWeatherView.setDrawerType(type);
-        }
+                } else {
+                    DebugLog.e("test drawer chen type--> " + type);
+//                    type = BaseDrawer.Type.CLEAR_D;
+                    mDynamicWeatherView.setDrawerType(type);
+                }
+            }
+        }.start();
+
 
     }
 

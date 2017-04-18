@@ -35,7 +35,7 @@ import butterknife.ButterKnife;
 public class WeatherFragment extends BaseFragment {
 
     private WeatherManger weather;
-    private BaseDrawer.Type drawerType = BaseDrawer.Type.UNKNOWN_D;
+    private static BaseDrawer.Type drawerType = BaseDrawer.Type.UNKNOWN_D;
 
     private View rootView;
 
