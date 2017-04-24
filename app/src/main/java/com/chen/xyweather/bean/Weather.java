@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Created by chen on 17-3-24.
- * zong
+ * 总天气类型
  */
 public class Weather implements Parcelable {
 
@@ -65,7 +65,6 @@ public class Weather implements Parcelable {
 
     /**
      * 判断拉数据是否为真
-     *
      * @return 返回真假有数据
      */
     public boolean isOk() {
@@ -124,7 +123,6 @@ public class Weather implements Parcelable {
 
     /**
      * 气温
-     *
      * @return 返回天气
      */
     public String getTodayTempDescription() {

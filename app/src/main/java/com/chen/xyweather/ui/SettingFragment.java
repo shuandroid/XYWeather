@@ -66,6 +66,10 @@ public class SettingFragment extends BaseFragment {
         return view;
     }
 
+    /**
+     * 初始化setting 里的view,设置监听
+     * @param view view
+     */
     private void init(View view) {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +90,6 @@ public class SettingFragment extends BaseFragment {
                 }
             }
         });
-
     }
 
 }

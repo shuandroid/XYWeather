@@ -71,7 +71,6 @@ public class DailyForecastView extends View {
         invalidate();
     }
 
-    // TODO: 17-4-7 为什么会被调用多次
     @Override
     protected void onDraw(Canvas canvas) {
 
@@ -183,7 +182,6 @@ public class DailyForecastView extends View {
 
     /**
      * 获得的数据
-     *
      * @param weather 天气
      */
     public void setData(Weather weather) {

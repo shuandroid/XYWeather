@@ -231,7 +231,7 @@ public class WeatherFragment extends BaseFragment {
         pullRefreshLayout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
+                // TODO: 17-4-24 需要详细更新逻辑
                 loadCity();
                 pullRefreshLayout.setRefreshing(false);
             }
@@ -291,6 +291,11 @@ public class WeatherFragment extends BaseFragment {
     }
 
 
+    /**
+     * 为textView赋值，省去findviewById,和一些不必要的变量
+     * @param textViewId text id
+     * @param s 赋值
+     */
     private void setTextView(int textViewId, String s) {
         TextView textView = (TextView) rootView.findViewById(textViewId);
         if (textView != null) {
@@ -298,8 +303,6 @@ public class WeatherFragment extends BaseFragment {
         } else {
             toast("TextView id is error" + Integer.toHexString(textViewId));
         }
-
-
     }
 
 

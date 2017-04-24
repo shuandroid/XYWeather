@@ -18,7 +18,12 @@ import android.view.Window;
 import android.widget.Toast;
 
 public class UiUtil {
-	
+
+	/**
+	 * dp 转 px
+	 * @param context context
+	 * @param dp dp
+     */
 	public static int dp2px(Context context, float dp) {
 		final float scale = context.getResources().getDisplayMetrics().density;
 		return (int) (dp * scale + 0.5f);
@@ -28,7 +33,11 @@ public class UiUtil {
 		final float scale = context.getResources().getDisplayMetrics().density;
 		return (px / scale);
 	}
-	
+
+	/**
+	 * 得到系统bar的高度
+	 * @return
+     */
 	public static int getStatusBarHeight() {
 		final Resources res = Resources.getSystem();
 		int id = Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android");

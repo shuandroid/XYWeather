@@ -17,6 +17,11 @@ import java.util.Date;
 public class UtilManger {
 
 
+    /**
+     * 判断是否为今天数据
+     * @param date 传入ｄａｔｅ
+     * @return true or false
+     */
     public static boolean isToday(String date) {
         if (TextUtils.isEmpty(date) || date.length() < 10) {
             return false;
@@ -106,8 +111,8 @@ public class UtilManger {
      */
     public static boolean isNetWorkAvailable(Context context) {
 
-
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.
+                getSystemService(Context.CONNECTIVITY_SERVICE);
 
         if (connectivityManager == null) {
             return false;

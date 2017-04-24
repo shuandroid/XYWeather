@@ -100,16 +100,11 @@ public class ApiManger {
             if (apiCallback != null) {
                 UI_HANDLER.handleFailure(apiCallback, e);
             }
-
         }
-
         @Override
         public void onResponse(Call call, Response response) throws IOException {
             ApiCallback apiCallback = OkHttpCallbackWrapper.this.apiCallbackWeakReference.get();
             if (null != apiCallback) {
-
-                //this is worry
-//                UI_HANDLER.handleResponse(apiCallback, response.code(), response.body().toString());
                 UI_HANDLER.handleResponse(
                         apiCallback, response.code(), response.body().string()
                 );
@@ -189,9 +184,7 @@ public class ApiManger {
                 break;
                 default:
                     break;
-
             }
-
         }
 
         private void performFailure(MessageWrapper wrapper) {
@@ -314,7 +307,6 @@ public class ApiManger {
         if (weather == null || !weather.isOk()) {
             return false;
         }
-        // SimpleDateFormat time=new SimpleDateFormat("yyyy MM dd HH mm ss");
         try {
             final Date date = new Date();
             String todaydate = (new SimpleDateFormat("yyyy-MM-dd")).format(date);

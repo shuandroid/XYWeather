@@ -112,6 +112,9 @@ public class MainActivity extends BaseActivity {
 //        updateCurDrawerType();
     }
 
+    /**
+     * 更新天气类型
+     */
     public void updateCurDrawerType() {
 
         new Thread() {
@@ -121,22 +124,17 @@ public class MainActivity extends BaseActivity {
                 DebugLog.e("test drawer chen-->");
                 int position = mViewPager.getCurrentItem();
                 DebugLog.e("test drawer chen--> " + position);
-
                 BaseFragment fragment = viewPagerAdapter.getItem(position);
                 BaseDrawer.Type type = fragment.getDrawerType();
                 // TODO: 17-4-18
                 if (type == null) {
                     DebugLog.e("test drawer null-->");
-
                 } else {
                     DebugLog.e("test drawer chen type--> " + type);
-//                    type = BaseDrawer.Type.CLEAR_D;
                     mDynamicWeatherView.setDrawerType(type);
                 }
             }
         }.start();
-
-
     }
 
     /**
