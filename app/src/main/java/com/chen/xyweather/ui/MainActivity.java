@@ -159,7 +159,6 @@ public class MainActivity extends BaseActivity {
         });
 
         mViewPager.setAnimation(alphaAnimation);
-
     }
 
 //    @Override
