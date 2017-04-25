@@ -20,7 +20,7 @@
     <com.chen.xyweather.view.CircleImageView
         android:layout_width="108dp"
         android:layout_height="108dp"
-        android:src="@mipmap/pic_account"
+        android:src="@mipmap/ic_launcher"
         android:layout_gravity="center_horizontal"/>
 
 
@@ -56,6 +56,28 @@
         <TextView
             style="@style/setting_item_tv"
             android:text="@string/s_cleardata" />
+        <TextView
+            android:id="@+id/s_cache"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/s_iv"
+            android:text="0KB"
+            android:paddingRight="@dimen/padding_medium"
+            android:textSize="@dimen/text_size_medium"
+            android:layout_centerVertical="true"/>
+        <ImageView
+            android:id="@+id/s_iv"
+            style="@style/setting_item_iv" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/s_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/setting_item_tv"
+            android:text="@string/s_feedback" />
 
         <ImageView style="@style/setting_item_iv" />
     </RelativeLayout>

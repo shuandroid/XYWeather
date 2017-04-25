@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/XYWeather.iml" filepath="$PROJECT_DIR$/XYWeather.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/dao-gen/dao-gen.iml" filepath="$PROJECT_DIR$/dao-gen/dao-gen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dao-gen/dao-gen.iml" filepath="$PROJECT_DIR$/dao-gen/dao-gen.iml" />
     </modules>
   </component>
 </project>

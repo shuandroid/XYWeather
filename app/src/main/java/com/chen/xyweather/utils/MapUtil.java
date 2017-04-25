@@ -1,97 +1,63 @@
-package com.chen.xyweather.ui;
+package com.chen.xyweather.utils;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.content.Context;
+
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-import com.chen.xyweather.R;
-import com.chen.xyweather.base.BaseActivity;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-import butterknife.OnClick;
 
-public class MapActivity extends BaseActivity {
 
-    private Button btn_locate;
-    private TextView tv_info;
+public class MapUtil {
 
-    private AMapLocationClient locationClient = null;
-    private AMapLocationClientOption locationOption = new AMapLocationClientOption();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
+    private static AMapLocationClient locationClient = null;
+    private static AMapLocationClientOption locationOption = new AMapLocationClientOption();
+    private static String result=null;
 
-        btn_locate = (Button) findViewById(R.id.btn_locate);
-        tv_info = (TextView) findViewById(R.id.tv_info);
-        btn_locate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (btn_locate.getText().equals(
-                        "开始定位")) {
-                    btn_locate.setText("停止定位");
-                    tv_info.setText("正在定位...");
-                    startLocation();
-                } else {
-                    btn_locate.setText("开始定位");
-                    stopLocation();
-                    tv_info.setText("定位停止");
-                }
+    public static String getLocation(Context context){
+        initLocation(context);
+        startLocation(context);
+        stopLocation();
+        return result;
+    }
+
+    private static void initLocation(Context context){
+        //初始化client
+        locationClient = new AMapLocationClient(context.getApplicationContext());
+        //设置定位参数
+        locationClient.setLocationOption(getDefaultOption());
+        // 设置定位监听
+        locationClient.setLocationListener(locationListener);
+    }
+    static AMapLocationListener locationListener = new AMapLocationListener() {
+        @Override
+        public void onLocationChanged(AMapLocation loc) {
+            if (null != loc) {
+                //解析定位结果
+                result = getLocationStr(loc);
+            } else {
 
             }
-        });
-
-        //init client
-        locationClient = new AMapLocationClient(this.getApplicationContext());
-        locationClient.setLocationOption(getDefaultOption());
-        locationClient.setLocationListener(locationListener);
-
-    }
-
-    @Override
-    protected void setupContentView() {
-
-
-    }
-
-    @Override
-    protected void findViews() {
-
-    }
-
-    @Override
-    protected void setupActionbar() {
-
-    }
-
-    @Override
-    protected void setupViews() {
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        destroyLocation();
-    }
-
+        }
+    };
     /**
      * 开始定位
      *
      * @author hongming.wang
      * @since 2.8.0
      */
-    private void startLocation() {
+    private static void startLocation(Context context) {
+        //初始化client
+        initLocation(context);
         // 设置定位参数
         locationClient.setLocationOption(locationOption);
         // 启动定位
@@ -104,7 +70,7 @@ public class MapActivity extends BaseActivity {
      * @author hongming.wang
      * @since 2.8.0
      */
-    private void stopLocation() {
+    private static void stopLocation() {
         // 停止定位
         locationClient.stopLocation();
     }
@@ -115,7 +81,7 @@ public class MapActivity extends BaseActivity {
      * @author hongming.wang
      * @since 2.8.0
      */
-    private void destroyLocation() {
+    private static void destroyLocation() {
         if (null != locationClient) {
             /**
              * 如果AMapLocationClient是在当前Activity实例化的，
@@ -128,7 +94,7 @@ public class MapActivity extends BaseActivity {
     }
 
 
-    public AMapLocationClientOption getDefaultOption() {
+    public static AMapLocationClientOption getDefaultOption() {
         AMapLocationClientOption mOption = new AMapLocationClientOption();
         mOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//可选，设置定位模式，可选的模式有高精度、仅设备、仅网络。默认为高精度模式
         mOption.setGpsFirst(false);//可选，设置是否gps优先，只在高精度模式下有效。默认关闭
@@ -147,18 +113,8 @@ public class MapActivity extends BaseActivity {
     /**
      * 定位监听
      */
-    AMapLocationListener locationListener = new AMapLocationListener() {
-        @Override
-        public void onLocationChanged(AMapLocation loc) {
-            if (null != loc) {
-                //解析定位结果
-                String result = getLocationStr(loc);
-                tv_info.setText(result);
-            } else {
-                tv_info.setText("定位失败，loc is null");
-            }
-        }
-    };
+
+
 
     public synchronized static String getLocationStr(AMapLocation location) {
         if (null == location) {

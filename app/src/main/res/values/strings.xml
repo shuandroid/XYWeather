@@ -35,6 +35,7 @@
     <string name="s_changeskin">更换皮肤</string>
     <string name="s_cleardata">清理缓存</string>
     <string name="s_about">关于</string>
+    <string name="s_feedback">反馈</string>
 
 
 </resources>
