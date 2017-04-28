@@ -39,6 +39,7 @@
     </com.chen.xyweather.view.pager.MyViewPager>
 
     <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view"
         style="@style/Widget.Drawer.Main.Left"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

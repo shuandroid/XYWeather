@@ -55,7 +55,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".base.BaseActivity" />
-        <activity android:name=".ui.MapActivity" />
         <activity android:name=".ui.LoginActivity"></activity>
     </application>
 
