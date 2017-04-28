@@ -2,7 +2,9 @@ package com.chen.xyweather.utils;
 
 import android.content.Context;
 
+import android.os.Debug;
 import android.text.TextUtils;
+import android.util.Log;
 
 
 import com.amap.api.location.AMapLocation;
@@ -15,54 +17,52 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 
-
 public class MapUtil {
 
 
     private static AMapLocationClient locationClient = null;
     private static AMapLocationClientOption locationOption = new AMapLocationClientOption();
-    private static String result=null;
+    private static String result = "北京";
 
-    public static String getLocation(Context context){
+    public static String getLocation(Context context) {
+
         initLocation(context);
-        startLocation(context);
-        stopLocation();
+        startLocation();
+        //  stopLocation();
         return result;
     }
 
-    private static void initLocation(Context context){
+    public static void initLocation(Context context) {
         //初始化client
         locationClient = new AMapLocationClient(context.getApplicationContext());
         //设置定位参数
         locationClient.setLocationOption(getDefaultOption());
         // 设置定位监听
         locationClient.setLocationListener(locationListener);
+        // DebugLog.e("locaion1" + locationClient);
+
     }
-    static AMapLocationListener locationListener = new AMapLocationListener() {
+
+
+    private static AMapLocationListener locationListener = new AMapLocationListener() {
+
+
         @Override
         public void onLocationChanged(AMapLocation loc) {
             if (null != loc) {
                 //解析定位结果
+
                 result = getLocationStr(loc);
             } else {
-
+                result = "武汉";
             }
         }
     };
-    /**
-     * 开始定位
-     *
-     * @author hongming.wang
-     * @since 2.8.0
-     */
-    private static void startLocation(Context context) {
-        //初始化client
-        initLocation(context);
-        // 设置定位参数
-        locationClient.setLocationOption(locationOption);
-        // 启动定位
+
+    public static void startLocation() {
         locationClient.startLocation();
     }
+
 
     /**
      * 停止定位
@@ -110,11 +110,6 @@ public class MapUtil {
         return mOption;
     }
 
-    /**
-     * 定位监听
-     */
-
-
 
     public synchronized static String getLocationStr(AMapLocation location) {
         if (null == location) {
@@ -123,27 +118,13 @@ public class MapUtil {
         StringBuffer sb = new StringBuffer();
         //errCode等于0代表定位成功，其他的为定位失败，具体的可以参照官网定位错误码说明
         if (location.getErrorCode() == 0) {
-            sb.append("定位成功" + "\n");
-            sb.append("定位类型: " + location.getLocationType() + "\n");
-            sb.append("经    度    : " + location.getLongitude() + "\n");
-            sb.append("纬    度    : " + location.getLatitude() + "\n");
-            sb.append("精    度    : " + location.getAccuracy() + "米" + "\n");
-            sb.append("提供者    : " + location.getProvider() + "\n");
 
-            sb.append("速    度    : " + location.getSpeed() + "米/秒" + "\n");
-            sb.append("角    度    : " + location.getBearing() + "\n");
-            // 获取当前提供定位服务的卫星个数
-            sb.append("星    数    : " + location.getSatellites() + "\n");
-            sb.append("国    家    : " + location.getCountry() + "\n");
-            sb.append("省            : " + location.getProvince() + "\n");
-            sb.append("市            : " + location.getCity() + "\n");
-            sb.append("城市编码 : " + location.getCityCode() + "\n");
-            sb.append("区            : " + location.getDistrict() + "\n");
-            sb.append("区域 码   : " + location.getAdCode() + "\n");
-            sb.append("地    址    : " + location.getAddress() + "\n");
-            sb.append("兴趣点    : " + location.getPoiName() + "\n");
-            //定位完成的时间
-            sb.append("定位时间: " + formatUTC(location.getTime(), "yyyy-MM-dd HH:mm:ss") + "\n");
+            sb.append("国    家    : " + location.getCountry());
+            sb.append("省            : " + location.getProvince());
+            sb.append("市            : " + location.getCity());
+            sb.append("区            : " + location.getDistrict());
+            sb.append("地    址    : " + location.getAddress());
+
         } else {
             //定位失败
             sb.append("定位失败" + "\n");
@@ -152,7 +133,7 @@ public class MapUtil {
             sb.append("错误描述:" + location.getLocationDetail() + "\n");
         }
         //定位之后的回调时间
-        sb.append("回调时间: " + formatUTC(System.currentTimeMillis(), "yyyy-MM-dd HH:mm:ss") + "\n");
+        // sb.append("回调时间: " + formatUTC(System.currentTimeMillis(), "yyyy-MM-dd HH:mm:ss") + "\n");
         return sb.toString();
     }
 
@@ -172,4 +153,5 @@ public class MapUtil {
         }
         return sdf == null ? "NULL" : sdf.format(l);
     }
+
 }

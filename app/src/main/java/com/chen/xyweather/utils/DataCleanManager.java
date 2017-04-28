@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 
 /**
  * Created by Tao on 2017/4/12/0012.
+ *
  */
 
 public class DataCleanManager {
@@ -15,7 +16,6 @@ public class DataCleanManager {
      * 获取缓存大小
      *
      * @param context
-     * @return
      * @throws Exception
      */
     public static String getTotalCacheSize(Context context) throws Exception {

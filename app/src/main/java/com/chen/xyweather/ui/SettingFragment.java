@@ -1,6 +1,7 @@
 package com.chen.xyweather.ui;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -30,7 +31,7 @@ import butterknife.OnClick;
 import static java.lang.System.getProperties;
 
 public class SettingFragment extends BaseFragment {
-
+    private String result;
 
     public SettingFragment() {
         // Required empty public constructor
@@ -60,7 +61,7 @@ public class SettingFragment extends BaseFragment {
 
     @OnClick(R.id.s_notice)
     protected void notice() {
-        Toast.makeText(getActivity(), MapUtil.getLocation(getActivity()),Toast.LENGTH_LONG).show();
+       Toast.makeText(getActivity(),MapUtil.getLocation(getActivity()),Toast.LENGTH_SHORT).show();
     }
 
     @Bind(R.id.s_changeskin)
@@ -86,6 +87,8 @@ public class SettingFragment extends BaseFragment {
 
     @OnClick(R.id.s_about)
     protected void about() {
+        Intent intent=new Intent(getActivity(),LoginActivity.class);
+        startActivity(intent);
 
     }
 

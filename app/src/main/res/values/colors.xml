@@ -27,4 +27,8 @@
     <color name="xy_cell_text_description">#ff6d6d72</color>
     <color name="xy_cell_text_title">#ffffffff</color>
     <color name="xy_theme">#ff007aff</color>
+    <color name="layout_background">#f4f4f4</color>
+    <color name="white_background">#ffffff</color>
+    <color name="text_black_light">#ff434343</color>
+    <color name="choose_city_edit_text_color">#ff94989d</color>
 </resources>
