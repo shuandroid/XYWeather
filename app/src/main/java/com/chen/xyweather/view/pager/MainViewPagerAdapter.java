@@ -17,6 +17,7 @@ public class MainViewPagerAdapter  extends FragmentStatePagerAdapter{
 
     private List<BaseFragment> mFragments;
     private int childCount;
+    private long baseId;
 
     public MainViewPagerAdapter(FragmentManager fm, List<BaseFragment> fragments) {
         super(fm);
@@ -26,7 +27,6 @@ public class MainViewPagerAdapter  extends FragmentStatePagerAdapter{
 
     @Override
     public BaseFragment getItem(int position) {
-        //// TODO: 17-4-10 做什么的？
         mFragments.get(position).setRetainInstance(true);
         return mFragments.get(position);
     }
@@ -50,6 +50,7 @@ public class MainViewPagerAdapter  extends FragmentStatePagerAdapter{
         super.notifyDataSetChanged();
     }
 
+
     @Override
     public int getItemPosition(Object object) {
         if (childCount > 0) {
@@ -60,8 +61,26 @@ public class MainViewPagerAdapter  extends FragmentStatePagerAdapter{
         return super.getItemPosition(object);
     }
 
+
+
     @Override
     public CharSequence getPageTitle(int position) {
         return mFragments.get(position).getTitle();
+    }
+
+//    @Override
+//    public Object instantiateItem(ViewGroup container, int position) {
+//        BaseFragment fragment = (BaseFragment) super.instantiateItem(container, position);
+//        String fragmentTag = fragment.getTag();
+//        if (position == mFragments.size() - 1){
+//
+//        }
+//
+//        return super.instantiateItem(container, position);
+//    }
+
+    public void changeId(int n) {
+
+        baseId += getCount() + n;
     }
 }

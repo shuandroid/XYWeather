@@ -47,7 +47,8 @@
         <!-- 定位需要的服务 -->
         <service android:name="com.amap.api.location.APSService" />
 
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.MainActivity"
+            android:theme="@style/XYWAppTheme.Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

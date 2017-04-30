@@ -18,6 +18,7 @@ import com.chen.xyweather.bean.Weather;
 import com.chen.xyweather.bean.entity.ForecastData;
 import com.chen.xyweather.bean.entity.WeatherData;
 import com.chen.xyweather.utils.DebugLog;
+import com.chen.xyweather.utils.MapUtil;
 import com.chen.xyweather.utils.UtilManger;
 import com.chen.xyweather.view.DailyForecastView;
 import com.chen.xyweather.view.HourlyForecastView;
@@ -38,6 +39,8 @@ public class WeatherFragment extends BaseFragment {
     private static BaseDrawer.Type drawerType = BaseDrawer.Type.UNKNOWN_D;
 
     private View rootView;
+
+    private static final String CITY_NAME = "city_name";
 
     private static String cityName = "Test";
 
@@ -66,9 +69,18 @@ public class WeatherFragment extends BaseFragment {
         // Required empty public constructor
     }
 
+    public static WeatherFragment newInstance(String city) {
+        Bundle bundle = new Bundle();
+        bundle.putString(CITY_NAME, city);
+        WeatherFragment weatherFragment = new WeatherFragment();
+        weatherFragment.setArguments(bundle);
+        return weatherFragment;
+    }
+
     @Override
     public String getTitle() {
 
+//        getCityName();
         return cityName;
     }
 
@@ -92,10 +104,25 @@ public class WeatherFragment extends BaseFragment {
 
         ButterKnife.bind(this, rootView);
 
+        getCityName();
         init();
 
         pullListener();
         return rootView;
+    }
+
+    private void getCityName() {
+        Bundle bundle = getArguments();
+
+        String city = bundle.getString(CITY_NAME);
+        if (city == null) {
+            //利用地图得到
+            // TODO: 17-4-30 这里有错误，仔细检查,得到的不是本地城市，而是北京
+            cityName = MapUtil.getLocation(getContext());
+            DebugLog.e("map:get" + cityName);
+        } else {
+            cityName = city;
+        }
     }
 
     /**
@@ -251,10 +278,19 @@ public class WeatherFragment extends BaseFragment {
      */
     private void loadCity() {
 
-        String city = "武汉";
-        cityName = city;
+//        Bundle bundle = getArguments();
+//
+//        String city = bundle.getString(CITY_NAME);
+//        if (city == null) {
+//            //利用地图得到
+////            cityName = MapUtil.getLocation(getContext());
+//            cityName = "武汉";
+//        } else {
+//            cityName = city;
+//        }
+
         DebugLog.e("load city");
-        WeatherManger.searchWeatherByCity(city, new WeatherManger.WeatherApiCallback() {
+        WeatherManger.searchWeatherByCity(cityName, new WeatherManger.WeatherApiCallback() {
 
             @Override
             public void onFailure(Throwable t) {

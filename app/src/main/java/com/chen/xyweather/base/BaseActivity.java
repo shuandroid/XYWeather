@@ -1,5 +1,7 @@
 package com.chen.xyweather.base;
 
+import android.os.Build;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -42,4 +44,18 @@ public abstract class BaseActivity extends AppCompatActivity {
         ButterKnife.unbind(this);// avoid mem leak
         //TODO clear views listener ,
     }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT == 19) {
+            tintStatusBarApi19();
+        } else if (Build.VERSION.SDK_INT >= 21) {
+            tintStatusBarApi21();
+        }
+    }
+
+    protected abstract void tintStatusBarApi21();
+
+    protected abstract void tintStatusBarApi19();
 }

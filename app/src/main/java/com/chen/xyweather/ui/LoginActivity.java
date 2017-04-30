@@ -33,4 +33,14 @@ public class LoginActivity extends BaseActivity {
     protected void setupViews() {
 
     }
+
+    @Override
+    protected void tintStatusBarApi21() {
+
+    }
+
+    @Override
+    protected void tintStatusBarApi19() {
+
+    }
 }

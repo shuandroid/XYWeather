@@ -1,19 +1,21 @@
 package com.chen.xyweather.ui;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.os.Build;
+import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.chen.xyweather.R;
@@ -22,9 +24,9 @@ import com.chen.xyweather.base.BaseFragment;
 import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.DepthPageTransformer;
 import com.chen.xyweather.utils.UiUtil;
+import com.chen.xyweather.utils.UtilManger;
 import com.chen.xyweather.view.CircleImageView;
 import com.chen.xyweather.view.DynamicWeatherView;
-import com.chen.xyweather.view.DynamicWeatherViewTest;
 import com.chen.xyweather.view.drawer.BaseDrawer;
 import com.chen.xyweather.view.pager.MainViewPagerAdapter;
 import com.chen.xyweather.view.pager.MyViewPager;
@@ -35,7 +37,6 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
 
@@ -44,11 +45,16 @@ public class MainActivity extends BaseActivity {
 
     protected List<BaseFragment> fragments;
 
+    private long clickTime = 0;
+
     public static Typeface typeface;
 
     public static Typeface getTypeface(Context context) {
         return typeface;
     }
+
+    @Bind(R.id.drawer_layout)
+    protected DrawerLayout mDrawerLayout;
 
     @Bind(R.id.main_weather_view)
     protected DynamicWeatherView mDynamicWeatherView;
@@ -83,6 +89,8 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void setupViews() {
 
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setHomeButtonEnabled(true);
         setupNavigation();
         initAlpha();
 
@@ -112,27 +120,39 @@ public class MainActivity extends BaseActivity {
                     case R.id.nav_menu_setting:
                         // TODO: 17-4-28 添加监听方法内容
                         Toast.makeText(getApplicationContext(), "item setting", Toast.LENGTH_SHORT).show();
+                        item.setChecked(true);
                         break;
                     case R.id.nav_add_city:
+                        addCity("北京");
+                        mViewPager.setCurrentItem(fragments.size() - 1, true);
                         break;
                     case R.id.nav_feedback:
+
+                        item.setChecked(true);
                         break;
                     case R.id.nav_about:
+                        item.setChecked(true);
                         break;
                     case R.id.nav_menu_care:
+                        item.setChecked(true);
                         break;
                     default:
                         break;
                 }
-                return false;
+
+                mDrawerLayout.closeDrawers();
+                return true;
             }
         });
+
+
     }
 
     public void setupViewPager() {
         fragments = new ArrayList<>();
-        fragments.add(new WeatherFragment());
-        fragments.add(new SettingFragment());
+        fragments.add(WeatherFragment.newInstance(null));
+
+//        fragments.add(new SettingFragment());
         viewPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager(), fragments);
         mViewPager.setAdapter(viewPagerAdapter);
         mViewPager.setPageTransformer(true, new DepthPageTransformer());
@@ -160,6 +180,12 @@ public class MainActivity extends BaseActivity {
 //            }
 //        }.start();
 //        updateCurDrawerType();
+    }
+
+    public void addCity(String city) {
+        fragments.add(WeatherFragment.newInstance(city));
+        viewPagerAdapter.notifyDataSetChanged();
+        mViewPager.setAdapter(viewPagerAdapter);
     }
 
     /**
@@ -211,22 +237,55 @@ public class MainActivity extends BaseActivity {
         mViewPager.setAnimation(alphaAnimation);
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        DebugLog.e("activity resume");
-//    }
 
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        DebugLog.e("activity pause");
-////        mDynamicWeatherView.onPause();
-//    }
+
+    @Override
+    protected void tintStatusBarApi21() {
+        TypedValue typedValue = new TypedValue();
+        getTheme().resolveAttribute(R.attr.colorPrimaryDark, typedValue, true);
+        mDrawerLayout.setStatusBarBackgroundColor(typedValue.data);
+    }
+
+    @Override
+    protected void tintStatusBarApi19() {
+//        Window window = getWindow();
+//        WindowManager.LayoutParams windowLayoutParams = window.getAttributes();
+//        windowLayoutParams.flags |= WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+//        window.setAttributes(windowLayoutParams);
 //
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-////        mDynamicWeatherView.onDestroy();
-//    }
+//        View hackyStatusView = findViewById(R.id.fake_status_bar);
+//        if (null != hackyStatusView) {
+//            RelativeLayout.LayoutParams statusViewLayoutParams =
+//                    new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+//                            UiUtil.getStatusBarHeight());
+//            hackyStatusView.setLayoutParams(statusViewLayoutParams);
+//            TypedValue typedValue = new TypedValue();
+//            getTheme().resolveAttribute(R.attr.colorPrimary, typedValue, true);
+//            hackyStatusView.setBackgroundColor(typedValue.data);
+//        }
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+            if (mDrawerLayout != null && mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+            } else {
+                exit();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private void exit() {
+        if (System.currentTimeMillis() - clickTime > 2000) {
+            Toast.makeText(this, "再次点击退出程序", Toast.LENGTH_SHORT).show();
+            clickTime = System.currentTimeMillis();
+        } else {
+            this.finish();
+        }
+    }
 }
