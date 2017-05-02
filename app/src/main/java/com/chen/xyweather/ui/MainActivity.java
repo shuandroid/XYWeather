@@ -90,8 +90,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void setupViews() {
 
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setHomeButtonEnabled(true);
         setupNavigation();
         initAlpha();
 
@@ -159,28 +157,29 @@ public class MainActivity extends BaseActivity {
         mViewPager.setAdapter(viewPagerAdapter);
         mViewPager.setPageTransformer(true, new DepthPageTransformer());
 
-        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-//                mDynamicWeatherView.setDrawerType(viewPagerAdapter.getItem(
-//                        mViewPager.getCurrentItem()).getDrawerType());
-
-            }
-        });
-
-
-//        new Thread() {
-//
+//        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 //            @Override
-//            public void run() {
-//                super.run();
-//
-//                mDynamicWeatherView.setDrawerType(viewPagerAdapter.getItem(
-//                        mViewPager.getCurrentItem()).getDrawerType());
+//            public void onPageSelected(int position) {
+//                super.onPageSelected(position);
+//                mDynamicWeatherView.setDrawerType(((MainViewPagerAdapter)mViewPager.getAdapter()).
+//                        getItem(position).getDrawerType());
 //
 //            }
-//        }.start();
+//        });
+
+
+        new Thread() {
+
+
+            @Override
+            public void run() {
+                super.run();
+                mDynamicWeatherView.setDrawerType(((MainViewPagerAdapter)mViewPager.getAdapter()).getItem(
+                        mViewPager.getCurrentItem()).getDrawerType());
+                DebugLog.e("thread run ");
+
+            }
+        }.start();
 //        updateCurDrawerType();
     }
 
@@ -200,6 +199,7 @@ public class MainActivity extends BaseActivity {
             public void run() {
                 super.run();
                 DebugLog.e("test drawer chen-->");
+                ((MainViewPagerAdapter)mViewPager.getAdapter()).getItem(mViewPager.getCurrentItem()).getDrawerType();
                 int position = mViewPager.getCurrentItem();
                 DebugLog.e("test drawer chen--> " + position);
                 BaseFragment fragment = viewPagerAdapter.getItem(position);

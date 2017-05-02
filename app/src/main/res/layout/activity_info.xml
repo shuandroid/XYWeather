@@ -48,7 +48,6 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="username"
-                android:layout_toLeftOf="@id/img_user"
                 android:textSize="15sp" />
             <View
                 android:layout_width="14dp"
@@ -129,7 +128,6 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="修改"
-                android:layout_toLeftOf="@id/img_psw"
                 android:textSize="15sp" />
             <View
                 android:layout_width="14dp"

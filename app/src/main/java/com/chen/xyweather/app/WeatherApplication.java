@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
+import com.avos.avoscloud.AVOSCloud;
+
 /**
  * Created by chen on 17-3-14.
  *
@@ -51,6 +53,9 @@ public class WeatherApplication extends Application {
 
             }
         });
+
+        AVOSCloud.initialize(this, "9KWSy8VuDTOGJzGxvQW46UIR-gzGzoHsz", "pKFyE7QhEN9PCOGIafXwMqmv");
+
     }
 
 
