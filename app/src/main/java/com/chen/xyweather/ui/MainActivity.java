@@ -1,6 +1,7 @@
 package com.chen.xyweather.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -119,8 +120,9 @@ public class MainActivity extends BaseActivity {
                 switch (item.getItemId()) {
                     case R.id.nav_menu_setting:
                         // TODO: 17-4-28 添加监听方法内容
-                        Toast.makeText(getApplicationContext(), "item setting", Toast.LENGTH_SHORT).show();
                         item.setChecked(true);
+                        Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.nav_add_city:
                         addCity("北京");

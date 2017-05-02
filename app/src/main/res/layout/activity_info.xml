@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_background"
+    android:fitsSystemWindows="true">
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_default" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/padding_small"
+        android:paddingTop="@dimen/padding_medium"
+        android:layout_below="@id/toolbar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/white_background"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/padding_medium"
+            android:paddingRight="@dimen/padding_medium">
+
+            <View
+                android:layout_width="22dp"
+                android:layout_height="25dp"
+                android:background="@mipmap/user"
+                android:layout_centerVertical="true"
+                android:id="@+id/img_user_null"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="昵称"
+                android:textSize="16sp"
+                android:layout_toRightOf="@id/img_user_null"/>
+
+            <TextView
+                android:id="@+id/tv_info_username"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="username"
+                android:layout_toLeftOf="@id/img_user"
+                android:textSize="15sp" />
+            <View
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:background="@mipmap/forward"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:id="@+id/img_user"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/white_background"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/padding_medium"
+            android:paddingRight="@dimen/padding_medium">
+
+            <View
+                android:layout_width="22dp"
+                android:layout_height="25dp"
+                android:background="@mipmap/phone_grey"
+                android:layout_centerVertical="true"
+                android:id="@+id/img_num_null"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="手机号"
+                android:textSize="16sp"
+                android:layout_toRightOf="@id/img_num_null"/>
+
+            <TextView
+                android:id="@+id/tv_info_num"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="num"
+                android:layout_alignParentRight="true"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/white_background"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/padding_medium"
+            android:paddingRight="@dimen/padding_medium">
+
+            <View
+                android:layout_width="22dp"
+                android:layout_height="25dp"
+                android:background="@mipmap/password_gray"
+                android:layout_centerVertical="true"
+                android:id="@+id/img_psw_null"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="密码"
+                android:textSize="16sp"
+                android:layout_toRightOf="@id/img_psw_null"/>
+
+            <TextView
+                android:id="@+id/tv_info_psw"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="修改"
+                android:layout_toLeftOf="@id/img_psw"
+                android:textSize="15sp" />
+            <View
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:background="@mipmap/forward"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:id="@+id/img_psw"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/logout_ensure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_medium"
+        android:layout_marginLeft="@dimen/padding_medium"
+        android:layout_marginRight="@dimen/padding_medium"
+        android:layout_marginTop="@dimen/padding_medium"
+        android:background="@drawable/login_background_border"
+        android:text="退出登录"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/white_background"
+        android:textSize="@dimen/text_size_large" />
+
+
+</RelativeLayout>
+

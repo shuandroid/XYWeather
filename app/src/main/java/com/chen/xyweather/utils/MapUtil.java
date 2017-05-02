@@ -22,13 +22,10 @@ public class MapUtil {
 
     private static AMapLocationClient locationClient = null;
     private static AMapLocationClientOption locationOption = new AMapLocationClientOption();
-    private static String result = "北京";
+    private static String result = "武汉";
 
     public static String getLocation(Context context) {
-
         initLocation(context);
-        startLocation();
-        //  stopLocation();
         return result;
     }
 
@@ -40,7 +37,7 @@ public class MapUtil {
         // 设置定位监听
         locationClient.setLocationListener(locationListener);
         // DebugLog.e("locaion1" + locationClient);
-
+        locationClient.startLocation();
     }
 
 
@@ -51,7 +48,6 @@ public class MapUtil {
         public void onLocationChanged(AMapLocation loc) {
             if (null != loc) {
                 //解析定位结果
-
                 result = getLocationStr(loc);
             } else {
                 result = "武汉";
@@ -59,16 +55,12 @@ public class MapUtil {
         }
     };
 
-    public static void startLocation() {
-        locationClient.startLocation();
-    }
+
 
 
     /**
      * 停止定位
      *
-     * @author hongming.wang
-     * @since 2.8.0
      */
     public static void stopLocation() {
         // 停止定位
@@ -78,8 +70,6 @@ public class MapUtil {
     /**
      * 销毁定位
      *
-     * @author hongming.wang
-     * @since 2.8.0
      */
     private static void destroyLocation() {
         if (null != locationClient) {

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
 import com.chen.xyweather.R;
@@ -118,8 +119,9 @@ public class WeatherFragment extends BaseFragment {
         if (city == null) {
             //利用地图得到
             // TODO: 17-4-30 这里有错误，仔细检查,得到的不是本地城市，而是北京
-            cityName = MapUtil.getLocation(getContext());
+            cityName=MapUtil.getLocation(getActivity());
             DebugLog.e("map:get" + cityName);
+            MapUtil.stopLocation();
         } else {
             cityName = city;
         }
@@ -219,8 +221,9 @@ public class WeatherFragment extends BaseFragment {
 
     /**
      * 获取更多天气预报，需要访问另外一个接口
+     *
      * @param city city
-     * 想多了，获得的数据和第一个接口放回的数据一样。暂时不用
+     *             想多了，获得的数据和第一个接口放回的数据一样。暂时不用
      */
     private void dailyUpdate(String city) {
 
@@ -329,8 +332,9 @@ public class WeatherFragment extends BaseFragment {
 
     /**
      * 为textView赋值，省去findviewById,和一些不必要的变量
+     *
      * @param textViewId text id
-     * @param s 赋值
+     * @param s          赋值
      */
     private void setTextView(int textViewId, String s) {
         TextView textView = (TextView) rootView.findViewById(textViewId);

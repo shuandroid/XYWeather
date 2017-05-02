@@ -1,55 +1,51 @@
 package com.chen.xyweather.ui;
 
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
-import com.chen.xyweather.utils.MapUtil;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginActivity extends BaseActivity {
+public class SignUpActivity extends BaseActivity {
 
-    @Bind(R.id.login_ensure)
-    protected Button btn_login;
 
-    @OnClick(R.id.login_ensure)
-    protected void test(){
-        Toast.makeText(this, MapUtil.getLocation(this),Toast.LENGTH_SHORT).show();
-    }
+    @Bind(R.id.sign_up_username)
+    protected EditText et_sign_up_username;
 
-    @Bind(R.id.login_username)
-    protected EditText username;
+    @Bind(R.id.sign_up_first_password)
+    protected EditText et_sign_up_f_password;
 
-    @Bind(R.id.login_password)
-    protected EditText password;
+    @Bind(R.id.sign_up_second_password)
+    protected EditText et_sign_up_s_password;
 
-    @Bind(R.id.forget_password)
-    protected TextView tv_forget_password;
+    @Bind(R.id.sign_up_pin)
+    protected EditText et_sign_up_pin;
 
-    @OnClick(R.id.forget_password)
-    protected void setForget_password(){
+    @Bind(R.id.btn_getpin_sign_up)
+    protected Button btn_getpin;
 
-    }
-
-    @Bind(R.id.sign_up)
-    protected TextView tv_sign_up;
-
-    @OnClick(R.id.sign_up)
-    protected void setSign_up(){
+    @OnClick(R.id.btn_getpin_sign_up)
+    protected void getPin(){
 
     }
 
+    @Bind(R.id.sign_up_ensure)
+    protected Button btn_signup;
+
+    @OnClick(R.id.sign_up_ensure)
+    protected void signUp(){
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
     }
 
