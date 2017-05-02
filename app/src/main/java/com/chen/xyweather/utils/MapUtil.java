@@ -70,7 +70,7 @@ public class MapUtil {
      * @author hongming.wang
      * @since 2.8.0
      */
-    private static void stopLocation() {
+    public static void stopLocation() {
         // 停止定位
         locationClient.stopLocation();
     }
@@ -134,7 +134,7 @@ public class MapUtil {
         }
         //定位之后的回调时间
         // sb.append("回调时间: " + formatUTC(System.currentTimeMillis(), "yyyy-MM-dd HH:mm:ss") + "\n");
-        return sb.toString();
+        return location.getCity();
     }
 
     private static SimpleDateFormat sdf = null;
