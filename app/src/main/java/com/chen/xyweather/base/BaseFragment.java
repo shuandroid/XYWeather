@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.chen.xyweather.R;
 import com.chen.xyweather.ui.MainActivity;
+import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.view.drawer.BaseDrawer;
 
 /**
@@ -42,6 +43,7 @@ public abstract class BaseFragment extends Fragment {
             if (activity != null) {
                 // TODO: 17-3-22
                 ((MainActivity)activity).updateCurDrawerType();
+                DebugLog.e("notify drawer");
             } else {
                 //未启动
             }

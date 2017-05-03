@@ -119,7 +119,7 @@ public class MainActivity extends BaseActivity {
                     case R.id.nav_menu_setting:
                         // TODO: 17-4-28 添加监听方法内容
                         item.setChecked(true);
-                        Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                         startActivity(intent);
                         break;
                     case R.id.nav_add_city:
@@ -157,6 +157,7 @@ public class MainActivity extends BaseActivity {
         mViewPager.setAdapter(viewPagerAdapter);
         mViewPager.setPageTransformer(true, new DepthPageTransformer());
 
+        mViewPager.setCurrentItem(0, false);
 //        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 //            @Override
 //            public void onPageSelected(int position) {
@@ -166,21 +167,21 @@ public class MainActivity extends BaseActivity {
 //
 //            }
 //        });
-
-
-        new Thread() {
-
-
-            @Override
-            public void run() {
-                super.run();
-                mDynamicWeatherView.setDrawerType(((MainViewPagerAdapter)mViewPager.getAdapter()).getItem(
-                        mViewPager.getCurrentItem()).getDrawerType());
-                DebugLog.e("thread run ");
-
-            }
-        }.start();
-//        updateCurDrawerType();
+//
+//
+//        new Thread() {
+//
+//
+//            @Override
+//            public void run() {
+//                super.run();
+//                mDynamicWeatherView.setDrawerType(((MainViewPagerAdapter) mViewPager.getAdapter()).getItem(
+//                        mViewPager.getCurrentItem()).getDrawerType());
+//                DebugLog.e("thread run ");
+//
+//            }
+//        }.start();
+////        updateCurDrawerType();
     }
 
     public void addCity(String city) {
@@ -194,25 +195,16 @@ public class MainActivity extends BaseActivity {
      */
     public void updateCurDrawerType() {
 
-        new Thread() {
-            @Override
-            public void run() {
-                super.run();
-                DebugLog.e("test drawer chen-->");
-                ((MainViewPagerAdapter)mViewPager.getAdapter()).getItem(mViewPager.getCurrentItem()).getDrawerType();
-                int position = mViewPager.getCurrentItem();
-                DebugLog.e("test drawer chen--> " + position);
-                BaseFragment fragment = viewPagerAdapter.getItem(position);
-                BaseDrawer.Type type = fragment.getDrawerType();
-                // TODO: 17-4-18
-                if (type == null) {
-                    DebugLog.e("test drawer null-->");
-                } else {
-                    DebugLog.e("test drawer chen type--> " + type);
-                    mDynamicWeatherView.setDrawerType(type);
-                }
-            }
-        }.start();
+//                DebugLog.e("test drawer chen-->");
+//                ((MainViewPagerAdapter)mViewPager.getAdapter()).getItem(mViewPager.getCurrentItem()).getDrawerType();
+//                int position = mViewPager.getCurrentItem();
+//                DebugLog.e("test drawer chen--> " + position);
+//                BaseFragment fragment = viewPagerAdapter.getItem(position);
+//                BaseDrawer.Type type = fragment.getDrawerType();
+
+        DebugLog.e("test drawer chen type--> ");
+        mDynamicWeatherView.setDrawerType(((MainViewPagerAdapter) mViewPager.
+                getAdapter()).getItem(mViewPager.getCurrentItem()).getDrawerType());
     }
 
     /**
@@ -238,7 +230,6 @@ public class MainActivity extends BaseActivity {
 
         mViewPager.setAnimation(alphaAnimation);
     }
-
 
 
     @Override

@@ -281,31 +281,17 @@ public class WeatherFragment extends BaseFragment {
      */
     private void loadCity() {
 
-//        Bundle bundle = getArguments();
-//
-//        String city = bundle.getString(CITY_NAME);
-//        if (city == null) {
-//            //利用地图得到
-////            cityName = MapUtil.getLocation(getContext());
-//            cityName = "武汉";
-//        } else {
-//            cityName = city;
-//        }
-
-        DebugLog.e("load city");
         WeatherManger.searchWeatherByCity(cityName, new WeatherManger.WeatherApiCallback() {
 
             @Override
             public void onFailure(Throwable t) {
 
                 DebugLog.e("throwable + search" + t);
+                toast("出现异常");
             }
 
             @Override
             public void onResponse(int code, String message) {
-                DebugLog.e("response" + message);
-                DebugLog.e("code" + code);
-
                 try {
                     Weather weather = JSONObject.parseObject(message, Weather.class);
                     DebugLog.e("test");
@@ -313,15 +299,12 @@ public class WeatherFragment extends BaseFragment {
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                    DebugLog.e("load city error");
+                    toast("解析错误");
                 }
 
             }
         });
-
-
     }
-
 
     private void updateDrawerTypeAndNotify(Weather weather) {
         drawerType = ApiManger.convertWeatherType(weather);

@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.avos.avoscloud.AVAnalytics;
 import com.chen.xyweather.R;
 
 import butterknife.ButterKnife;
@@ -36,6 +37,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         // TODO: 17-3-6
+        //统计事件
+        AVAnalytics.onPause(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        AVAnalytics.onResume(this);
     }
 
     @Override

@@ -124,7 +124,6 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 
-
     }
 
     @Override
@@ -211,6 +210,7 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
                         }
 
                         final long startTime = AnimationUtils.currentAnimationTimeMillis();
+
                         Canvas canvas = mSurface.lockCanvas();
                         // TODO: 17-4-18 为什么是null
                         if (canvas != null) {
@@ -219,7 +219,8 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
                             mSurface.unlockCanvasAndPost(canvas);
 
                         } else {
-                            DebugLog.i("Failure locking canvas");
+
+                            DebugLog.i("Failure locking canvas" + canvas);
                         }
 
                         final long drawTime = AnimationUtils.currentAnimationTimeMillis() - startTime;

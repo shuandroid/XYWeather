@@ -31,4 +31,7 @@
     <color name="white_background">#ffffff</color>
     <color name="text_black_light">#ff434343</color>
     <color name="choose_city_edit_text_color">#ff94989d</color>
+
+    <color name="toast_back">#a0000000</color>
+
 </resources>
