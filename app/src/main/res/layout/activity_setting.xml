@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/xy_white_background"
-    tools:context="com.chen.xyweather.ui.SettingFragment">
+    android:background="@color/xy_white_background">
 
     <!-- TODO: Update blank fragment layout -->
 

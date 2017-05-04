@@ -53,6 +53,7 @@ public class HourlyForecastView extends View {
 
     /**
      * 初始化paint
+     *
      * @param context context
      */
     private void init(Context context) {
@@ -83,7 +84,7 @@ public class HourlyForecastView extends View {
             return;
         }
 
-        final float dW = width*1f / fullDataCount;
+        final float dW = width * 1f / fullDataCount;
         tmpPath.reset();
         goneTmpPath.reset();
 
@@ -101,8 +102,6 @@ public class HourlyForecastView extends View {
         //没有的数据，要跳过的距离
         final int dataLengthOffset = Math.max(0, fullDataCount - length);
 
-        DebugLog.e("test length hourly" + length);
-
         for (int i = 0; i < length; i++) {
 
             final Data d = datas[i];
@@ -111,7 +110,7 @@ public class HourlyForecastView extends View {
             //每个高低值的偏差
             y[i] = dCenterY - d.offsetPercent * dH * smallerPercent;
 
-            canvas.drawText(d.tmp + "°", x[i], y[i] -textSize + textOffset, paint);
+            canvas.drawText(d.tmp + "°", x[i], y[i] - textSize + textOffset, paint);
 
             //
             if (i == 0) {
@@ -140,8 +139,8 @@ public class HourlyForecastView extends View {
         canvas.drawPath(goneTmpPath, paint);
 
         for (int i = 0; i < length - 1; i++) {
-            float midX = (x[i] + x[i+1]) / 2f;
-            float midY = (y[i] + y [i + 1]) / 2f;
+            float midX = (x[i] + x[i + 1]) / 2f;
+            float midY = (y[i] + y[i + 1]) / 2f;
             if (i == 0)
                 tmpPath.moveTo(data_x0, y[i]);
             tmpPath.cubicTo(x[i] - 1, y[i], x[i], y[i], midX, midY);
@@ -155,7 +154,7 @@ public class HourlyForecastView extends View {
         // TODO: 17-3-27 可不用？
         if (needClip) {
             canvas.save();
-            canvas.clipRect(0,0, width * pathPercent, height);
+            canvas.clipRect(0, 0, width * pathPercent, height);
         }
 
         paint.setPathEffect(null);
@@ -168,7 +167,7 @@ public class HourlyForecastView extends View {
 
     public void setData(Weather weather) {
 
-        if (weather == null || !weather.isOk()){
+        if (weather == null || !weather.isOk()) {
             return;
         }
 
@@ -205,7 +204,7 @@ public class HourlyForecastView extends View {
                 }
                 if (allMin > tmp)
                     allMin = tmp;
-                final  Data data = new Data();
+                final Data data = new Data();
                 data.tmp = tmp;
                 data.date = hourlyForecast.date;
                 data.pop = hourlyForecast.pop;
@@ -214,10 +213,10 @@ public class HourlyForecastView extends View {
             }
             //差值与平均值
             float allDistance = Math.abs(allMax - allMin);
-            float averageDistance = (allMax + allMin ) / 2f;
+            float averageDistance = (allMax + allMin) / 2f;
 
             //偏移值
-            for ( Data data : datas) {
+            for (Data data : datas) {
                 data.offsetPercent = (data.tmp - averageDistance) / allDistance;
             }
 

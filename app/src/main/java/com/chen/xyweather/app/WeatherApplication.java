@@ -17,6 +17,10 @@ public class WeatherApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        AVOSCloud.initialize(this, "9KWSy8VuDTOGJzGxvQW46UIR-gzGzoHsz", "pKFyE7QhEN9PCOGIafXwMqmv");
+        AVAnalytics.enableCrashReport(this, true);
+
+
         this.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
@@ -55,8 +59,6 @@ public class WeatherApplication extends Application {
             }
         });
 
-        AVOSCloud.initialize(this, "9KWSy8VuDTOGJzGxvQW46UIR-gzGzoHsz", "pKFyE7QhEN9PCOGIafXwMqmv");
-        AVAnalytics.enableCrashReport(this, true);
 
     }
 

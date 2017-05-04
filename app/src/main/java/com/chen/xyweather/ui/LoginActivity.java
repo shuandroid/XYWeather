@@ -16,6 +16,7 @@ import com.avos.avoscloud.LogInCallback;
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
 import com.chen.xyweather.model.UserModel;
+import com.chen.xyweather.utils.DebugLog;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -60,8 +61,10 @@ public class LoginActivity extends BaseActivity {
      */
     @OnClick(R.id.sign_up)
     protected void signUp() {
-        new Intent(LoginActivity.this, RegisterActivity.class);
-        finish();
+        DebugLog.e("sign up");
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(intent);
+        LoginActivity.this.finish();
     }
 
 
@@ -124,12 +127,17 @@ public class LoginActivity extends BaseActivity {
 
         } else {
             //尝试登录
-            UserModel.logInInBackground(username, password, new LogInCallback<AVUser>() {
+            UserModel.logInInBackground(username, password, new LogInCallback<UserModel>() {
                 @Override
-                public void done(AVUser avUser, AVException e) {
+                public void done(UserModel userModel, AVException e) {
                     //登录成功
                     if (e == null) {
+
+                        if (userModel != null) {
+
+                        }
                         LoginActivity.this.finish();
+                        Toast.makeText(LoginActivity.this, "成功", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
                     } else {
@@ -137,7 +145,7 @@ public class LoginActivity extends BaseActivity {
                     }
 
                 }
-            });
+            }, UserModel.class);
         }
     }
 

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.RequestMobileCodeCallback;
 import com.avos.avoscloud.SignUpCallback;
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
@@ -49,7 +50,14 @@ public class RegisterActivity extends BaseActivity {
     @OnClick(R.id.get_ensure)
     protected void getEnsure() {
 
+        String phone = mRegisterPhone.getText().toString();
+
+        if (isPhone(phone)) {
+            requestCode(phone);
+        }
     }
+
+
 
 
     @OnClick(R.id.register)
@@ -82,6 +90,32 @@ public class RegisterActivity extends BaseActivity {
     protected void setupViews() {
 
 
+    }
+
+    private boolean isPhone(String phone) {
+        if (!TextUtils.isEmpty(phone) && phone.length() == 11) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 获取验证码
+     */
+    private void requestCode(String phone) {
+
+        UserModel.requestMobilePhoneVerifyInBackground(phone, new RequestMobileCodeCallback() {
+            @Override
+            public void done(AVException e) {
+                if (e == null) {
+
+                }
+            }
+        });
+    }
+
+    private void getVerification() {
+//        UserModel.verifyMobilePhoneInBackground();
     }
 
     /**

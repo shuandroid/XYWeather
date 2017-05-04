@@ -107,7 +107,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 // TODO: 17-4-28 添加账号信息
-                Toast.makeText(getApplicationContext(), "header image view", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "header image view", Toast.LENGTH_SHORT).show();
             }
         });
         //监听
@@ -117,7 +117,6 @@ public class MainActivity extends BaseActivity {
 
                 switch (item.getItemId()) {
                     case R.id.nav_menu_setting:
-                        // TODO: 17-4-28 添加监听方法内容
                         item.setChecked(true);
                         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                         startActivity(intent);
