@@ -18,14 +18,14 @@ android {
         }
     }
 
-    sourceSets{
+    sourceSets {
         main {
             java.srcDirs = ['src/main/java', 'src/main/java-gen']
         }
     }
 
     //为了解决部分第三方库重复打包了META-INF的问题
-    packagingOptions{
+    packagingOptions {
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE.txt'
     }
