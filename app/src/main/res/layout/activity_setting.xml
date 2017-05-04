@@ -70,28 +70,4 @@
             style="@style/setting_item_iv" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/s_feedback"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            style="@style/setting_item_tv"
-            android:text="@string/s_feedback" />
-
-        <ImageView style="@style/setting_item_iv" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/s_about"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            style="@style/setting_item_tv"
-            android:text="@string/s_about" />
-
-        <ImageView style="@style/setting_item_iv" />
-    </RelativeLayout>
-
 </LinearLayout>

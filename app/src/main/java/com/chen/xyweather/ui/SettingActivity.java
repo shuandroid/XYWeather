@@ -36,60 +36,38 @@ public class SettingActivity extends BaseActivity {
 
 
     @Bind(R.id.s_cache)
-    protected TextView tv_cache;
+    protected TextView mCache;
 
 
     @Bind(R.id.s_notice)
-    protected RelativeLayout tv_notice;
+    protected RelativeLayout mNotice;
 
     @OnClick(R.id.s_notice)
     protected void notice() {
     }
 
     @Bind(R.id.s_changeskin)
-    protected RelativeLayout tv_changeskin;
+    protected RelativeLayout mChangeskin;
 
     @OnClick(R.id.s_changeskin)
-    protected void changeskin() {
+    protected void changeSkin() {
 
     }
 
     @Bind(R.id.s_cleardata)
-    protected RelativeLayout tv_cleardata;
+    protected RelativeLayout mcleardata;
 
     @OnClick(R.id.s_cleardata)
-    protected void cleardata() {
+    protected void clearData() {
      //   DataCleanManager.clearAllCache(getActivity());
-        tv_cache.setText("0KB");
-    }
-
-
-    @Bind(R.id.s_about)
-    protected RelativeLayout tv_about;
-
-    @OnClick(R.id.s_about)
-    protected void about() {
 
     }
 
-    @Bind(R.id.s_feedback)
-    protected RelativeLayout tv_feedback;
-
-    @OnClick(R.id.s_feedback)
-    protected void feedback() {
-
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setting);
-        ButterKnife.bind(this);
-    }
 
     @Override
     protected void setupContentView() {
-
+        setContentView(R.layout.activity_setting);
+        ButterKnife.bind(this);
     }
 
     @Override
