@@ -32,8 +32,6 @@ import butterknife.OnClick;
 import static java.lang.System.getProperties;
 
 public class SettingActivity extends BaseActivity {
-    private String result;
-
 
     @Bind(R.id.s_cache)
     protected TextView mCache;
@@ -47,7 +45,7 @@ public class SettingActivity extends BaseActivity {
     }
 
     @Bind(R.id.s_changeskin)
-    protected RelativeLayout mChangeskin;
+    protected RelativeLayout mChangeSkin;
 
     @OnClick(R.id.s_changeskin)
     protected void changeSkin() {
@@ -55,7 +53,7 @@ public class SettingActivity extends BaseActivity {
     }
 
     @Bind(R.id.s_cleardata)
-    protected RelativeLayout mcleardata;
+    protected RelativeLayout mClearData;
 
     @OnClick(R.id.s_cleardata)
     protected void clearData() {
