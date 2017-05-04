@@ -12,9 +12,28 @@
         layout="@layout/toolbar_default" />
 
     <LinearLayout
+        android:id="@+id/info_circle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
+        android:background="@color/xy_white_background"
+        android:orientation="vertical"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <com.chen.xyweather.view.CircleImageView
+            android:id="@+id/info_user_img"
+            android:layout_width="108dp"
+            android:layout_height="108dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/ic_launcher" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_circle"
         android:orientation="vertical"
         android:paddingBottom="@dimen/padding_small"
         android:paddingTop="@dimen/padding_medium">

@@ -81,8 +81,8 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void setupActionbar() {
 
-        mToolbar.setTitle("登录");
-        setSupportActionBar(mToolbar);
+//        mToolbar.setTitle("登录");
+ //       setSupportActionBar(mToolbar);
 
     }
 
