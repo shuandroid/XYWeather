@@ -60,21 +60,26 @@
         <activity android:name=".base.BaseActivity" />
         <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.RegisterActivity" />
-        <activity android:name=".ui.InfoActivity"></activity>
-        <!--feedback-->
-        <activity android:name="com.avos.avoscloud.feedback.ThreadActivity"/>
+        <activity android:name=".ui.InfoActivity" />
+        <!-- feedback -->
+        <activity android:name="com.avos.avoscloud.feedback.ThreadActivity" />
 
         <!-- 实时通信模块、推送（均需要加入以下声明） START -->
         <!-- 实时通信模块、推送都要使用 PushService -->
-        <service android:name="com.avos.avoscloud.PushService"/>
+        <service android:name="com.avos.avoscloud.PushService" />
+
         <receiver android:name="com.avos.avoscloud.AVBroadcastReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
 
+        <activity android:name=".ui.ForgotPswActivity" />
+        <activity android:name=".ui.ChangePswActivity" />
+        <activity android:name=".ui.ChangeNameActivity" />
+        <activity android:name=".ui.ShareActivity"></activity>
     </application>
 
 </manifest>
