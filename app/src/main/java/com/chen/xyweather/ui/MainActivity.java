@@ -17,11 +17,14 @@ import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
 import com.chen.xyweather.base.BaseFragment;
+import com.chen.xyweather.model.UserHelper;
+import com.chen.xyweather.model.UserInstance;
 import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.DepthPageTransformer;
 import com.chen.xyweather.utils.UiUtil;
@@ -94,8 +97,22 @@ public class MainActivity extends BaseActivity {
         initAlpha();
 
         setupViewPager();
+        initData();
     }
 
+    /**
+     * 初始化用户数据
+     */
+    private void initData() {
+        //用户有效
+        if (new UserInstance().getInstance().getmUserStatus().equals(UserHelper.USER_STATUS.VALID)) {
+
+        }
+    }
+
+    private boolean isUser() {
+        return UserInstance.getInstance().getmUserStatus().equals(UserHelper.USER_STATUS.VALID);
+    }
     /**
      * 设置侧滑栏
      */
@@ -103,10 +120,23 @@ public class MainActivity extends BaseActivity {
 
         View headerView = mNavigation.getHeaderView(0);
         CircleImageView imageView = (CircleImageView) headerView.findViewById(R.id.nav_head_circle_view_header);
+        TextView phone = (TextView) headerView.findViewById(R.id.nav_head_username);
+
+        if (isUser()) {
+            //
+            DebugLog.e("avatar");
+            if (UserInstance.getInstance().getmAvatar() != null) {
+                imageView.setImageBitmap(UserInstance.getInstance().getmAvatar());
+                DebugLog.e("avatar is not null");
+            }
+
+        }
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO: 17-4-28 添加账号信息
+                Intent intent = new Intent(MainActivity.this, InfoActivity.class);
+                startActivity(intent);
                 Toast.makeText(MainActivity.this, "header image view", Toast.LENGTH_SHORT).show();
             }
         });

@@ -15,6 +15,7 @@ import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
+import com.chen.xyweather.model.UserHelper;
 import com.chen.xyweather.model.UserModel;
 import com.chen.xyweather.utils.DebugLog;
 
@@ -23,6 +24,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity {
+
+
+    private UserHelper mUserHelper;
 
     @Bind(R.id.login_ensure)
     protected Button mLogin;
@@ -75,6 +79,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void findViews() {
+        mUserHelper = new UserHelper();
         ButterKnife.bind(this);
     }
 
@@ -132,18 +137,16 @@ public class LoginActivity extends BaseActivity {
                 public void done(UserModel userModel, AVException e) {
                     //登录成功
                     if (e == null) {
-
+                        // TODO: 17-5-4 如何给本地一个已经登录的状态
                         if (userModel != null) {
-
+                            mUserHelper.refresh();
+                            LoginActivity.this.finish();
+                            Toast.makeText(LoginActivity.this, "成功", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         }
-                        LoginActivity.this.finish();
-                        Toast.makeText(LoginActivity.this, "成功", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-
                     } else {
                         Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-
                 }
             }, UserModel.class);
         }
