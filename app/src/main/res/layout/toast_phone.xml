@@ -12,6 +12,6 @@
         android:layout_gravity="center"
         android:text="手机号不正确"
         android:textColor="@color/color_drawer_right"
-        android:textSize="25sp" />
+        android:textSize="@dimen/text_size_medium" />
 
 </LinearLayout>

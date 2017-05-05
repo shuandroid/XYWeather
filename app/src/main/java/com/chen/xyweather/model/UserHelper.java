@@ -49,6 +49,10 @@ public class UserHelper {
         return mUser;
     }
 
+    public String getmNickname() {
+        return mNickname;
+    }
+
     public void refresh() {
         mUser = UserModel.getCurrentUser(UserModel.class);
 

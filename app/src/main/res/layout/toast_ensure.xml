@@ -2,16 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@drawable/toast_background"
+    android:orientation="vertical"
     android:padding="24dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="前后两次密码不正确"
+        android:text="@string/password_error"
         android:textColor="@color/color_drawer_right"
-        android:textSize="25sp" />
+        android:textSize="@dimen/text_size_medium" />
 
 </LinearLayout>

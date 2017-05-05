@@ -79,7 +79,8 @@
         <activity android:name=".ui.ForgotPswActivity" />
         <activity android:name=".ui.ChangePswActivity" />
         <activity android:name=".ui.ChangeNameActivity" />
-        <activity android:name=".ui.ShareActivity"></activity>
+        <activity android:name=".ui.ShareActivity" />
+        <activity android:name="com.avos.avoscloud.feedback.ThreadActivity" />
     </application>
 
 </manifest>

@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.avos.avoscloud.feedback.FeedbackAgent;
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
 import com.chen.xyweather.base.BaseFragment;
@@ -104,10 +105,6 @@ public class MainActivity extends BaseActivity {
      * 初始化用户数据
      */
     private void initData() {
-        //用户有效
-        if (new UserInstance().getInstance().getmUserStatus().equals(UserHelper.USER_STATUS.VALID)) {
-
-        }
     }
 
     private boolean isUser() {
@@ -122,6 +119,7 @@ public class MainActivity extends BaseActivity {
         CircleImageView imageView = (CircleImageView) headerView.findViewById(R.id.nav_head_circle_view_header);
         TextView phone = (TextView) headerView.findViewById(R.id.nav_head_username);
 
+
         if (isUser()) {
             //
             DebugLog.e("avatar");
@@ -129,15 +127,15 @@ public class MainActivity extends BaseActivity {
                 imageView.setImageBitmap(UserInstance.getInstance().getmAvatar());
                 DebugLog.e("avatar is not null");
             }
-
+            phone.setText(UserInstance.getInstance().getmPhone());
+        } else {
+            phone.setText("未登录");
         }
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 17-4-28 添加账号信息
                 Intent intent = new Intent(MainActivity.this, InfoActivity.class);
                 startActivity(intent);
-                Toast.makeText(MainActivity.this, "header image view", Toast.LENGTH_SHORT).show();
             }
         });
         //监听
@@ -156,8 +154,9 @@ public class MainActivity extends BaseActivity {
                         mViewPager.setCurrentItem(fragments.size() - 1, true);
                         break;
                     case R.id.nav_feedback:
-
                         item.setChecked(true);
+                        FeedbackAgent agent = new FeedbackAgent(MainActivity.this);
+                        agent.startDefaultThreadActivity();
                         break;
                     case R.id.nav_about:
                         item.setChecked(true);
@@ -199,20 +198,6 @@ public class MainActivity extends BaseActivity {
 //            }
 //        });
 //
-//
-//        new Thread() {
-//
-//
-//            @Override
-//            public void run() {
-//                super.run();
-//                mDynamicWeatherView.setDrawerType(((MainViewPagerAdapter) mViewPager.getAdapter()).getItem(
-//                        mViewPager.getCurrentItem()).getDrawerType());
-//                DebugLog.e("thread run ");
-//
-//            }
-//        }.start();
-////        updateCurDrawerType();
     }
 
     public void addCity(String city) {

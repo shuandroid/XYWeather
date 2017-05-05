@@ -1,7 +1,6 @@
 package com.chen.xyweather.ui;
 
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -119,8 +118,7 @@ public class WeatherFragment extends BaseFragment {
         if (city == null) {
             //利用地图得到
             // TODO: 17-4-30 这里有错误，仔细检查,得到的不是本地城市，而是北京
-            Activity mActivity=getActivity();
-            cityName=MapUtil.getLocation(mActivity);
+            cityName = MapUtil.getLocation(getActivity());
             DebugLog.e("map:get" + cityName);
             MapUtil.stopLocation();
         } else {
