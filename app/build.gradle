@@ -59,4 +59,8 @@ dependencies {
 
     // LeanCloud 用户反馈包
     compile ('cn.leancloud.android:avoscloud-feedback:v3.+@aar')
+
+    //图片显示
+    compile 'com.squareup.picasso:picasso:2.3.2'
+    compile 'com.google.code.gson:gson:2.2.4'
 }
