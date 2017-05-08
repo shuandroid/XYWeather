@@ -118,9 +118,9 @@ public class WeatherFragment extends BaseFragment {
         if (city == null) {
             //利用地图得到
             // TODO: 17-4-30 这里有错误，仔细检查,得到的不是本地城市，而是北京
-            cityName = MapUtil.getLocation(getActivity());
+            cityName = "武汉";
             DebugLog.e("map:get" + cityName);
-            MapUtil.stopLocation();
+            //MapUtil.stopLocation();
         } else {
             cityName = city;
         }

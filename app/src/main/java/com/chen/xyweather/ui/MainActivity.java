@@ -20,6 +20,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
 import com.avos.avoscloud.feedback.FeedbackAgent;
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
@@ -30,6 +34,7 @@ import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.DepthPageTransformer;
 import com.chen.xyweather.utils.UiUtil;
 import com.chen.xyweather.utils.UtilManger;
+import com.chen.xyweather.utils.Utils;
 import com.chen.xyweather.view.CircleImageView;
 import com.chen.xyweather.view.DynamicWeatherView;
 import com.chen.xyweather.view.drawer.BaseDrawer;
@@ -57,6 +62,11 @@ public class MainActivity extends BaseActivity {
     public static Typeface getTypeface(Context context) {
         return typeface;
     }
+
+    //定位相关
+    private AMapLocationClient locationClient = null;
+    private AMapLocationClientOption locationOption = new AMapLocationClientOption();
+    private String locationResult = "北京";
 
     @Bind(R.id.drawer_layout)
     protected DrawerLayout mDrawerLayout;
@@ -96,9 +106,15 @@ public class MainActivity extends BaseActivity {
 
         setupNavigation();
         initAlpha();
-
+        initLocation();
         setupViewPager();
         initData();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        destroyLocation();
     }
 
     /**
@@ -110,6 +126,7 @@ public class MainActivity extends BaseActivity {
     private boolean isUser() {
         return UserInstance.getInstance().getmUserStatus().equals(UserHelper.USER_STATUS.VALID);
     }
+
     /**
      * 设置侧滑栏
      */
@@ -160,7 +177,7 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.nav_about:
                         item.setChecked(true);
-                        Intent intent2=new Intent(MainActivity.this,ShareActivity.class);
+                        Intent intent2 = new Intent(MainActivity.this, ShareActivity.class);
                         startActivity(intent2);
                         break;
                     case R.id.nav_menu_care:
@@ -296,5 +313,76 @@ public class MainActivity extends BaseActivity {
         } else {
             this.finish();
         }
+    }
+
+
+    //定位相关
+    //初始化
+
+    private void initLocation() {
+        //初始化client
+        locationClient = new AMapLocationClient(this.getApplicationContext());
+        //设置定位参数
+        locationClient.setLocationOption(getDefaultOption());
+        // 设置定位监听
+        locationClient.setLocationListener(locationListener);
+        // 启动定位
+        locationClient.startLocation();
+    }
+
+    AMapLocationListener locationListener = new AMapLocationListener() {
+        @Override
+        public void onLocationChanged(AMapLocation loc) {
+            if (null != loc) {
+                //解析定位结果
+                locationResult = Utils.getLocationStr(loc);
+                DebugLog.e("get:"+locationResult);
+                stopLocation();
+            } else {
+                locationResult="武汉";
+            }
+        }
+    };
+
+    /**
+     * 默认的定位参数
+     */
+    private AMapLocationClientOption getDefaultOption() {
+        AMapLocationClientOption mOption = new AMapLocationClientOption();
+        mOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//可选，设置定位模式，可选的模式有高精度、仅设备、仅网络。默认为高精度模式
+        mOption.setGpsFirst(false);//可选，设置是否gps优先，只在高精度模式下有效。默认关闭
+        mOption.setHttpTimeOut(30000);//可选，设置网络请求超时时间。默认为30秒。在仅设备模式下无效
+        mOption.setInterval(2000);//可选，设置定位间隔。默认为2秒
+        mOption.setNeedAddress(true);//可选，设置是否返回逆地理地址信息。默认是true
+        mOption.setOnceLocation(false);//可选，设置是否单次定位。默认是false
+        mOption.setOnceLocationLatest(false);//可选，设置是否等待wifi刷新，默认为false.如果设置为true,会自动变为单次定位，持续定位时不要使用
+        AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTP);//可选， 设置网络请求的协议。可选HTTP或者HTTPS。默认为HTTP
+        mOption.setSensorEnable(false);//可选，设置是否使用传感器。默认是false
+        mOption.setWifiScan(true); //可选，设置是否开启wifi扫描。默认为true，如果设置为false会同时停止主动刷新，停止以后完全依赖于系统刷新，定位位置可能存在误差
+        mOption.setLocationCacheEnable(true); //可选，设置是否使用缓存定位，默认为true
+        return mOption;
+    }
+
+    /**
+     * 销毁定位
+     */
+    private void destroyLocation() {
+        if (null != locationClient) {
+            /**
+             * 如果AMapLocationClient是在当前Activity实例化的，
+             * 在Activity的onDestroy中一定要执行AMapLocationClient的onDestroy
+             */
+            locationClient.onDestroy();
+            locationClient = null;
+            locationOption = null;
+        }
+    }
+    /**
+     * 停止定位
+     *
+     */
+    private void stopLocation(){
+        // 停止定位
+        locationClient.stopLocation();
     }
 }
