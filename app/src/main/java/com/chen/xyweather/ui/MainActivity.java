@@ -152,8 +152,13 @@ public class MainActivity extends BaseActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, InfoActivity.class);
-                startActivity(intent);
+                if (isUser()) {
+                    Intent intent = new Intent(MainActivity.this, InfoActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
         //监听
@@ -164,7 +169,7 @@ public class MainActivity extends BaseActivity {
                 switch (item.getItemId()) {
                     case R.id.nav_menu_setting:
                         item.setChecked(true);
-                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        Intent intent = new Intent(MainActivity.this, SettingActivity.class);
                         startActivity(intent);
                         break;
                     case R.id.nav_add_city:
@@ -315,10 +320,10 @@ public class MainActivity extends BaseActivity {
             if (null != loc) {
                 //解析定位结果
                 locationResult = Utils.getLocationStr(loc);
-                DebugLog.e("get:"+locationResult);
+                DebugLog.e("get:" + locationResult);
                 stopLocation();
             } else {
-                locationResult="武汉";
+                locationResult = "武汉";
             }
         }
     };
@@ -356,11 +361,11 @@ public class MainActivity extends BaseActivity {
             locationOption = null;
         }
     }
+
     /**
      * 停止定位
-     *
      */
-    private void stopLocation(){
+    private void stopLocation() {
         // 停止定位
         locationClient.stopLocation();
     }
