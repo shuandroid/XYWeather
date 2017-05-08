@@ -2,31 +2,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/xy_white_background">
+    android:background="@color/xy_white_background"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_default" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
 
-    <TextView
+    <RelativeLayout
+        android:id="@+id/s_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="8dp"
-        android:text="@string/title"
-        android:textSize="@dimen/text_size_medium" />
+        android:background="@color/white_background">
 
-    <com.chen.xyweather.view.CircleImageView
-        android:layout_width="108dp"
-        android:layout_height="108dp"
-        android:src="@mipmap/ic_launcher"
-        android:layout_gravity="center_horizontal"/>
+        <ImageView
+            style="@style/setting_item_i"
+            android:src="@mipmap/s_account" />
 
+        <TextView
+            style="@style/setting_item_tv"
+            android:text="@string/s_account" />
+
+        <ImageView style="@style/setting_item_iv" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp" />
 
     <RelativeLayout
         android:id="@+id/s_notice"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white_background">
+
+        <ImageView
+            style="@style/setting_item_i"
+            android:src="@mipmap/s_notice" />
 
         <TextView
             style="@style/setting_item_tv"
@@ -35,38 +52,76 @@
         <ImageView style="@style/setting_item_iv" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/s_changeskin"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="2dp" />
+
+    <RelativeLayout
+        android:id="@+id/s_changebg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white_background">
+
+        <ImageView
+            style="@style/setting_item_i"
+            android:src="@mipmap/s_changebg" />
 
         <TextView
             style="@style/setting_item_tv"
-            android:text="@string/s_changeskin" />
+            android:text="@string/s_changebg" />
 
         <ImageView style="@style/setting_item_iv" />
     </RelativeLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
     <RelativeLayout
         android:id="@+id/s_cleardata"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white_background">
+
+        <ImageView
+            style="@style/setting_item_i"
+            android:src="@mipmap/s_cleardata" />
 
         <TextView
             style="@style/setting_item_tv"
             android:text="@string/s_cleardata" />
+
         <TextView
             android:id="@+id/s_cache"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/s_iv"
-            android:text="0KB"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
             android:paddingRight="@dimen/padding_medium"
-            android:textSize="@dimen/text_size_medium"
-            android:layout_centerVertical="true"/>
+            android:text="0KB"
+            android:textSize="@dimen/text_size_medium" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp" />
+
+    <RelativeLayout
+        android:id="@+id/s_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white_background">
+
         <ImageView
-            android:id="@+id/s_iv"
-            style="@style/setting_item_iv" />
+            style="@style/setting_item_i"
+            android:src="@mipmap/s_update" />
+
+        <TextView
+            style="@style/setting_item_tv"
+            android:text="@string/s_update" />
+
     </RelativeLayout>
 
 </LinearLayout>

@@ -61,6 +61,7 @@
         <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.RegisterActivity" />
         <activity android:name=".ui.InfoActivity" />
+        <activity android:name=".ui.SettingActivity" />
         <!-- feedback -->
         <activity android:name="com.avos.avoscloud.feedback.ThreadActivity" />
 
@@ -81,6 +82,7 @@
         <activity android:name=".ui.ChangeNameActivity" />
         <activity android:name=".ui.ShareActivity" />
         <activity android:name="com.avos.avoscloud.feedback.ThreadActivity" />
+        <activity android:name=".ui.AboutActivity"></activity>
     </application>
 
 </manifest>

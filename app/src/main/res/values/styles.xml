@@ -120,19 +120,29 @@
     <!--for  setting text-->
     <style name="setting_item_tv">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">48dp</item>
         <item name="android:paddingLeft">@dimen/padding_small</item>
         <item name="android:paddingBottom">@dimen/padding_small</item>
         <item name="android:paddingTop">@dimen/padding_small</item>
-        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
         <item name="android:layout_marginTop">@dimen/padding_small</item>
         <item name="android:layout_centerVertical">true</item>
+        <item name="android:gravity">center_vertical</item>
         <item name="android:textColor">@color/colorText</item>
+        <item name="android:layout_marginLeft">40dp</item>
     </style>
 
+    <style name="setting_item_i">
+        <item name="android:layout_width">35dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:layout_alignParentLeft">true</item>
+    </style>
     <style name="setting_item_iv">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
         <item name="android:src">@mipmap/ic_arrow_right</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:paddingRight">8dp</item>

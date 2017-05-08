@@ -37,7 +37,7 @@ public class ShareActivity extends BaseActivity {
     private static RecyclerView recyclerview;
     private LinearLayout coordinatorLayout;
     private GridAdapter mAdapter;
-    private List<Pictures> meizis;
+    private List<Pictures> mPictures;
     private StaggeredGridLayoutManager mLayoutManager;
     private int lastVisibleItem ;
     private int page=1;
@@ -91,9 +91,9 @@ public class ShareActivity extends BaseActivity {
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
                 int from=viewHolder.getAdapterPosition();
                 int to=target.getAdapterPosition();
-                Pictures moveItem=meizis.get(from);
-                meizis.remove(from);
-                meizis.add(to,moveItem);
+                Pictures moveItem=mPictures.get(from);
+                mPictures.remove(from);
+                mPictures.add(to,moveItem);
                 mAdapter.notifyItemMoved(from,to);
                 return true;
             }
@@ -157,21 +157,21 @@ public class ShareActivity extends BaseActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                if(meizis==null||meizis.size()==0){
-                    meizis= gson.fromJson(jsonData, new TypeToken<List<Pictures>>() {}.getType());
+                if(mPictures==null||mPictures.size()==0){
+                    mPictures= gson.fromJson(jsonData, new TypeToken<List<Pictures>>() {}.getType());
                     Pictures pages=new Pictures();
                     pages.setPage(page);
-                    meizis.add(pages);
+                    mPictures.add(pages);
                 }else{
                     List<Pictures> more= gson.fromJson(jsonData, new TypeToken<List<Pictures>>() {}.getType());
-                    meizis.addAll(more);
+                    mPictures.addAll(more);
                     Pictures pages=new Pictures();
                     pages.setPage(page);
-                    meizis.add(pages);
+                    mPictures.add(pages);
                 }
 
                 if(mAdapter==null){
-                    recyclerview.setAdapter(mAdapter = new GridAdapter(ShareActivity.this,meizis));
+                    recyclerview.setAdapter(mAdapter = new GridAdapter(ShareActivity.this,mPictures));
 
                     //设置点击监听
                     mAdapter.setOnItemClickListener(new GridAdapter.OnRecyclerViewItemClickListener() {
