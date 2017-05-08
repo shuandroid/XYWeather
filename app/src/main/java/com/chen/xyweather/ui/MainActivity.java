@@ -28,6 +28,8 @@ import com.avos.avoscloud.feedback.FeedbackAgent;
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
 import com.chen.xyweather.base.BaseFragment;
+import com.chen.xyweather.data.DBHelper;
+import com.chen.xyweather.data.DBManger;
 import com.chen.xyweather.model.UserHelper;
 import com.chen.xyweather.model.UserInstance;
 import com.chen.xyweather.utils.DebugLog;
@@ -107,7 +109,13 @@ public class MainActivity extends BaseActivity {
         setupNavigation();
         initAlpha();
 
+//        if (!DBManger.isMapGet(this)) {
+//            initLocation();
+//            DebugLog.e("第一次定位");
+//        }
         initLocation();
+
+//        DebugLog.e("saved " + DBManger.isSaved(this, "武汉市"));
         setupViewPager();
         initData();
     }
@@ -321,10 +329,11 @@ public class MainActivity extends BaseActivity {
             if (null != loc) {
                 //解析定位结果
                 locationResult = Utils.getLocationStr(loc);
-                DebugLog.e("get:"+locationResult);
+                DebugLog.e("get:" + locationResult);
+                DBManger.insertLocalCity(MainActivity.this, locationResult);
                 stopLocation();
             } else {
-                locationResult="武汉";
+                locationResult = "武汉";
             }
         }
     };
@@ -364,9 +373,8 @@ public class MainActivity extends BaseActivity {
     }
     /**
      * 停止定位
-     *
      */
-    private void stopLocation(){
+    private void stopLocation() {
         // 停止定位
         locationClient.stopLocation();
     }
