@@ -18,6 +18,7 @@ import com.avos.avoscloud.SignUpCallback;
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
 import com.chen.xyweather.model.UserModel;
+import com.chen.xyweather.utils.UtilManger;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -131,15 +132,15 @@ public class RegisterActivity extends BaseActivity {
         View focusView = null;
 
         if (!isFirstEqualSecond(firstPassword, secondPassword)) {
-            showCreditToast(R.layout.toast_ensure);
+            UtilManger.showCreditToast(R.layout.toast_ensure, this);
             focusView = mSecondPassword;
             cancel = true;
         } else if (!TextUtils.isEmpty(firstPassword) && !isPasswordValid(firstPassword)){
-            showCreditToast(R.layout.toast_password);
+            UtilManger.showCreditToast(R.layout.toast_password, this);
             focusView = mFirstPassword;
             cancel = true;
         } else if(TextUtils.isEmpty(registerPhone) || registerPhone.length() != 11) {
-            showCreditToast(R.layout.toast_phone);
+            UtilManger.showCreditToast(R.layout.toast_phone, this);
             focusView = mRegisterPhone;
             cancel = true;
         }
@@ -160,9 +161,7 @@ public class RegisterActivity extends BaseActivity {
                         finish();
                     } else {
                         //失败的逻辑
-
                     }
-
                 }
             });
         }
@@ -181,14 +180,6 @@ public class RegisterActivity extends BaseActivity {
         return password.length() > 5;
     }
 
-    private void showCreditToast(int layout) {
-        View view = LayoutInflater.from(this).inflate(layout, null);
-        Toast toast = new Toast(this);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(view);
-        toast.show();
-    }
 
     @Override
     protected void tintStatusBarApi21() {

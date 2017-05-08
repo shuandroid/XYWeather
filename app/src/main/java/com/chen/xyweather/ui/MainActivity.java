@@ -106,6 +106,7 @@ public class MainActivity extends BaseActivity {
 
         setupNavigation();
         initAlpha();
+
         initLocation();
         setupViewPager();
         initData();
@@ -228,13 +229,6 @@ public class MainActivity extends BaseActivity {
      */
     public void updateCurDrawerType() {
 
-//                DebugLog.e("test drawer chen-->");
-//                ((MainViewPagerAdapter)mViewPager.getAdapter()).getItem(mViewPager.getCurrentItem()).getDrawerType();
-//                int position = mViewPager.getCurrentItem();
-//                DebugLog.e("test drawer chen--> " + position);
-//                BaseFragment fragment = viewPagerAdapter.getItem(position);
-//                BaseDrawer.Type type = fragment.getDrawerType();
-
         DebugLog.e("test drawer chen type--> ");
         mDynamicWeatherView.setDrawerType(((MainViewPagerAdapter) mViewPager.
                 getAdapter()).getItem(mViewPager.getCurrentItem()).getDrawerType());
@@ -274,21 +268,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void tintStatusBarApi19() {
-//        Window window = getWindow();
-//        WindowManager.LayoutParams windowLayoutParams = window.getAttributes();
-//        windowLayoutParams.flags |= WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-//        window.setAttributes(windowLayoutParams);
-//
-//        View hackyStatusView = findViewById(R.id.fake_status_bar);
-//        if (null != hackyStatusView) {
-//            RelativeLayout.LayoutParams statusViewLayoutParams =
-//                    new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-//                            UiUtil.getStatusBarHeight());
-//            hackyStatusView.setLayoutParams(statusViewLayoutParams);
-//            TypedValue typedValue = new TypedValue();
-//            getTheme().resolveAttribute(R.attr.colorPrimary, typedValue, true);
-//            hackyStatusView.setBackgroundColor(typedValue.data);
-//        }
     }
 
 

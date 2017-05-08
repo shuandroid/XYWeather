@@ -4,6 +4,10 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Toast;
 
 import java.net.ConnectException;
 import java.text.SimpleDateFormat;
@@ -37,6 +41,16 @@ public class UtilManger {
             e.printStackTrace();
         }
         return false;
+    }
+
+
+    public static void showCreditToast(int layout, Context context) {
+        View view = LayoutInflater.from(context).inflate(layout, null);
+        Toast toast = new Toast(context);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(view);
+        toast.show();
     }
 
 

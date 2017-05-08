@@ -11,6 +11,7 @@ import com.chen.xyweather.model.UserHelper;
 import com.chen.xyweather.model.UserInstance;
 import com.chen.xyweather.model.UserModel;
 import com.chen.xyweather.view.CircleImageView;
+import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -86,7 +87,9 @@ public class InfoActivity extends BaseActivity {
         mInfoUsername.setText(mUserHelper.getmUser().getNickName() == null ?
                 mUserHelper.getmPhone() : mUserHelper.getmUser().getNickName());
         mPhone.setText(mUserHelper.getmPhone());
-//        mUserImage
+        if (mUserHelper.getmAvatar() != null) {
+            mUserImage.setImageBitmap(mUserHelper.getmAvatar());
+        }
 
     }
 
