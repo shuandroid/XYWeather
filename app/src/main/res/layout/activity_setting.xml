@@ -108,20 +108,4 @@
         android:layout_width="match_parent"
         android:layout_height="2dp" />
 
-    <RelativeLayout
-        android:id="@+id/s_update"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white_background">
-
-        <ImageView
-            style="@style/setting_item_i"
-            android:src="@mipmap/s_update" />
-
-        <TextView
-            style="@style/setting_item_tv"
-            android:text="@string/s_update" />
-
-    </RelativeLayout>
-
 </LinearLayout>

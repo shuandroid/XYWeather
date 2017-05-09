@@ -82,7 +82,8 @@
         <activity android:name=".ui.ChangeNameActivity" />
         <activity android:name=".ui.ShareActivity" />
         <activity android:name="com.avos.avoscloud.feedback.ThreadActivity" />
-        <activity android:name=".ui.AboutActivity"></activity>
+        <activity android:name=".ui.AboutActivity" />
+        <activity android:name=".ui.NoticeActivity"></activity>
     </application>
 
 </manifest>

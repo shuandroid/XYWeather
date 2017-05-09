@@ -58,7 +58,7 @@
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/img_user_null"
                 android:gravity="center"
-                android:text="昵称"
+                android:text="@string/info_name"
                 android:textSize="16sp" />
 
             <TextView
@@ -103,7 +103,7 @@
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/img_num_null"
                 android:gravity="center"
-                android:text="手机号"
+                android:text="@string/info_num"
                 android:textSize="16sp" />
 
             <TextView
@@ -141,7 +141,7 @@
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/img_psw_null"
                 android:gravity="center"
-                android:text="密码"
+                android:text="@string/info_psw"
                 android:textSize="16sp" />
 
             <TextView
@@ -150,7 +150,7 @@
                 android:layout_height="match_parent"
                 android:layout_toLeftOf="@+id/img_psw"
                 android:gravity="center"
-                android:text="修改"
+                android:text="@string/info_change"
                 android:textSize="15sp" />
 
             <View
@@ -173,7 +173,7 @@
         android:layout_marginRight="@dimen/padding_medium"
         android:layout_marginTop="@dimen/padding_medium"
         android:background="@drawable/login_background_border"
-        android:text="退出登录"
+        android:text="@string/info_exit"
         android:textColor="@color/white_background"
         android:textSize="@dimen/text_size_large" />
 

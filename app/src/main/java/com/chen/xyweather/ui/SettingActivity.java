@@ -33,11 +33,11 @@ public class SettingActivity extends BaseActivity {
     @Bind(R.id.s_account)
     protected RelativeLayout mAccount;
 
-    @Bind(R.id.s_update)
-    protected RelativeLayout mUpdate;
+
 
     @OnClick(R.id.s_notice)
     protected void notice() {
+        startActivity(new Intent(SettingActivity.this,NoticeActivity.class));
     }
 
 
@@ -60,10 +60,7 @@ public class SettingActivity extends BaseActivity {
         finish();
     }
 
-    @OnClick(R.id.s_update)
-    protected void update(){
 
-    }
 
     @Override
     protected void setupContentView() {
