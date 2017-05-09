@@ -48,21 +48,24 @@ dependencies {
     compile 'com.android.support:design:23.2.1'
     testCompile 'junit:junit:4.12'
     compile files('libs/AMap_Location_V3.3.0_20170118.jar')
-    compile'org.greenrobot:greendao:3.0.1'
-    compile'org.greenrobot:greendao-generator:3.0.0'
+    compile 'org.greenrobot:greendao:3.0.1'
+    compile 'org.greenrobot:greendao-generator:3.0.0'
 
-    compile ('cn.leancloud.android:avoscloud-sdk:v3.+')
+    compile('cn.leancloud.android:avoscloud-sdk:v3.+')
 
     // 推送与实时聊天需要的包
-    compile ('cn.leancloud.android:avoscloud-push:v3.+@aar'){transitive = true}
+    compile('cn.leancloud.android:avoscloud-push:v3.+@aar') { transitive = true }
 
     // LeanCloud 统计包
-    compile ('cn.leancloud.android:avoscloud-statistics:v3.+')
+    compile('cn.leancloud.android:avoscloud-statistics:v3.+')
 
     // LeanCloud 用户反馈包
-    compile ('cn.leancloud.android:avoscloud-feedback:v3.+@aar')
+    compile('cn.leancloud.android:avoscloud-feedback:v3.+@aar')
 
-    //图片显示
+    //分享图片显示
     compile 'com.squareup.picasso:picasso:2.3.2'
     compile 'com.google.code.gson:gson:2.2.4'
+
+    //消息通知switch button
+    compile 'com.github.zcweng:switch-button:0.0.3@aar'
 }
