@@ -19,18 +19,16 @@ public class AboutActivity extends BaseActivity {
     @Override
     protected void setupContentView() {
         setContentView(R.layout.activity_about);
-        ButterKnife.bind(this);
-        mTextView.setText("关于我们");
     }
 
     @Override
     protected void findViews() {
-
+        ButterKnife.bind(this);
     }
 
     @Override
     protected void setupActionbar() {
-
+        mTextView.setText("关于我们");
     }
 
     @Override

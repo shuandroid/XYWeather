@@ -133,7 +133,9 @@ public class MainActivity extends BaseActivity {
     }
 
     private boolean isUser() {
-        return UserInstance.getInstance().getmUserStatus().equals(UserHelper.USER_STATUS.VALID);
+        boolean valid = UserInstance.getInstance().getmUserStatus().equals(UserHelper.USER_STATUS.VALID);
+        DebugLog.e("isUser " + valid);
+        return valid;
     }
 
     /**
@@ -144,8 +146,6 @@ public class MainActivity extends BaseActivity {
         View headerView = mNavigation.getHeaderView(0);
         CircleImageView imageView = (CircleImageView) headerView.findViewById(R.id.nav_head_circle_view_header);
         TextView phone = (TextView) headerView.findViewById(R.id.nav_head_username);
-
-
         if (isUser()) {
             //
             DebugLog.e("avatar");
