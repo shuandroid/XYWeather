@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
@@ -29,6 +30,9 @@ public class RegisterActivity extends BaseActivity {
 
     @Bind(R.id.toolbar)
     protected Toolbar mToolbar;
+
+    @Bind(R.id.toolbar_title)
+    protected TextView mTitle;
 
     @Bind(R.id.register_phone)
     protected EditText mRegisterPhone;
@@ -58,9 +62,6 @@ public class RegisterActivity extends BaseActivity {
         }
     }
 
-
-
-
     @OnClick(R.id.register)
     protected void register() {
 
@@ -82,9 +83,7 @@ public class RegisterActivity extends BaseActivity {
     @Override
     protected void setupActionbar() {
 
-        mToolbar.setTitle("注册");
-        setSupportActionBar(mToolbar);
-
+        mTitle.setText("注册");
     }
 
     @Override
