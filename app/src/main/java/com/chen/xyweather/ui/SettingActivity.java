@@ -1,6 +1,7 @@
 package com.chen.xyweather.ui;
 
 
+import android.content.Intent;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -52,6 +53,17 @@ public class SettingActivity extends BaseActivity {
         mCache.setText("0KB");
     }
 
+    @OnClick(R.id.s_account)
+    protected void account(){
+        Intent intent = new Intent(SettingActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @OnClick(R.id.s_update)
+    protected void update(){
+
+    }
 
     @Override
     protected void setupContentView() {

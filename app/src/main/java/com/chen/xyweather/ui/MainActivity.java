@@ -109,13 +109,13 @@ public class MainActivity extends BaseActivity {
         setupNavigation();
         initAlpha();
 
-        if (!DBManger.isMapGet(this)) {
-            initLocation();
-            DebugLog.e("第一次定位");
-        }
-      //  initLocation();
+//        if (!DBManger.isMapGet(this)) {
+//            initLocation();
+//            DebugLog.e("第一次定位");
+//        }
+        initLocation();
 
-        DebugLog.e("saved " + DBManger.isSaved(this, "北京"));
+//        DebugLog.e("saved " + DBManger.isSaved(this, "北京"));
         setupViewPager();
         initData();
     }
@@ -330,9 +330,9 @@ public class MainActivity extends BaseActivity {
                 //解析定位结果
                 locationResult = Utils.getLocationStr(loc);
                 DebugLog.e("get:" + locationResult);
-                if (locationResult != null) {
-                    DBManger.insertLocalCity(MainActivity.this, locationResult);
-                }
+//                if (locationResult != null) {
+//                    DBManger.insertLocalCity(MainActivity.this, locationResult);
+//                }
                 stopLocation();
             } else {
                 locationResult = "武汉";

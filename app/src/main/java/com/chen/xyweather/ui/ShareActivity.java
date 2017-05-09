@@ -35,7 +35,7 @@ import butterknife.ButterKnife;
 public class ShareActivity extends BaseActivity {
 
     private static RecyclerView recyclerview;
-    private LinearLayout coordinatorLayout;
+    private LinearLayout mLayout;
     private GridAdapter mAdapter;
     private List<Pictures> mPictures;
     private StaggeredGridLayoutManager mLayoutManager;
@@ -43,6 +43,7 @@ public class ShareActivity extends BaseActivity {
     private int page=1;
     private ItemTouchHelper itemTouchHelper;
     private SwipeRefreshLayout swipeRefreshLayout;
+
 
     @Override
     protected void setupContentView() {
@@ -56,7 +57,7 @@ public class ShareActivity extends BaseActivity {
     }
 
     private void initView(){
-        coordinatorLayout=(LinearLayout) findViewById(R.id.layout);
+        mLayout=(LinearLayout) findViewById(R.id.layout);
 
         recyclerview=(RecyclerView)findViewById(R.id.staggered_recycler);
         mLayoutManager=new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
@@ -178,7 +179,7 @@ public class ShareActivity extends BaseActivity {
                         @Override
                         public void onItemClick(View view) {
                             int position=recyclerview.getChildAdapterPosition(view);
-                            SnackbarUtil.ShortSnackbar(coordinatorLayout,"点击第"+position+"个",SnackbarUtil.Info).show();
+                            SnackbarUtil.ShortSnackbar(mLayout,"点击第"+position+"个",SnackbarUtil.Info).show();
                         }
 
                         @Override
