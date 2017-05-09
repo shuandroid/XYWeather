@@ -57,6 +57,10 @@ public class MainActivity extends BaseActivity {
 
     protected List<BaseFragment> fragments;
 
+    private CircleImageView mHeadImage;
+    private View mHeadView;
+    private TextView mHeadPhone;
+
     private long clickTime = 0;
 
     public static Typeface typeface;
@@ -117,7 +121,30 @@ public class MainActivity extends BaseActivity {
 
 //        DebugLog.e("saved " + DBManger.isSaved(this, "北京"));
         setupViewPager();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         initData();
+        updateHead();
+    }
+
+    /**
+     * 更新侧滑栏头部
+     */
+    private void updateHead() {
+        if (isUser()) {
+            //
+            DebugLog.e("avatar");
+            if (UserInstance.getInstance().getmAvatar() != null) {
+                mHeadImage.setImageBitmap(UserInstance.getInstance().getmAvatar());
+                DebugLog.e("avatar is not null");
+            }
+            mHeadPhone.setText(UserInstance.getInstance().getmPhone());
+        } else {
+            mHeadPhone.setText("未登录");
+        }
     }
 
     @Override
@@ -143,21 +170,11 @@ public class MainActivity extends BaseActivity {
      */
     private void setupNavigation() {
 
-        View headerView = mNavigation.getHeaderView(0);
-        CircleImageView imageView = (CircleImageView) headerView.findViewById(R.id.nav_head_circle_view_header);
-        TextView phone = (TextView) headerView.findViewById(R.id.nav_head_username);
-        if (isUser()) {
-            //
-            DebugLog.e("avatar");
-            if (UserInstance.getInstance().getmAvatar() != null) {
-                imageView.setImageBitmap(UserInstance.getInstance().getmAvatar());
-                DebugLog.e("avatar is not null");
-            }
-            phone.setText(UserInstance.getInstance().getmPhone());
-        } else {
-            phone.setText("未登录");
-        }
-        imageView.setOnClickListener(new View.OnClickListener() {
+        mHeadView = mNavigation.getHeaderView(0);
+        mHeadImage = (CircleImageView) mHeadView.findViewById(R.id.nav_head_circle_view_header);
+        mHeadPhone = (TextView) mHeadView.findViewById(R.id.nav_head_username);
+
+        mHeadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isUser()) {
@@ -169,6 +186,8 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
+
+
         //监听
         mNavigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -201,7 +220,6 @@ public class MainActivity extends BaseActivity {
                     default:
                         break;
                 }
-
                 mDrawerLayout.closeDrawers();
                 return true;
             }

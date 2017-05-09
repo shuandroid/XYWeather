@@ -3,13 +3,19 @@ package com.chen.xyweather.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.SaveCallback;
+import com.avos.avoscloud.UpdatePasswordCallback;
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
 import com.chen.xyweather.model.UserHelper;
 import com.chen.xyweather.model.UserInstance;
 import com.chen.xyweather.model.UserModel;
+import com.chen.xyweather.utils.DebugLog;
+import com.chen.xyweather.utils.UtilManger;
 import com.chen.xyweather.view.CircleImageView;
 import com.squareup.picasso.Picasso;
 
@@ -19,11 +25,10 @@ import butterknife.OnClick;
 
 public class InfoActivity extends BaseActivity {
 
-    private static int REQUEST_PSW = 1;
-    private static int REQUEST_NICK = 2;
-    private static int REQUEST_IMAGE = 3;
-
-
+    private static final int REQUEST_PSW = 1;
+    private static final int REQUEST_NICK = 2;
+    private static final int REQUEST_IMAGE = 3;
+    private static final int REQUEST_OK = 10;
 
     private UserHelper mUserHelper;
 
@@ -46,10 +51,10 @@ public class InfoActivity extends BaseActivity {
     protected Button mBtnLogout;
 
 
-    @OnClick(R.id.tv_info_username)
+    @OnClick(R.id.change_nick_name)
     protected void changeName() {
-
-
+        Intent intent = new Intent(this, ChangeNameActivity.class);
+        startActivityForResult(intent, REQUEST_NICK);
     }
 
     @OnClick(R.id.password)
@@ -84,8 +89,8 @@ public class InfoActivity extends BaseActivity {
     protected void setupViews() {
 
         mUserHelper = UserInstance.getInstance();
-        mInfoUsername.setText(mUserHelper.getmUser().getNickName() == null ?
-                mUserHelper.getmPhone() : mUserHelper.getmUser().getNickName());
+        mInfoUsername.setText(mUserHelper.getmUser().getUsername() == null ?
+                mUserHelper.getmPhone() : mUserHelper.getmUser().getUsername());
         mPhone.setText(mUserHelper.getmPhone());
         if (mUserHelper.getmAvatar() != null) {
             mUserImage.setImageBitmap(mUserHelper.getmAvatar());
@@ -96,7 +101,47 @@ public class InfoActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        // TODO: 17-5-5 针对不同的修改，做处理
+        String temp;
+        if (resultCode == REQUEST_OK) {
+            switch (requestCode) {
+                case REQUEST_NICK:
+                    temp = data.getStringExtra("nick_name");
+                    mUserHelper.getmUser().setNickName(temp);
+                    mUserHelper.getmUser().saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(AVException e) {
+                            if (e == null) {
+                                mInfoUsername.setText(mUserHelper.getmUser().getNickName());
+                            } else {
+                                UtilManger.handleError(InfoActivity.this, e.getCode());
+                            }
+                        }
+                    });
+                    mInfoUsername.setText(temp);
+                    break;
+                case REQUEST_IMAGE:
+                    break;
+                case REQUEST_PSW:
+                    String oldPassword;
+                    temp = data.getStringExtra("password");
+                    oldPassword = data.getStringExtra("oldPassword");
+                    DebugLog.e("now_password" + temp);
+                    mUserHelper.getmUser().updatePasswordInBackground(oldPassword, temp, new UpdatePasswordCallback() {
+                        @Override
+                        public void done(AVException e) {
+                            if (e == null) {
+                                UtilManger.showCreditToast(R.layout.toast_success, InfoActivity.this);
+                            } else {
+                                UtilManger.handleError(InfoActivity.this, e.getCode());
+                            }
+                        }
+                    });
+                    break;
+                default:
+                    break;
+            }
+        }
+
     }
 
     @Override

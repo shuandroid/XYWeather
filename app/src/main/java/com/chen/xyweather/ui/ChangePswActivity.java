@@ -1,6 +1,7 @@
 package com.chen.xyweather.ui;
 
 import android.app.UiModeManager;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -37,7 +38,7 @@ public class ChangePswActivity extends BaseActivity {
 
     @OnClick(R.id.change_confirm)
     protected void changeConfirm() {
-
+        attempChange();
     }
 
     @Override
@@ -48,7 +49,6 @@ public class ChangePswActivity extends BaseActivity {
     @Override
     protected void findViews() {
         ButterKnife.bind(this);
-
     }
 
     @Override
@@ -89,6 +89,14 @@ public class ChangePswActivity extends BaseActivity {
             focusView.requestFocus();
         }
 
+        if (cancel) {
+
+        } else {
+            Intent intent = new Intent(this, InfoActivity.class);
+            intent.putExtra("password", passwordFirst);
+            setResult(10, intent);
+            finish();
+        }
 
 
 

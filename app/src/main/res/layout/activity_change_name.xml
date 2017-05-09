@@ -31,10 +31,11 @@
 
             <EditText
                 android:id="@+id/new_name"
-                android:layout_width="300dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_medium"
                 android:layout_marginStart="@dimen/padding_medium"
+                android:layout_weight="1"
                 android:background="@null"
                 android:hint="@string/change_input_name"
                 android:singleLine="true"
@@ -46,9 +47,7 @@
                 android:id="@+id/clear_name"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@mipmap/cross"
-
-                />
+                android:src="@mipmap/cross" />
         </LinearLayout>
 
     </LinearLayout>

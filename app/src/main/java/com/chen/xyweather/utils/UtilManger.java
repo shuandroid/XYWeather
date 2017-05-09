@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
+import com.chen.xyweather.R;
+
 import java.net.ConnectException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -156,6 +158,25 @@ public class UtilManger {
             return true;
         }
         return false;
+    }
+
+    public static void handleError(Context context, int error) {
+        String tip = "";
+        switch (error) {
+            case 0:
+                tip = context.getString(R.string.network_invalid);
+                break;
+            case 202:
+                tip = context.getString(R.string.phone_occupied);
+                break;
+            case 210:
+                tip = context.getString(R.string.password_wrong);
+                break;
+            case 502:
+                tip = context.getString(R.string.server_maintenance);
+                break;
+        }
+        Toast.makeText(context, tip, Toast.LENGTH_SHORT).show();
     }
 
 }

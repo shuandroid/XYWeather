@@ -39,6 +39,7 @@
         android:paddingTop="@dimen/padding_medium">
 
         <RelativeLayout
+            android:id="@+id/change_nick_name"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@color/white_background"

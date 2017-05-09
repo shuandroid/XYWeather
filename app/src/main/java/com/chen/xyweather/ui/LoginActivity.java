@@ -134,7 +134,6 @@ public class LoginActivity extends BaseActivity {
                 public void done(UserModel userModel, AVException e) {
                     //登录成功
                     if (e == null) {
-                        // TODO: 17-5-4 如何给本地一个已经登录的状态
                         if (userModel != null) {
                             mUserHelper.refresh();
                             LoginActivity.this.finish();

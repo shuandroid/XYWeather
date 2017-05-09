@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.GetDataCallback;
 import com.avos.avoscloud.LogInCallback;
+import com.avos.avoscloud.SaveCallback;
 import com.chen.xyweather.ui.MainActivity;
 import com.chen.xyweather.utils.UiUtil;
 
@@ -79,6 +80,19 @@ public class UserHelper {
                 }
             });
         }
+    }
+
+    public void update() {
+        mUser.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(AVException e) {
+                if (e == null) {
+
+                } else {
+                    e.getCode();
+                }
+            }
+        });
     }
 
 }

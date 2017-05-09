@@ -74,4 +74,9 @@
     <string name="register">快速注册</string>
     <string name="reg">注册</string>
 
+    <string name="network_invalid">无效的网络链接</string>
+    <string name="phone_occupied">手机号码已被注册</string>
+    <string name="password_wrong">用户名和密码不匹配</string>
+    <string name="server_maintenance">服务器维护中</string>
+
 </resources>
