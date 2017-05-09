@@ -68,7 +68,7 @@ public class MainActivity extends BaseActivity {
     //定位相关
     private AMapLocationClient locationClient = null;
     private AMapLocationClientOption locationOption = new AMapLocationClientOption();
-    private String locationResult = "北京";
+    private String locationResult;
 
     @Bind(R.id.drawer_layout)
     protected DrawerLayout mDrawerLayout;
@@ -109,13 +109,13 @@ public class MainActivity extends BaseActivity {
         setupNavigation();
         initAlpha();
 
-//        if (!DBManger.isMapGet(this)) {
-//            initLocation();
-//            DebugLog.e("第一次定位");
-//        }
-        initLocation();
+        if (!DBManger.isMapGet(this)) {
+            initLocation();
+            DebugLog.e("第一次定位");
+        }
+      //  initLocation();
 
-//        DebugLog.e("saved " + DBManger.isSaved(this, "武汉市"));
+        DebugLog.e("saved " + DBManger.isSaved(this, "北京"));
         setupViewPager();
         initData();
     }
@@ -194,7 +194,7 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.nav_about:
                         item.setChecked(true);
-                        startActivity(new Intent(MainActivity.this,AboutActivity.class));
+                        startActivity(new Intent(MainActivity.this, AboutActivity.class));
                     case R.id.nav_menu_care:
                         item.setChecked(true);
                         break;
@@ -330,7 +330,9 @@ public class MainActivity extends BaseActivity {
                 //解析定位结果
                 locationResult = Utils.getLocationStr(loc);
                 DebugLog.e("get:" + locationResult);
-                DBManger.insertLocalCity(MainActivity.this, locationResult);
+                if (locationResult != null) {
+                    DBManger.insertLocalCity(MainActivity.this, locationResult);
+                }
                 stopLocation();
             } else {
                 locationResult = "武汉";
@@ -371,6 +373,7 @@ public class MainActivity extends BaseActivity {
             locationOption = null;
         }
     }
+
     /**
      * 停止定位
      */
