@@ -79,4 +79,9 @@
     <string name="password_wrong">用户名和密码不匹配</string>
     <string name="server_maintenance">服务器维护中</string>
 
+    <array name="tab_title">
+        <item>聊天</item>
+        <item>添加</item>
+    </array>
+
 </resources>

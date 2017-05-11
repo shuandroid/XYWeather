@@ -233,6 +233,7 @@ public class MainActivity extends BaseActivity {
                         startActivity(new Intent(MainActivity.this, AboutActivity.class));
                     case R.id.nav_menu_care:
                         item.setChecked(true);
+                        startActivity(new Intent(MainActivity.this, CareActivity.class));
                         break;
                     default:
                         break;

@@ -33,5 +33,6 @@
     <color name="choose_city_edit_text_color">#ff94989d</color>
 
     <color name="toast_back">#a0000000</color>
+    <color name="hint_text_color">#999999</color>
 
 </resources>

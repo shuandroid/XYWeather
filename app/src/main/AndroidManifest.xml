@@ -83,6 +83,8 @@
         <activity android:name=".ui.ShareActivity" />
         <activity android:name="com.avos.avoscloud.feedback.ThreadActivity" />
         <activity android:name=".ui.AboutActivity" />
+        <activity android:name=".ui.NoticeActivity" />
+        <activity android:name=".ui.CareActivity"></activity>
         <activity android:name=".ui.NoticeActivity"/>
         <activity
             android:name="com.zaaach.citypicker.CityPickerActivity"
