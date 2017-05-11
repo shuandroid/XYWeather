@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="192dp"
-    android:background="@color/xy_theme"
+    android:background="@color/colorPrimary"
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:padding="@dimen/padding_small">
@@ -14,7 +14,7 @@
         android:layout_height="70dp"
         android:layout_gravity="center"
         android:layout_marginTop="38dp"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/head" />
 
     <TextView
         android:id="@+id/nav_head_username"

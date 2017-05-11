@@ -1,8 +1,6 @@
 package com.chen.xyweather.ui;
 
-import android.app.Activity;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -10,10 +8,8 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
 
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
@@ -34,17 +30,26 @@ import butterknife.ButterKnife;
 
 public class ShareActivity extends BaseActivity {
 
-    private static RecyclerView recyclerview;
-    private LinearLayout mLayout;
+
+
+//    private static RecyclerView recyclerview;
+//    private LinearLayout mLayout;
     private GridAdapter mAdapter;
     private List<Pictures> mPictures;
     private StaggeredGridLayoutManager mLayoutManager;
     private int lastVisibleItem ;
     private int page=1;
     private ItemTouchHelper itemTouchHelper;
-    private SwipeRefreshLayout swipeRefreshLayout;
+//    private SwipeRefreshLayout swipeRefreshLayout;
 
-
+    @Bind(R.id.staggered_recycler)
+    protected RecyclerView recyclerview;
+    @Bind(R.id.layout)
+    protected LinearLayout mLayout;
+    @Bind(R.id.staggered_swipe_refresh)
+    protected SwipeRefreshLayout swipeRefreshLayout;
+    @Bind(R.id.share_take_photo)
+    protected ImageView mImageView;
     @Override
     protected void setupContentView() {
         setContentView(R.layout.activity_share);
@@ -57,13 +62,13 @@ public class ShareActivity extends BaseActivity {
     }
 
     private void initView(){
-        mLayout=(LinearLayout) findViewById(R.id.layout);
-
-        recyclerview=(RecyclerView)findViewById(R.id.staggered_recycler);
+//        mLayout=(LinearLayout) findViewById(R.id.layout);
+//
+//        recyclerview=(RecyclerView)findViewById(R.id.staggered_recycler);
         mLayoutManager=new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerview.setLayoutManager(mLayoutManager);
 
-        swipeRefreshLayout=(SwipeRefreshLayout) findViewById(R.id.staggered_swipe_refresh) ;
+//        swipeRefreshLayout=(SwipeRefreshLayout) findViewById(R.id.staggered_swipe_refresh) ;
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,R.color.colorPrimaryDark,R.color.colorAccent);
         swipeRefreshLayout.setProgressViewOffset(false, 0,  (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources().getDisplayMetrics()));
 

@@ -43,6 +43,7 @@ import com.chen.xyweather.view.drawer.BaseDrawer;
 import com.chen.xyweather.view.pager.MainViewPagerAdapter;
 import com.chen.xyweather.view.pager.MyViewPager;
 import com.chen.xyweather.view.pager.ViewPager;
+import com.zaaach.citypicker.CityPickerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +70,9 @@ public class MainActivity extends BaseActivity {
         return typeface;
     }
 
+    //城市选择
+    private static final int REQUEST_CODE_PICK_CITY = 0;
+    private String citychoose;
     //定位相关
     private AMapLocationClient locationClient = null;
     private AMapLocationClientOption locationOption = new AMapLocationClientOption();
@@ -152,7 +156,17 @@ public class MainActivity extends BaseActivity {
         super.onDestroy();
         destroyLocation();
     }
-
+    //重写onActivityResult方法
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_PICK_CITY && resultCode == RESULT_OK){
+            if (data != null){
+                //cityname为选择城市获得的信息
+                citychoose = data.getStringExtra(CityPickerActivity.KEY_PICKED_CITY);
+                Toast.makeText(MainActivity.this,citychoose,Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
     /**
      * 初始化用户数据
      */
@@ -199,8 +213,11 @@ public class MainActivity extends BaseActivity {
                         startActivity(new Intent(MainActivity.this, SettingActivity.class));
                         break;
                     case R.id.nav_add_city:
-                        addCity("北京");
-                        mViewPager.setCurrentItem(fragments.size() - 1, true);
+                        //启动
+                        startActivityForResult(new Intent(MainActivity.this, CityPickerActivity.class),
+                                REQUEST_CODE_PICK_CITY);
+//                        addCity(citychoose);
+//                        mViewPager.setCurrentItem(fragments.size() - 1, true);
                         break;
                     case R.id.nav_feedback:
                         item.setChecked(true);
