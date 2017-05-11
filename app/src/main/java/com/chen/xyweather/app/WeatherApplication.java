@@ -6,6 +6,10 @@ import android.os.Bundle;
 
 import com.avos.avoscloud.AVAnalytics;
 import com.avos.avoscloud.AVOSCloud;
+import com.avos.avoscloud.im.v2.AVIMMessageManager;
+import com.chen.xyweather.model.CustomUserProvider;
+
+import cn.leancloud.chatkit.LCChatKit;
 
 /**
  * Created by chen on 17-3-14.
@@ -17,8 +21,13 @@ public class WeatherApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        AVOSCloud.initialize(this, "9KWSy8VuDTOGJzGxvQW46UIR-gzGzoHsz", "pKFyE7QhEN9PCOGIafXwMqmv");
+        String appId = "9KWSy8VuDTOGJzGxvQW46UIR-gzGzoHsz";
+        String appKey = "pKFyE7QhEN9PCOGIafXwMqmv";
+        AVOSCloud.initialize(this, appId, appKey);
         AVAnalytics.enableCrashReport(this, true);
+        LCChatKit.getInstance().setProfileProvider(CustomUserProvider.getInstance());
+        LCChatKit.getInstance().init(this, appId, appKey);
+
 
 
         this.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {

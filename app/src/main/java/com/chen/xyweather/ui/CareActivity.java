@@ -19,6 +19,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import cn.leancloud.chatkit.activity.LCIMConversationFragment;
 
 public class CareActivity extends BaseActivity {
 
@@ -66,7 +67,7 @@ public class CareActivity extends BaseActivity {
     private void initFragment() {
         mTabTitle = getResources().getStringArray(R.array.tab_title);
         fragments = new ArrayList<>();
-        fragments.add(new ChatFragment());
+        fragments.add(new LCIMConversationFragment());
         fragments.add(new DiscoverFragment());
 
     }

@@ -18,8 +18,8 @@
         android:background="@color/white_background"
         app:tabGravity="fill"
         app:tabIndicatorColor="@color/colorPrimary"
-        app:tabMaxWidth="120dp"
-        app:tabMinWidth="120dp"
+        app:tabMaxWidth="180dp"
+        app:tabMinWidth="180dp"
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/colorPrimary"
         app:tabTextColor="@color/hint_text_color">

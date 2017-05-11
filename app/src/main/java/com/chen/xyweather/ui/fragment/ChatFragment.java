@@ -17,20 +17,7 @@ import cn.leancloud.chatkit.activity.LCIMConversationListFragment;
  */
 public class ChatFragment extends LCIMConversationListFragment {
 
-
     public ChatFragment() {
         // Required empty public constructor
     }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-
-        TextView textView = new TextView(getActivity());
-        textView.setText(R.string.hello_blank_fragment);
-        return textView;
-    }
-
 }

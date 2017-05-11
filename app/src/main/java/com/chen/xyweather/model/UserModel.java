@@ -9,6 +9,9 @@ import com.avos.avoscloud.AVUser;
  */
 public class UserModel extends AVUser {
 
+
+
+
     public UserModel() {
 
     }

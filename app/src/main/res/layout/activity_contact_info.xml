@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_default" />
+
+    <LinearLayout
+        android:id="@+id/info_circle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/toolbar"
+        android:background="@color/xy_white_background"
+        android:orientation="vertical">
+
+        <com.chen.xyweather.view.CircleImageView
+            android:id="@+id/info_user_img"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/head" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_circle"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/padding_small"
+        android:paddingTop="@dimen/padding_medium">
+
+        <RelativeLayout
+            android:id="@+id/change_nick_name"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/white_background"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/padding_medium"
+            android:paddingRight="@dimen/padding_medium">
+
+            <View
+                android:id="@+id/img_user_null"
+                android:layout_width="22dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:background="@mipmap/user" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/img_user_null"
+                android:gravity="center"
+                android:text="@string/info_name"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_info_username"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@+id/img_user"
+                android:gravity="center"
+                android:text="username"
+                android:textSize="15sp" />
+
+            <View
+                android:id="@+id/img_user"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@mipmap/forward" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/white_background"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/padding_medium"
+            android:paddingRight="@dimen/padding_medium">
+
+            <View
+                android:id="@+id/img_num_null"
+                android:layout_width="22dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:background="@mipmap/phone_grey" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/img_num_null"
+                android:gravity="center"
+                android:text="@string/info_num"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_info_num"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:text="num"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/add_friend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/padding_medium"
+        android:layout_marginLeft="@dimen/padding_medium"
+        android:layout_marginRight="@dimen/padding_medium"
+        android:layout_marginTop="@dimen/padding_medium"
+        android:background="@drawable/login_background_border"
+        android:text="添加好友"
+        android:textColor="@color/white_background"
+        android:textSize="@dimen/text_size_large" />
+
+
+</LinearLayout>
