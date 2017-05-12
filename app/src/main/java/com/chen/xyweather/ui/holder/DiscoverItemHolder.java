@@ -29,7 +29,7 @@ public class DiscoverItemHolder extends LCIMCommonViewHolder<UserModel> {
     private UserModel user;
 
 
-    public DiscoverItemHolder(Context context, ViewGroup root, int layoutRes) {
+    public DiscoverItemHolder(Context context, ViewGroup root) {
         super(context, root, R.layout.discover_near_people_item);
         initView();
     }
@@ -65,5 +65,12 @@ public class DiscoverItemHolder extends LCIMCommonViewHolder<UserModel> {
             avatarView.setImageResource(0);
         }
     }
+
+    public static ViewHolderCreator HOLDER_CREATOR = new ViewHolderCreator<DiscoverItemHolder>() {
+        @Override
+        public DiscoverItemHolder createByViewGroupAndType(ViewGroup parent, int viewType) {
+            return new DiscoverItemHolder(parent.getContext(), parent);
+        }
+    };
 
 }
