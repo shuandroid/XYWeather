@@ -1,4 +1,4 @@
-package com.chen.xyweather.ui;
+package com.chen.xyweather.ui.activity;
 
 import android.os.AsyncTask;
 import android.support.v4.widget.SwipeRefreshLayout;

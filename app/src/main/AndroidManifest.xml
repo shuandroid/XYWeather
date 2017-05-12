@@ -49,7 +49,7 @@
         <service android:name="com.amap.api.location.APSService" />
 
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:theme="@style/XYWAppTheme.Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -58,10 +58,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".base.BaseActivity" />
-        <activity android:name=".ui.LoginActivity" />
-        <activity android:name=".ui.RegisterActivity" />
-        <activity android:name=".ui.InfoActivity" />
-        <activity android:name=".ui.SettingActivity" />
+        <activity android:name=".ui.activity.LoginActivity" />
+        <activity android:name=".ui.activity.RegisterActivity" />
+        <activity android:name=".ui.activity.InfoActivity" />
+        <activity android:name=".ui.activity.SettingActivity" />
         <!-- feedback -->
         <activity android:name="com.avos.avoscloud.feedback.ThreadActivity" />
 
@@ -77,24 +77,24 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ui.ForgotPswActivity" />
-        <activity android:name=".ui.ChangePswActivity" />
-        <activity android:name=".ui.ChangeNameActivity" />
-        <activity android:name=".ui.ShareActivity" />
+        <activity android:name=".ui.activity.ForgotPswActivity" />
+        <activity android:name=".ui.activity.ChangePswActivity" />
+        <activity android:name=".ui.activity.ChangeNameActivity" />
+        <activity android:name=".ui.activity.ShareActivity" />
         <activity android:name="com.avos.avoscloud.feedback.ThreadActivity" />
-        <activity android:name=".ui.AboutActivity" />
-        <activity android:name=".ui.NoticeActivity" />
-        <activity android:name=".ui.CareActivity" />
-        <activity android:name=".ui.NoticeActivity" />
-        <activity android:name=".ui.StatusListActivity"/>
-        <activity android:name=".ui.StatusSendActivity"/>
+        <activity android:name=".ui.activity.AboutActivity" />
+        <activity android:name=".ui.activity.NoticeActivity" />
+        <activity android:name=".ui.activity.CareActivity" />
+        <activity android:name=".ui.activity.NoticeActivity" />
+        <activity android:name=".ui.activity.StatusListActivity"/>
+        <activity android:name=".ui.activity.StatusSendActivity"/>
         <activity
             android:name="com.zaaach.citypicker.CityPickerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/CityPicker.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity android:name=".ui.StatusListActivity"/>
-        <activity android:name=".ui.ContactInfoActivity"/>
+        <activity android:name=".ui.activity.StatusListActivity"/>
+        <activity android:name=".ui.activity.ContactInfoActivity"/>
     </application>
 
 </manifest>

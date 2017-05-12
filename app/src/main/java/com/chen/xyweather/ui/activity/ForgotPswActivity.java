@@ -1,4 +1,4 @@
-package com.chen.xyweather.ui;
+package com.chen.xyweather.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

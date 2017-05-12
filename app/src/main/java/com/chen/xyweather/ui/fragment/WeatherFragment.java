@@ -1,4 +1,4 @@
-package com.chen.xyweather.ui;
+package com.chen.xyweather.ui.fragment;
 
 
 import android.os.Bundle;
@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
 import com.chen.xyweather.R;
@@ -19,7 +18,6 @@ import com.chen.xyweather.bean.Weather;
 import com.chen.xyweather.bean.entity.ForecastData;
 import com.chen.xyweather.bean.entity.WeatherData;
 import com.chen.xyweather.utils.DebugLog;
-import com.chen.xyweather.utils.MapUtil;
 import com.chen.xyweather.utils.UtilManger;
 import com.chen.xyweather.view.DailyForecastView;
 import com.chen.xyweather.view.HourlyForecastView;

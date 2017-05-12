@@ -1,11 +1,10 @@
 package com.chen.xyweather.view.widget;
 
 import android.content.Context;
-import android.support.annotation.MainThread;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import com.chen.xyweather.ui.MainActivity;
+import com.chen.xyweather.ui.activity.MainActivity;
 
 /**
  * Created by chen on 17-3-22.

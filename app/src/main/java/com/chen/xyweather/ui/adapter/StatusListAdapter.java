@@ -12,24 +12,19 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVStatus;
 import com.avos.avoscloud.AVUser;
-import com.avos.avoscloud.*;
 import com.avos.avoscloud.SaveCallback;
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseListAdapter;
 import com.chen.xyweather.base.ViewHolder;
 import com.chen.xyweather.bean.Status;
-import com.chen.xyweather.ui.ImageBrowserActivity;
-import com.chen.xyweather.ui.MainActivity;
-import com.chen.xyweather.ui.StatusListActivity;
+import com.chen.xyweather.ui.activity.ImageBrowserActivity;
 import com.chen.xyweather.utils.App;
 import com.chen.xyweather.utils.StatusService;
 import com.chen.xyweather.utils.StatusUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**

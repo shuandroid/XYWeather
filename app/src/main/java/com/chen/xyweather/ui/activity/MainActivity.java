@@ -1,4 +1,4 @@
-package com.chen.xyweather.ui;
+package com.chen.xyweather.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,12 +11,8 @@ import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,21 +24,17 @@ import com.avos.avoscloud.feedback.FeedbackAgent;
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
 import com.chen.xyweather.base.BaseFragment;
-import com.chen.xyweather.data.DBHelper;
-import com.chen.xyweather.data.DBManger;
 import com.chen.xyweather.model.UserHelper;
 import com.chen.xyweather.model.UserInstance;
+import com.chen.xyweather.ui.fragment.WeatherFragment;
 import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.DepthPageTransformer;
 import com.chen.xyweather.utils.UiUtil;
-import com.chen.xyweather.utils.UtilManger;
 import com.chen.xyweather.utils.Utils;
 import com.chen.xyweather.view.CircleImageView;
 import com.chen.xyweather.view.DynamicWeatherView;
-import com.chen.xyweather.view.drawer.BaseDrawer;
 import com.chen.xyweather.view.pager.MainViewPagerAdapter;
 import com.chen.xyweather.view.pager.MyViewPager;
-import com.chen.xyweather.view.pager.ViewPager;
 import com.zaaach.citypicker.CityPickerActivity;
 
 import java.util.ArrayList;

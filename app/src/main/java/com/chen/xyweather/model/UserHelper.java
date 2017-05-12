@@ -1,17 +1,11 @@
 package com.chen.xyweather.model;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.GetDataCallback;
-import com.avos.avoscloud.LogInCallback;
 import com.avos.avoscloud.SaveCallback;
-import com.chen.xyweather.ui.MainActivity;
 import com.chen.xyweather.utils.UiUtil;
-
-import java.security.PublicKey;
 
 /**
  * Created by chen on 17-5-4.

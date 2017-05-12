@@ -1,4 +1,4 @@
-package com.chen.xyweather.ui;
+package com.chen.xyweather.ui.activity;
 
 import android.content.Intent;
 import android.support.v7.widget.Toolbar;
@@ -11,17 +11,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
+import com.avos.avoscloud.im.v2.AVIMClient;
+import com.avos.avoscloud.im.v2.AVIMException;
+import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
 import com.chen.xyweather.model.UserHelper;
 import com.chen.xyweather.model.UserModel;
 import com.chen.xyweather.utils.DebugLog;
+import com.chen.xyweather.utils.UtilManger;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.leancloud.chatkit.LCChatKit;
 
 public class LoginActivity extends BaseActivity {
 
@@ -136,17 +140,32 @@ public class LoginActivity extends BaseActivity {
                     if (e == null) {
                         if (userModel != null) {
                             mUserHelper.refresh();
-                            LoginActivity.this.finish();
-                            Toast.makeText(LoginActivity.this, "成功", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            imLogin();
                         }
                     } else {
-                        Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        UtilManger.handleError(LoginActivity.this, e.getCode());
                     }
                 }
             }, UserModel.class);
         }
     }
+
+    public void imLogin() {
+        LCChatKit.getInstance().open(UserModel.getCurrentUserId(), new AVIMClientCallback() {
+            @Override
+            public void done(AVIMClient avimClient, AVIMException e) {
+                if (e == null) {
+                    LoginActivity.this.finish();
+                    Toast.makeText(LoginActivity.this, "成功", Toast.LENGTH_SHORT).show();
+//                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                } else {
+                    DebugLog.e("lccchatkit error " + e);
+                    UtilManger.handleError(LoginActivity.this, e.getCode());
+                }
+            }
+        });
+    }
+
 
 
     private boolean isPasswordValid(String password) {

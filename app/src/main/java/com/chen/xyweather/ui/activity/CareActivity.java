@@ -1,4 +1,4 @@
-package com.chen.xyweather.ui;
+package com.chen.xyweather.ui.activity;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -9,9 +9,12 @@ import android.widget.TextView;
 
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
+import com.chen.xyweather.model.UserHelper;
+import com.chen.xyweather.model.UserModel;
 import com.chen.xyweather.ui.adapter.CareViewPagerAdapter;
 import com.chen.xyweather.ui.fragment.ChatFragment;
 import com.chen.xyweather.ui.fragment.DiscoverFragment;
+import com.chen.xyweather.utils.UserCacheUtils;
 import com.chen.xyweather.view.pager.MyViewPager;
 
 import java.util.ArrayList;
@@ -60,6 +63,7 @@ public class CareActivity extends BaseActivity {
     protected void setupViews() {
         initFragment();
         initViewPager();
+        UserCacheUtils.cacheUser(UserModel.getCurrentUser());
     }
 
 

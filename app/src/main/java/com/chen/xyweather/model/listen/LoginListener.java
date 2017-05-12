@@ -1,11 +1,5 @@
 package com.chen.xyweather.model.listen;
 
-import android.content.Intent;
-import android.widget.Toast;
-
-import com.chen.xyweather.ui.LoginActivity;
-import com.chen.xyweather.ui.MainActivity;
-
 /**
  * Created by chen on 17-5-4.
  * 登录监听

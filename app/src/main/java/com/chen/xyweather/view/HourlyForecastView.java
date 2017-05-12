@@ -10,11 +10,9 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.chen.xyweather.api.ApiManger;
 import com.chen.xyweather.bean.HourlyForecast;
 import com.chen.xyweather.bean.Weather;
-import com.chen.xyweather.ui.MainActivity;
-import com.chen.xyweather.utils.DebugLog;
+import com.chen.xyweather.ui.activity.MainActivity;
 import com.chen.xyweather.utils.UtilManger;
 
 import java.util.ArrayList;

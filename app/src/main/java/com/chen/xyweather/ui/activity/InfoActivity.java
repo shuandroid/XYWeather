@@ -1,9 +1,7 @@
-package com.chen.xyweather.ui;
+package com.chen.xyweather.ui.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.widget.Button;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.avos.avoscloud.AVException;
@@ -13,11 +11,9 @@ import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
 import com.chen.xyweather.model.UserHelper;
 import com.chen.xyweather.model.UserInstance;
-import com.chen.xyweather.model.UserModel;
 import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.UtilManger;
 import com.chen.xyweather.view.CircleImageView;
-import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

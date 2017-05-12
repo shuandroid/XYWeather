@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.chen.xyweather.R;
 import com.chen.xyweather.model.UserModel;
-import com.chen.xyweather.ui.ContactInfoActivity;
+import com.chen.xyweather.ui.activity.ContactInfoActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.Date;

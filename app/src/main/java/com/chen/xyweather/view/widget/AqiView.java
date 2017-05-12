@@ -11,7 +11,7 @@ import android.view.View;
 
 import com.chen.xyweather.bean.City;
 import com.chen.xyweather.bean.entity.Aqi;
-import com.chen.xyweather.ui.MainActivity;
+import com.chen.xyweather.ui.activity.MainActivity;
 
 /**
  * Created by chen on 17-3-28.

@@ -40,4 +40,14 @@ public class UserModel extends AVUser {
     public String getCity() {
         return this.getString("city");
     }
+
+    public static UserModel getCurrentUser() {
+        return getCurrentUser(UserModel.class);
+    }
+
+
+    public static String getCurrentUserId() {
+        UserModel currentUser = getCurrentUser();
+        return (null != currentUser ? currentUser.getObjectId() : null) ;
+    }
 }

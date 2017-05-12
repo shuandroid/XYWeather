@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chen.xyweather.R;
-import com.chen.xyweather.ui.MainActivity;
+import com.chen.xyweather.ui.activity.MainActivity;
 import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.view.drawer.BaseDrawer;
 

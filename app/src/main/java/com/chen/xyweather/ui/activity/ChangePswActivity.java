@@ -1,9 +1,6 @@
-package com.chen.xyweather.ui;
+package com.chen.xyweather.ui.activity;
 
-import android.app.UiModeManager;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,8 +8,6 @@ import android.widget.TextView;
 
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
-import com.chen.xyweather.model.UserHelper;
-import com.chen.xyweather.model.UserInstance;
 import com.chen.xyweather.utils.UtilManger;
 
 import butterknife.Bind;

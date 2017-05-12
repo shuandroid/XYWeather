@@ -18,7 +18,7 @@ import com.chen.xyweather.api.ApiManger;
 import com.chen.xyweather.bean.DailyForecast;
 import com.chen.xyweather.bean.Weather;
 import com.chen.xyweather.bean.entity.Now;
-import com.chen.xyweather.ui.MainActivity;
+import com.chen.xyweather.ui.activity.MainActivity;
 import com.chen.xyweather.utils.UiUtil;
 
 import java.util.Calendar;
