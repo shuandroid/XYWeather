@@ -86,12 +86,15 @@
         <activity android:name=".ui.NoticeActivity" />
         <activity android:name=".ui.CareActivity" />
         <activity android:name=".ui.NoticeActivity" />
+        <activity android:name=".ui.StatusListActivity"/>
+        <activity android:name=".ui.StatusSendActivity"/>
         <activity
             android:name="com.zaaach.citypicker.CityPickerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/CityPicker.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity android:name=".ui.ContactInfoActivity"></activity>
+        <activity android:name=".ui.StatusListActivity"/>
+        <activity android:name=".ui.ContactInfoActivity"/>
     </application>
 
 </manifest>

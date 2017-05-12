@@ -226,7 +226,8 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.nav_share:
                         item.setChecked(true);
-                        startActivity(new Intent(MainActivity.this, ShareActivity.class));
+//                        startActivity(new Intent(MainActivity.this, ShareActivity.class));
+                        startActivity(new Intent(MainActivity.this,StatusListActivity.class));
                         break;
                     case R.id.nav_about:
                         item.setChecked(true);

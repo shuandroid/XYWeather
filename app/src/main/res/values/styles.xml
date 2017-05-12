@@ -170,4 +170,14 @@
         <item name="android:layout_gravity">start</item>
         <item name="android:background">@color/color_drawer_right</item>
     </style>
+
+    <style name="Avatar">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+
+    <style name="btn_green">
+        <item name="android:background">#222222</item>
+        <item name="android:textColor">#fff</item>
+    </style>
 </resources>
