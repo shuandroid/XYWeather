@@ -91,10 +91,10 @@
         <activity
             android:name="com.zaaach.citypicker.CityPickerActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/CityPicker.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity android:name=".ui.activity.StatusListActivity"/>
         <activity android:name=".ui.activity.ContactInfoActivity"/>
+        <activity android:name=".ui.activity.ImageBrowserActivity"/>
     </application>
 
 </manifest>

@@ -148,17 +148,19 @@ public class MainActivity extends BaseActivity {
         super.onDestroy();
         destroyLocation();
     }
+
     //重写onActivityResult方法
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CODE_PICK_CITY && resultCode == RESULT_OK){
-            if (data != null){
+        if (requestCode == REQUEST_CODE_PICK_CITY && resultCode == RESULT_OK) {
+            if (data != null) {
                 //cityname为选择城市获得的信息
                 citychoose = data.getStringExtra(CityPickerActivity.KEY_PICKED_CITY);
-                Toast.makeText(MainActivity.this,citychoose,Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, citychoose, Toast.LENGTH_SHORT).show();
             }
         }
     }
+
     /**
      * 初始化用户数据
      */
@@ -219,7 +221,12 @@ public class MainActivity extends BaseActivity {
                     case R.id.nav_share:
                         item.setChecked(true);
 //                        startActivity(new Intent(MainActivity.this, ShareActivity.class));
-                        startActivity(new Intent(MainActivity.this,StatusListActivity.class));
+                        if (isUser()) {
+                            startActivity(new Intent(MainActivity.this, StatusListActivity.class));
+                        }else {
+                            Toast.makeText(MainActivity.this,"尚未登录",Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                        }
                         break;
                     case R.id.nav_about:
                         item.setChecked(true);

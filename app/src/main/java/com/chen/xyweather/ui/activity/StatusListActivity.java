@@ -4,6 +4,7 @@ package com.chen.xyweather.ui.activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.widget.GridView;
 
 import com.avos.avoscloud.AVStatus;
 import com.avos.avoscloud.AVUser;
@@ -27,6 +28,9 @@ import butterknife.OnClick;
 public class StatusListActivity extends BaseActivity {
 
     private static final int SEND_REQUEST = 2;
+//
+//    @Bind(R.id.gridView)
+//    protected GridView gridView;
 
     @Bind(R.id.status_List)
     protected BaseListView<Status> statusList;
@@ -36,6 +40,7 @@ public class StatusListActivity extends BaseActivity {
         setContentView(R.layout.activity_status);
         ButterKnife.bind(this);
         App.regiserUser(AVUser.getCurrentUser());
+//        gridView.setAdapter(new StatusListAdapter(this));
         initList();
         statusList.setToastIfEmpty(false);
         statusList.onRefresh();

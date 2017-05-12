@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.GridView;
 
 import com.chen.xyweather.utils.StatusNetAsyncTask;
 import com.chen.xyweather.utils.StatusUtils;

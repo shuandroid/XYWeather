@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -49,6 +50,7 @@ public class StatusListAdapter extends BaseListAdapter<Status> {
         ImageView likeView = ViewHolder.findViewById(conView, R.id.likeView);
         TextView likeCountView = ViewHolder.findViewById(conView, R.id.likeCount);
         View likeLayout = ViewHolder.findViewById(conView, R.id.likeLayout);
+
 
         final Status status = datas.get(position);
         final AVStatus innerStatus = status.getInnerStatus();

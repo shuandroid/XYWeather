@@ -4,7 +4,7 @@ import android.util.SparseArray;
 import android.view.View;
 
 /**
- * Created by lzw on 14-9-21.
+ * Created by zhoutao on 17-5-12.
  */
 public class ViewHolder {
   public static <T extends View> T findViewById(View view, int id) {
