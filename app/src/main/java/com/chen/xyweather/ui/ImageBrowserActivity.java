@@ -7,46 +7,54 @@ import com.chen.xyweather.R;
 import com.chen.xyweather.utils.StatusUtils;
 import com.chen.xyweather.base.BaseActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
- * Created by lzw on 14-9-21.
+ * Created by zhoutao on 17-5-11.
+ *
  */
 public class ImageBrowserActivity extends BaseActivity {
-  String url;
-  ImageView imageView;
+    String url;
 
+    @Bind(R.id.imageView)
+    protected ImageView imageView;
 
-  @Override
-  protected void setupContentView() {
-    setContentView(R.layout.image_brower_layout);
-    imageView = (ImageView) findViewById(R.id.imageView);
-    Intent intent = getIntent();
-    url = intent.getStringExtra("url");
-    ImageLoader.getInstance().displayImage(url, imageView, StatusUtils.normalImageOptions);
-  }
+    @Override
+    protected void setupContentView() {
+        setContentView(R.layout.image_brower_layout);
+        ButterKnife.bind(this);
+        Intent intent = getIntent();
+        url = intent.getStringExtra("url");
+        ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(ImageBrowserActivity.this));
 
-  @Override
-  protected void findViews() {
+        ImageLoader.getInstance().displayImage(url, imageView, StatusUtils.normalImageOptions);
+    }
 
-  }
+    @Override
+    protected void findViews() {
 
-  @Override
-  protected void setupActionbar() {
+    }
 
-  }
+    @Override
+    protected void setupActionbar() {
 
-  @Override
-  protected void setupViews() {
+    }
 
-  }
+    @Override
+    protected void setupViews() {
 
-  @Override
-  protected void tintStatusBarApi21() {
+    }
 
-  }
+    @Override
+    protected void tintStatusBarApi21() {
 
-  @Override
-  protected void tintStatusBarApi19() {
+    }
 
-  }
+    @Override
+    protected void tintStatusBarApi19() {
+
+    }
 }

@@ -15,7 +15,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by lzw on 15/5/4.
+ * Created by zhoutao on 17/5/11.
+ *
  */
 public class App extends Application {
   public static final String LIKES = "likes";

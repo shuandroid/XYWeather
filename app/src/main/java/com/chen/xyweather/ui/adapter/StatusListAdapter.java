@@ -47,9 +47,9 @@ public class StatusListAdapter extends BaseListAdapter<Status> {
         if (conView == null) {
             conView = inflater.inflate(com.chen.xyweather.R.layout.status_item, null, false);
         }
-        TextView nameView = ViewHolder.findViewById(conView, R.id.nameView);
+//        TextView nameView = ViewHolder.findViewById(conView, R.id.nameView);
         TextView textView = ViewHolder.findViewById(conView, R.id.statusText);
-        ImageView avatarView = ViewHolder.findViewById(conView, R.id.avatarView);
+//        ImageView avatarView = ViewHolder.findViewById(conView, R.id.avatarView);
         ImageView imageView = ViewHolder.findViewById(conView, R.id.statusImage);
         ImageView likeView = ViewHolder.findViewById(conView, R.id.likeView);
         TextView likeCountView = ViewHolder.findViewById(conView, R.id.likeCount);
@@ -58,8 +58,8 @@ public class StatusListAdapter extends BaseListAdapter<Status> {
         final Status status = datas.get(position);
         final AVStatus innerStatus = status.getInnerStatus();
         AVUser source = innerStatus.getSource();
-        StatusUtils.displayAvatar(source, avatarView);
-        nameView.setText(source.getUsername());
+//        StatusUtils.displayAvatar(source, avatarView);
+//        nameView.setText(source.getUsername());
 
 
         if (TextUtils.isEmpty(innerStatus.getMessage())) {
@@ -133,7 +133,4 @@ public class StatusListAdapter extends BaseListAdapter<Status> {
 
         return conView;
     }
-
-
-
 }
