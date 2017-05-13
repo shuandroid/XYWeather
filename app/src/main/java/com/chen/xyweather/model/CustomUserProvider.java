@@ -31,7 +31,7 @@ public class CustomUserProvider implements LCChatProfileProvider {
 
     private static LCChatKitUser getThirdPartUser(UserModel userModel) {
         return new LCChatKitUser(userModel.getObjectId(), userModel.getUsername(),
-                userModel.getAvatar().getUrl());
+                userModel.getAvatarUrl());
     }
 
     private static List<LCChatKitUser> getThirdPartUsers(List<UserModel> userModels) {

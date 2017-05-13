@@ -10,9 +10,8 @@ import android.widget.TextView;
 import com.chen.xyweather.R;
 import com.chen.xyweather.model.UserModel;
 import com.chen.xyweather.ui.activity.ContactInfoActivity;
-import com.squareup.picasso.Picasso;
+import com.chen.xyweather.view.CircleImageView;
 
-import java.util.Date;
 
 import cn.leancloud.chatkit.viewholder.LCIMCommonViewHolder;
 
@@ -54,11 +53,7 @@ public class DiscoverItemHolder extends LCIMCommonViewHolder<UserModel> {
     public void bindData(UserModel userModel) {
         user = userModel;
         if (userModel != null) {
-            Picasso.with(getContext()).load(user.getAvatar().getUrl()).into(avatarView);
             nameView.setText(user.getUsername());
-            Date updatedAt = user.getUpdatedAt();
-//            String prettyTimeStr = this.prettyTime.format(updatedAt);
-//            loginTimeView.setText("最近登录时间" + prettyTimeStr);
         } else {
             nameView.setText("");
             loginTimeView.setText("");

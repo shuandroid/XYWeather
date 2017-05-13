@@ -21,11 +21,15 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.avos.avoscloud.feedback.FeedbackAgent;
+import com.avos.avoscloud.im.v2.AVIMClient;
+import com.avos.avoscloud.im.v2.AVIMException;
+import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
 import com.chen.xyweather.base.BaseFragment;
 import com.chen.xyweather.model.UserHelper;
 import com.chen.xyweather.model.UserInstance;
+import com.chen.xyweather.model.UserModel;
 import com.chen.xyweather.ui.fragment.WeatherFragment;
 import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.DepthPageTransformer;
@@ -42,6 +46,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import cn.leancloud.chatkit.LCChatKit;
 
 public class MainActivity extends BaseActivity {
 
@@ -123,6 +128,7 @@ public class MainActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         initData();
+        imLogin();
         updateHead();
     }
 
@@ -157,6 +163,7 @@ public class MainActivity extends BaseActivity {
                 //cityname为选择城市获得的信息
                 citychoose = data.getStringExtra(CityPickerActivity.KEY_PICKED_CITY);
                 Toast.makeText(MainActivity.this, citychoose, Toast.LENGTH_SHORT).show();
+                addCity(citychoose);
             }
         }
     }
@@ -220,12 +227,11 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.nav_share:
                         item.setChecked(true);
-//                        startActivity(new Intent(MainActivity.this, ShareActivity.class));
                         if (isUser()) {
                             startActivity(new Intent(MainActivity.this, StatusListActivity.class));
-                        }else {
-                            Toast.makeText(MainActivity.this,"尚未登录",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                        } else {
+                            Toast.makeText(MainActivity.this, "尚未登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(MainActivity.this, LoginActivity.class));
                         }
                         break;
                     case R.id.nav_about:
@@ -417,5 +423,17 @@ public class MainActivity extends BaseActivity {
     private void stopLocation() {
         // 停止定位
         locationClient.stopLocation();
+    }
+
+
+    private void imLogin() {
+        if (isUser()) {
+            LCChatKit.getInstance().open(UserModel.getCurrentUserId(), new AVIMClientCallback() {
+                @Override
+                public void done(AVIMClient avimClient, AVIMException e) {
+                }
+            });
+        }
+
     }
 }

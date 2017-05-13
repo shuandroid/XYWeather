@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.GetDataCallback;
 import com.avos.avoscloud.SaveCallback;
+import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.UiUtil;
 
 /**
@@ -12,16 +13,16 @@ import com.chen.xyweather.utils.UiUtil;
  * 用户
  */
 public class UserHelper {
-    private UserModel mUser;
+    private static UserModel mUser;
     public enum USER_STATUS {
         VALID, INVALID
     }
 
-    private String mPhone;
-    private Bitmap mAvatar;
-    private String mNickname;
+    private static String mPhone;
+    private static Bitmap mAvatar;
+    private static String mNickname;
 
-    private USER_STATUS mUserStatus = USER_STATUS.INVALID;
+    private static USER_STATUS mUserStatus = USER_STATUS.INVALID;
 
     public UserHelper () {
 
@@ -52,8 +53,10 @@ public class UserHelper {
         mUser = UserModel.getCurrentUser(UserModel.class);
 
         if (mUser == null) {
+            DebugLog.e("user is null");
             mUserStatus = USER_STATUS.INVALID;
         } else {
+            DebugLog.e("user is status");
             mUserStatus = USER_STATUS.VALID;
             mPhone = mUser.getMobilePhoneNumber();
             mNickname = mUser.getNickName();

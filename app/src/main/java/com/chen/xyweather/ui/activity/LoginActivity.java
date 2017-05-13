@@ -155,9 +155,10 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void done(AVIMClient avimClient, AVIMException e) {
                 if (e == null) {
-                    LoginActivity.this.finish();
+
                     Toast.makeText(LoginActivity.this, "成功", Toast.LENGTH_SHORT).show();
-//                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    DebugLog.e("lcchat client" + LCChatKit.getInstance().getClient());
+                    LoginActivity.this.finish();
                 } else {
                     DebugLog.e("lccchatkit error " + e);
                     UtilManger.handleError(LoginActivity.this, e.getCode());

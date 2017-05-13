@@ -50,6 +50,7 @@
 
         <activity
             android:name=".ui.activity.MainActivity"
+            android:launchMode="singleTask"
             android:theme="@style/XYWAppTheme.Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -80,21 +81,29 @@
         <activity android:name=".ui.activity.ForgotPswActivity" />
         <activity android:name=".ui.activity.ChangePswActivity" />
         <activity android:name=".ui.activity.ChangeNameActivity" />
-        <activity android:name=".ui.activity.ShareActivity" />
         <activity android:name="com.avos.avoscloud.feedback.ThreadActivity" />
         <activity android:name=".ui.activity.AboutActivity" />
         <activity android:name=".ui.activity.NoticeActivity" />
         <activity android:name=".ui.activity.CareActivity" />
         <activity android:name=".ui.activity.NoticeActivity" />
-        <activity android:name=".ui.activity.StatusListActivity"/>
-        <activity android:name=".ui.activity.StatusSendActivity"/>
+        <activity android:name=".ui.activity.StatusListActivity" />
+        <activity android:name=".ui.activity.StatusSendActivity" />
         <activity
             android:name="com.zaaach.citypicker.CityPickerActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity android:name=".ui.activity.StatusListActivity"/>
-        <activity android:name=".ui.activity.ContactInfoActivity"/>
-        <activity android:name=".ui.activity.ImageBrowserActivity"/>
+        <activity android:name=".ui.activity.StatusListActivity" />
+        <activity android:name=".ui.activity.ContactInfoActivity" />
+        <activity android:name=".ui.activity.ImageBrowserActivity" />
+        <activity
+            android:name=".ui.activity.ChatRoomActivity"
+            android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="cn.leanclud.imkit.conversation_item_click_action" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

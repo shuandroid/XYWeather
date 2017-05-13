@@ -41,7 +41,7 @@ public class WeatherFragment extends BaseFragment {
 
     private static final String CITY_NAME = "city_name";
 
-    private static String cityName = "Test";
+    private static String cityName = "武汉";
 
     @Bind(R.id.pull_refresh)
     protected PullRefreshLayout pullRefreshLayout;
@@ -107,6 +107,12 @@ public class WeatherFragment extends BaseFragment {
 
         pullListener();
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadCity();
     }
 
     private void getCityName() {
@@ -277,12 +283,9 @@ public class WeatherFragment extends BaseFragment {
      * 初始加载城市
      */
     private void loadCity() {
-
         WeatherManger.searchWeatherByCity(cityName, new WeatherManger.WeatherApiCallback() {
-
             @Override
             public void onFailure(Throwable t) {
-
                 DebugLog.e("throwable + search" + t);
                 toast("出现异常");
             }

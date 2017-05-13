@@ -19,6 +19,7 @@ import com.chen.xyweather.model.UserModel;
 import com.chen.xyweather.ui.adapter.DiscoverListAdapter;
 import com.chen.xyweather.ui.holder.DiscoverItemHolder;
 import com.chen.xyweather.ui.recycler.RefreshableRecyclerView;
+import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.UserCacheUtils;
 import com.chen.xyweather.utils.UtilManger;
 import com.chen.xyweather.view.drawer.BaseDrawer;
@@ -118,12 +119,23 @@ public class DiscoverFragment extends BaseFragment {
                     UserCacheUtils.cacheUsers(list);
                     mRecyclerView.setLoadComplete(list.toArray(), isRefresh);
                 } else {
+                    DebugLog.e("discover" + list);
+                    DebugLog.e("discover e" + e);
                     UtilManger.handleError(getContext(), e.getCode());
                 }
             }
         });
 
     }
+
+//
+//
+//    Error:A problem occurred configuring project ':app'.
+//            > Could not resolve all dependencies for configuration ':app:_debugApkCopy'.
+//            > Could not find any matches for cn.leancloud.android:avoscloud-push:v3.+ as no versions of cn.leancloud.android:avoscloud-push are available.
+//    Required by:
+//    project :app
+//    project :app > cn.leancloud.android:chatkit:1.0.7
 
 
 }

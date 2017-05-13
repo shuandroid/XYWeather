@@ -172,6 +172,9 @@ public class UtilManger {
             case 210:
                 tip = context.getString(R.string.password_wrong);
                 break;
+            case 403:
+                tip = "没有权限操作";
+                break;
             case 502:
                 tip = context.getString(R.string.server_maintenance);
                 break;
