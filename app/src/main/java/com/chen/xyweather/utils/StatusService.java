@@ -21,6 +21,7 @@ import java.util.Map;
 
 /**
  * Created by lzw on 15/1/2.
+ *
  */
 public class StatusService {
   public static final int MUTUAL_FOLLOW = 0;//disable follow

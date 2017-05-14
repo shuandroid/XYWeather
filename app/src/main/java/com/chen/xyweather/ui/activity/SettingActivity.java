@@ -34,10 +34,9 @@ public class SettingActivity extends BaseActivity {
     protected RelativeLayout mAccount;
 
 
-
     @OnClick(R.id.s_notice)
     protected void notice() {
-        startActivity(new Intent(SettingActivity.this,NoticeActivity.class));
+        startActivity(new Intent(SettingActivity.this, NoticeActivity.class));
     }
 
 
@@ -54,28 +53,22 @@ public class SettingActivity extends BaseActivity {
     }
 
     @OnClick(R.id.s_account)
-    protected void account(){
+    protected void account() {
         Intent intent = new Intent(SettingActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
 
 
-
     @Override
     protected void setupContentView() {
         setContentView(R.layout.activity_setting);
-        ButterKnife.bind(this);
-        try {
-            mCache.setText(DataCleanManager.getTotalCacheSize(this));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
 
     @Override
     protected void findViews() {
-
+        ButterKnife.bind(this);
     }
 
     @Override
@@ -85,7 +78,15 @@ public class SettingActivity extends BaseActivity {
 
     @Override
     protected void setupViews() {
+        getCache();
+    }
 
+    private void getCache() {
+        try {
+            mCache.setText(DataCleanManager.getTotalCacheSize(this));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

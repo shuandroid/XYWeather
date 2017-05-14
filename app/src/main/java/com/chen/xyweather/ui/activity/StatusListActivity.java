@@ -4,7 +4,6 @@ package com.chen.xyweather.ui.activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.widget.GridView;
 
 import com.avos.avoscloud.AVStatus;
 import com.avos.avoscloud.AVUser;
@@ -12,6 +11,7 @@ import com.chen.xyweather.base.BaseActivity;
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseListView;
 import com.chen.xyweather.bean.Status;
+import com.chen.xyweather.model.UserModel;
 import com.chen.xyweather.ui.adapter.StatusListAdapter;
 import com.chen.xyweather.utils.App;
 import com.chen.xyweather.utils.StatusNetAsyncTask;
@@ -28,27 +28,27 @@ import butterknife.OnClick;
 public class StatusListActivity extends BaseActivity {
 
     private static final int SEND_REQUEST = 2;
-//
-//    @Bind(R.id.gridView)
-//    protected GridView gridView;
 
     @Bind(R.id.status_List)
     protected BaseListView<Status> statusList;
 
+    @OnClick(R.id.share_take_photo)
+    protected void goSend() {
+        Intent intent = new Intent(StatusListActivity.this, StatusSendActivity.class);
+        startActivityForResult(intent, SEND_REQUEST);
+    }
+
     @Override
     protected void setupContentView() {
         setContentView(R.layout.activity_status);
-        ButterKnife.bind(this);
-        App.regiserUser(AVUser.getCurrentUser());
-//        gridView.setAdapter(new StatusListAdapter(this));
-        initList();
-        statusList.setToastIfEmpty(false);
-        statusList.onRefresh();
     }
+
+
     private void initList() {
         statusList.init(new BaseListView.DataInterface<Status>() {
             @Override
-            public List<Status> getDatas(int skip, int limit, List<Status> currentDatas) throws Exception {
+            public List<Status> getDatas(int skip, int limit, List<Status> currentDatas)
+                    throws Exception {
                 long maxId;
                 maxId = getMaxId(skip, currentDatas);
                 if (maxId == 0) {
@@ -72,7 +72,6 @@ public class StatusListActivity extends BaseActivity {
                                 protected void doInBack() throws Exception {
                                     StatusService.deleteStatus(item);
                                 }
-
                                 @Override
                                 protected void onPost(Exception e) {
                                     if (e != null) {
@@ -101,11 +100,6 @@ public class StatusListActivity extends BaseActivity {
         return maxId;
     }
 
-    @OnClick(R.id.share_take_photo)
-    protected void goSend() {
-        Intent intent = new Intent(StatusListActivity.this, StatusSendActivity.class);
-        startActivityForResult(intent, SEND_REQUEST);
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -120,7 +114,7 @@ public class StatusListActivity extends BaseActivity {
 
     @Override
     protected void findViews() {
-
+        ButterKnife.bind(this);
     }
 
     @Override
@@ -130,7 +124,10 @@ public class StatusListActivity extends BaseActivity {
 
     @Override
     protected void setupViews() {
-
+        App.registerUser(UserModel.getCurrentUser());
+        initList();
+        statusList.setToastIfEmpty(false);
+        statusList.onRefresh();
     }
 
     @Override
