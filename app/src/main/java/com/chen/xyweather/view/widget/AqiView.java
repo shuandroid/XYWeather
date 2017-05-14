@@ -101,7 +101,7 @@ public class AqiView extends View{
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            // draw the aqi line
+            // 画分割线
             canvas.rotate(startAngle + sweepAngle * curAqiPercent - 180f);
             textPaint.setStyle(Style.STROKE);
             textPaint.setColor(0xffffffff);

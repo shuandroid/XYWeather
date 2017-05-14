@@ -37,18 +37,18 @@ public abstract class BaseFragment extends Fragment {
         return textView;
     }
 
-    public void notifyActivityUpdate() {
-        if (getUserVisibleHint()) {
-            Activity activity = getActivity();
-            if (activity != null) {
-                // TODO: 17-3-22
-                ((MainActivity)activity).updateCurDrawerType();
-                DebugLog.e("notify drawer");
-            } else {
-                //未启动
-            }
-        }
-    }
+//    public void notifyActivityUpdate() {
+//        if (getUserVisibleHint()) {
+//            Activity activity = getActivity();
+//            if (activity != null) {
+//                // TODO: 17-3-22
+//                ((MainActivity)activity).updateCurDrawerType();
+//                DebugLog.e("notify drawer");
+//            } else {
+//                //未启动
+//            }
+//        }
+//    }
 
     public void toast(String msg) {
         Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();

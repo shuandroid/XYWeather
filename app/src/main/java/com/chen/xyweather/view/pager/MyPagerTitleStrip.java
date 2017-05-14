@@ -77,7 +77,7 @@ public class MyPagerTitleStrip extends ViewGroup implements MyViewPager.Decor {
 	private static final int[] TEXT_ATTRS = new int[] { 0x0101038c // android.R.attr.textAllCaps
 	};
 
-	private static final float SIDE_ALPHA = 0.6f;// wangbin changed this
+	private static final float SIDE_ALPHA = 0.6f;
 	private static final int TEXT_SPACING = 0;// //16; // dip 这个是每个TextView的间隔
 												// wangbin changed this
 

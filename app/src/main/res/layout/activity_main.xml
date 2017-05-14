@@ -25,9 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/title_height"
             android:layout_gravity="top"
-            android:textSize="@dimen/text_size_large"
             android:textColor="@color/xy_white_background"
-
+            android:textSize="32sp"
             app:pts_background="#55ffffff"
             app:pts_gravity="center"
             app:pts_margin="6dp"

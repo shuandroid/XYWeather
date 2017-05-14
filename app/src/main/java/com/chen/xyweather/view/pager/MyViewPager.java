@@ -20,23 +20,13 @@ public class MyViewPager extends ViewPager {
 
     @Override
     protected boolean canScroll(View v, boolean checkV, int dx, int x, int y) {
-        // ToDo: to add your methods.
-//        boolean result = super.canScroll(v, checkV, dx, x, y);
-//        if (dx < 0) {
-//            return true;
-//        }
-//        return result;
-        return super.canScroll(v,checkV, dx, x, y);
+
+        return super.canScroll(v, checkV, dx, x, y);
     }
 
     @Override
     public int reDetermineTargetPage(int targetPage) {
         int rtn = targetPage;
-//        int currentPage = getCurrentItem();
-//        // you can add other condition in if ()
-//        if (targetPage > currentPage ) {
-//            rtn = currentPage;
-//        }
         return rtn;
     }
 }

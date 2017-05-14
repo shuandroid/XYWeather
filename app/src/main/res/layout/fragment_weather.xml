@@ -22,7 +22,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="520dp">
+                android:layout_height="520dp"
+                android:layout_marginTop="@dimen/padding_medium">
 
                 <com.chen.xyweather.view.widget.FontTextView
                     android:id="@+id/w_now_tmp_minus"
@@ -67,7 +68,7 @@
                     android:layout_marginTop="8dp"
                     android:text=""
                     android:textColor="@color/w_text_secondary"
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/text_size_huge" />
 
                 <TextView
                     android:id="@+id/w_aqi_text"
@@ -78,7 +79,7 @@
                     android:layout_marginTop="2dp"
                     android:text=""
                     android:textColor="@color/w_text_secondary"
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/text_size_huge" />
 
                 <com.chen.xyweather.view.widget.FontTextView
                     android:id="@+id/w_basic_update_loc"
@@ -92,7 +93,7 @@
                     android:layout_marginRight="8dp"
                     android:text=""
                     android:textColor="@color/w_text_secondary"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/text_size_medium" />
 
 
                 <com.chen.xyweather.view.DailyForecastView
@@ -168,9 +169,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-
-                    >
+                    android:orientation="vertical">
 
                     <LinearLayout style="@style/today_detail_info_layout">
 
@@ -242,15 +241,11 @@
                 android:layout_height="@dimen/w_divider_size"
                 android:background="@color/w_divider" />
 
-            <!-- 空气质量 -->
-
             <TextView
                 style="@style/w_section_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/w_air"
-
-                />
+                android:text="@string/w_air" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -277,7 +272,7 @@
                     android:gravity="center_horizontal"
                     android:text="@string/w_sub"
                     android:textColor="@color/w_text_primary"
-                    android:textSize="22dp"
+                    android:textSize="22sp"
                     android:visibility="gone" />
 
                 <LinearLayout

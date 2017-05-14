@@ -30,6 +30,7 @@ import com.chen.xyweather.base.BaseFragment;
 import com.chen.xyweather.model.UserHelper;
 import com.chen.xyweather.model.UserInstance;
 import com.chen.xyweather.model.UserModel;
+import com.chen.xyweather.ui.fragment.AddWeatherFragment;
 import com.chen.xyweather.ui.fragment.WeatherFragment;
 import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.DepthPageTransformer;
@@ -39,6 +40,7 @@ import com.chen.xyweather.view.CircleImageView;
 import com.chen.xyweather.view.DynamicWeatherView;
 import com.chen.xyweather.view.pager.MainViewPagerAdapter;
 import com.chen.xyweather.view.pager.MyViewPager;
+import com.squareup.picasso.Picasso;
 import com.zaaach.citypicker.CityPickerActivity;
 
 import java.util.ArrayList;
@@ -69,7 +71,7 @@ public class MainActivity extends BaseActivity {
 
     //城市选择
     private static final int REQUEST_CODE_PICK_CITY = 0;
-    private String citychoose;
+    private String cityChoose;
     //定位相关
     private AMapLocationClient locationClient = null;
     private AMapLocationClientOption locationOption = new AMapLocationClientOption();
@@ -102,10 +104,8 @@ public class MainActivity extends BaseActivity {
     protected void setupActionbar() {
 
         if (Build.VERSION.SDK_INT >= 19) {
-            //
             mViewPager.setPadding(0, UiUtil.getStatusBarHeight(), 0, 0);
         }
-
     }
 
     @Override
@@ -120,7 +120,6 @@ public class MainActivity extends BaseActivity {
 //        }
         initLocation();
 
-//        DebugLog.e("saved " + DBManger.isSaved(this, "北京"));
         setupViewPager();
     }
 
@@ -136,11 +135,14 @@ public class MainActivity extends BaseActivity {
      * 更新侧滑栏头部
      */
     private void updateHead() {
+
         if (isUser()) {
             //
             DebugLog.e("avatar");
             if (UserInstance.getInstance().getmAvatar() != null) {
-                mHeadImage.setImageBitmap(UserInstance.getInstance().getmAvatar());
+                Picasso.with(this).load(UserInstance.getInstance().
+                        getmUser().getAvatarUrl()).into(mHeadImage);
+//                mHeadImage.setImageBitmap(UserInstance.getInstance().getmAvatar());
                 DebugLog.e("avatar is not null");
             }
             mHeadPhone.setText(UserInstance.getInstance().getmPhone());
@@ -160,10 +162,10 @@ public class MainActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE_PICK_CITY && resultCode == RESULT_OK) {
             if (data != null) {
-                //cityname为选择城市获得的信息
-                citychoose = data.getStringExtra(CityPickerActivity.KEY_PICKED_CITY);
-                Toast.makeText(MainActivity.this, citychoose, Toast.LENGTH_SHORT).show();
-                addCity(citychoose);
+                //cityName为选择城市获得的信息
+                cityChoose = data.getStringExtra(CityPickerActivity.KEY_PICKED_CITY);
+                Toast.makeText(MainActivity.this, cityChoose, Toast.LENGTH_SHORT).show();
+                addCity(cityChoose);
             }
         }
     }
@@ -188,7 +190,6 @@ public class MainActivity extends BaseActivity {
         mHeadView = mNavigation.getHeaderView(0);
         mHeadImage = (CircleImageView) mHeadView.findViewById(R.id.nav_head_circle_view_header);
         mHeadPhone = (TextView) mHeadView.findViewById(R.id.nav_head_username);
-
         mHeadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -214,11 +215,8 @@ public class MainActivity extends BaseActivity {
                         startActivity(new Intent(MainActivity.this, SettingActivity.class));
                         break;
                     case R.id.nav_add_city:
-                        //启动
                         startActivityForResult(new Intent(MainActivity.this, CityPickerActivity.class),
                                 REQUEST_CODE_PICK_CITY);
-//                        addCity(citychoose);
-//                        mViewPager.setCurrentItem(fragments.size() - 1, true);
                         break;
                     case R.id.nav_feedback:
                         item.setChecked(true);
@@ -249,34 +247,21 @@ public class MainActivity extends BaseActivity {
                 return true;
             }
         });
-
-
     }
 
     public void setupViewPager() {
         fragments = new ArrayList<>();
         fragments.add(WeatherFragment.newInstance(null));
 
-//        fragments.add(new SettingFragment());
         viewPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager(), fragments);
         mViewPager.setAdapter(viewPagerAdapter);
         mViewPager.setPageTransformer(true, new DepthPageTransformer());
 
         mViewPager.setCurrentItem(0, false);
-//        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-//            @Override
-//            public void onPageSelected(int position) {
-//                super.onPageSelected(position);
-//                mDynamicWeatherView.setDrawerType(((MainViewPagerAdapter)mViewPager.getAdapter()).
-//                        getItem(position).getDrawerType());
-//
-//            }
-//        });
-//
     }
 
     public void addCity(String city) {
-        fragments.add(WeatherFragment.newInstance(city));
+        fragments.add(AddWeatherFragment.newInstance(city));
         viewPagerAdapter.notifyDataSetChanged();
         mViewPager.setAdapter(viewPagerAdapter);
     }
@@ -344,7 +329,7 @@ public class MainActivity extends BaseActivity {
 
     private void exit() {
         if (System.currentTimeMillis() - clickTime > 2000) {
-            Toast.makeText(this, "再次点击退出程序", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.exit, Toast.LENGTH_SHORT).show();
             clickTime = System.currentTimeMillis();
         } else {
             this.finish();
@@ -352,9 +337,9 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    //定位相关
-    //初始化
-
+    /**
+     * 定位相关 初始化
+     */
     private void initLocation() {
         //初始化client
         locationClient = new AMapLocationClient(this.getApplicationContext());

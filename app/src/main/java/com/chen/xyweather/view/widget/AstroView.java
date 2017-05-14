@@ -99,6 +99,7 @@ public class AstroView extends View {
             paint.setStyle(Style.STROKE);
             canvas.drawPath(fanPillarPath, paint);
             canvas.rotate(curRotate * 360f);
+            //根据风速制造风车旋转的点
             float speed = 0f;
             try {
                 speed = Float.valueOf(now.wind.spd);
@@ -120,20 +121,18 @@ public class AstroView extends View {
             canvas.drawPath(fanPath, paint);
             canvas.restoreToCount(saveCount);
 
-            // draw bottom line
+            // 分割线
             paint.setStyle(Style.STROKE);
-            //paint.setColor(0x55ffffff);
             final float lineLeft = width / 2f - sunArcRadius;
             canvas.drawLine(lineLeft, sunArcHeight + textSize, width - lineLeft, sunArcHeight + textSize, paint);
 
-            // draw pressure info
-            //paint.setColor(Color.WHITE);
+            // 气压
             paint.setStyle(Style.FILL);
             paint.setTextAlign(Paint.Align.RIGHT);
             final float pressureTextRight = width / 2f + sunArcRadius - textSize * 2.5f;
             canvas.drawText("气压 " + now.pres + "hpa", pressureTextRight, sunArcHeight + paintTextOffset, paint);
 
-            // draw astor info
+            // 日落信息
             final float textLeft = width / 2f - sunArcRadius;// sunArcSize;
             paint.setTextAlign(Paint.Align.CENTER);
             canvas.drawText("日出 " + todayForecast.astro.sr, textLeft, textSize * 10.5f + paintTextOffset, paint);
@@ -144,7 +143,7 @@ public class AstroView extends View {
         }
 
         try {
-            //draw the sun
+            //画太阳的位置
             String[] sr = todayForecast.astro.sr.split(":");
 
             int srTime = Integer.valueOf(sr[0]) * 60 * 60 + Integer.valueOf(sr[1]) * 60;
@@ -158,7 +157,7 @@ public class AstroView extends View {
             if (curTime >= srTime && curTime <= ssTime) {
                 canvas.save();
                 canvas.translate(width / 2f, sunArcRadius + textSize);// 先到圆心
-                float percent = (curTime - srTime) / ((float)(ssTime - srTime));
+                float percent = (curTime - srTime) / ((float) (ssTime - srTime));
                 float degree = 15f + 150f * percent;
                 //旋转到太阳的位置
                 canvas.rotate(degree);
@@ -182,20 +181,14 @@ public class AstroView extends View {
                     canvas.drawLine(0 + x1, y1, 0 + x2, y2, paint);
                 }
                 canvas.restore();
-
-
             }
-
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
         getGlobalVisibleRect(visibleRect);
         if (!visibleRect.isEmpty()) {
             ViewCompat.postInvalidateOnAnimation(this);
         }
-
-
     }
 
     public void setData(Weather weather) {
@@ -209,15 +202,14 @@ public class AstroView extends View {
                 }
 
                 if (now != null || todayForecast != null) {
+                    //唤醒draw()方法
                     invalidate();
                 }
-
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 
     /**
      * 间距1 图8.5行 间距0.5 字1行 间距1 = 12;
@@ -270,7 +262,5 @@ public class AstroView extends View {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 }

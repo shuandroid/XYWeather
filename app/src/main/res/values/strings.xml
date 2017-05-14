@@ -84,6 +84,8 @@
     <string name="menu_setting">设置</string>
     <string name="menu_feedback">反馈</string>
     <string name="menu_about">关于</string>
+    <string name="json_error">解析错误</string>
+    <string name="exit">再次点击退出程序</string>
 
     <array name="tab_title">
         <item>聊天</item>

@@ -32,7 +32,7 @@ import butterknife.ButterKnife;
 /**
  * 天气 fragment 主界面
  */
-public class WeatherFragment extends BaseFragment {
+public class AddWeatherFragment extends BaseFragment {
 
     private static BaseDrawer.Type drawerType = BaseDrawer.Type.UNKNOWN_D;
 
@@ -62,7 +62,7 @@ public class WeatherFragment extends BaseFragment {
     protected AqiView aqiView;
 
 
-    public WeatherFragment() {
+    public AddWeatherFragment() {
         // Required empty public constructor
     }
 
@@ -70,10 +70,10 @@ public class WeatherFragment extends BaseFragment {
      * @param city 加载的城市名字
      * @return fragment 天气的一个实例
      */
-    public static WeatherFragment newInstance(String city) {
+    public static AddWeatherFragment newInstance(String city) {
         Bundle bundle = new Bundle();
         bundle.putString(CITY_NAME, city);
-        WeatherFragment weatherFragment = new WeatherFragment();
+        AddWeatherFragment weatherFragment = new AddWeatherFragment();
         weatherFragment.setArguments(bundle);
         return weatherFragment;
     }
