@@ -101,10 +101,8 @@ public class WeatherFragment extends BaseFragment {
 
         rootView = inflater.inflate(R.layout.fragment_weather, null);
         ButterKnife.bind(this, rootView);
-
         getCityName();
         init();
-
         pullListener();
         return rootView;
     }
@@ -112,6 +110,7 @@ public class WeatherFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+        DebugLog.e("onResume");
         loadCity();
     }
 
@@ -213,8 +212,6 @@ public class WeatherFragment extends BaseFragment {
             setTextView(R.id.w_suggestion_tarv_brf, weatherData.suggestion.trav.brf);
             setTextView(R.id.w_suggestion_uv_brf, weatherData.suggestion.uv.brf);
         }
-
-
     }
 
     /**

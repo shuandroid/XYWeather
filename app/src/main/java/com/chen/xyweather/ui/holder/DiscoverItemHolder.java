@@ -24,19 +24,19 @@ public class DiscoverItemHolder extends LCIMCommonViewHolder<UserModel> {
 
     private TextView nameView;
     private TextView loginTimeView;
-    private ImageView avatarView;
+    private CircleImageView avatarView;
     private UserModel user;
 
 
     public DiscoverItemHolder(Context context, ViewGroup root) {
-        super(context, root, R.layout.discover_near_people_item);
+        super(context, root, R.layout.card_near_people_item);
         initView();
     }
 
     private void initView() {
         nameView = (TextView) itemView.findViewById(R.id.name_text);
         loginTimeView = (TextView) itemView.findViewById(R.id.login_time_text);
-        avatarView = (ImageView) itemView.findViewById(R.id.avatar_view);
+        avatarView = (CircleImageView) itemView.findViewById(R.id.avatar_view);
         avatarView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

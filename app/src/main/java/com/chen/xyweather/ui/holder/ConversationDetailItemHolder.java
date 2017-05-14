@@ -18,6 +18,7 @@ import de.greenrobot.event.EventBus;
 /**
  * Created by chen on 17-5-11.
  * holder
+ * 可删除
  */
 
 public class ConversationDetailItemHolder  extends LCIMCommonViewHolder<UserModel> {

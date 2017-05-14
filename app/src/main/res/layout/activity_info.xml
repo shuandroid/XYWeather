@@ -15,11 +15,13 @@
         android:id="@+id/info_circle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/toolbar"
         android:background="@color/xy_white_background"
         android:orientation="vertical"
-        android:layout_below="@+id/toolbar"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:paddingBottom="@dimen/padding_medium"
+        android:paddingTop="@dimen/padding_medium">
 
         <com.chen.xyweather.view.CircleImageView
             android:id="@+id/info_user_img"
@@ -35,8 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/info_circle"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/padding_small"
-        android:paddingTop="@dimen/padding_medium">
+        android:paddingBottom="@dimen/padding_small">
 
         <RelativeLayout
             android:id="@+id/change_nick_name"

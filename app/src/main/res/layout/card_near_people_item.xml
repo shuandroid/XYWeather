@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:layout_margin="5dp"
+    android:background="@color/white_background"
+    android:clickable="true"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="1dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/padding_medium"
+        android:layout_marginStart="@dimen/padding_medium">
+
+        <com.chen.xyweather.view.CircleImageView
+            android:id="@+id/avatar_view"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/lcim_default_avatar_icon" />
+
+        <TextView
+            android:id="@+id/name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/avatar_view"
+            android:layout_toRightOf="@+id/avatar_view"
+            android:paddingLeft="@dimen/padding_medium"
+            android:paddingStart="@dimen/padding_medium"
+            android:paddingTop="@dimen/padding_small"
+            android:text="@string/info_name"
+            android:textColor="@color/text_black_light"
+            android:textSize="@dimen/text_size_huge" />
+
+
+        <TextView
+            android:id="@+id/login_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/name_text"
+            android:layout_toEndOf="@+id/avatar_view"
+            android:layout_toRightOf="@+id/avatar_view"
+            android:gravity="center"
+            android:paddingLeft="@dimen/padding_medium"
+            android:paddingStart="@dimen/padding_medium"
+            android:text="远方的朋友"
+            android:textColor="@color/text_black_light"
+            android:textSize="@dimen/text_size_small" />
+
+        <View
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/padding_medium"
+            android:layout_marginRight="@dimen/padding_medium"
+            android:background="@mipmap/ic_collected" />
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
+

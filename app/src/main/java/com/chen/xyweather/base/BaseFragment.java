@@ -29,13 +29,6 @@ public abstract class BaseFragment extends Fragment {
     public abstract void onSelected();
     public abstract BaseDrawer.Type getDrawerType();
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        TextView textView = new TextView(getActivity());
-        textView.setText(R.string.hello_blank_fragment);
-        return textView;
-    }
 
 //    public void notifyActivityUpdate() {
 //        if (getUserVisibleHint()) {

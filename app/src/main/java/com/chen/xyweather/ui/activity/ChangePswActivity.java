@@ -73,7 +73,6 @@ public class ChangePswActivity extends BaseActivity {
         String passwordFirst = mFirstPassword.getText().toString();
         String passwordSecond = mSecondPassword.getText().toString();
 
-
         boolean cancel = false;
         View focusView = null;
 
@@ -89,6 +88,7 @@ public class ChangePswActivity extends BaseActivity {
         } else {
             Intent intent = new Intent(this, InfoActivity.class);
             intent.putExtra("password", passwordFirst);
+            intent.putExtra("oldPassword", password);
             setResult(10, intent);
             finish();
         }

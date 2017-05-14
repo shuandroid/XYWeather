@@ -264,6 +264,7 @@ public class MainActivity extends BaseActivity {
         fragments.add(AddWeatherFragment.newInstance(city));
         viewPagerAdapter.notifyDataSetChanged();
         mViewPager.setAdapter(viewPagerAdapter);
+        mViewPager.setCurrentItem(fragments.size() - 1, false);
     }
 
     /**

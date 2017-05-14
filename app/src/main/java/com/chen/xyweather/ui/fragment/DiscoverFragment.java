@@ -15,6 +15,8 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseFragment;
+import com.chen.xyweather.model.UserHelper;
+import com.chen.xyweather.model.UserInstance;
 import com.chen.xyweather.model.UserModel;
 import com.chen.xyweather.ui.adapter.DiscoverListAdapter;
 import com.chen.xyweather.ui.holder.DiscoverItemHolder;
@@ -47,7 +49,6 @@ public class DiscoverFragment extends BaseFragment {
     protected RefreshableRecyclerView mRecyclerView;
 
     public DiscoverFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -69,7 +70,7 @@ public class DiscoverFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         rootView = inflater.inflate(R.layout.fragment_discover, container, false);
         ButterKnife.bind(this, rootView);
 
@@ -98,44 +99,41 @@ public class DiscoverFragment extends BaseFragment {
             }
         });
 
-
+        mRecyclerView.setRelationSwipeLayout(mSwipeRefresh);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(discoverListAdapter);
     }
 
-    private void loadMoreDiscoverData(int skip, int limit, final boolean isRefresh) {
-
-        AVQuery<UserModel> query = UserModel.getQuery(UserModel.class);
-        UserModel user = UserModel.getCurrentUser();
-        query.whereNotEqualTo("objectId", user.getObjectId());
-
-        query.skip(skip);
-        query.limit(limit);
-        query.setCachePolicy(AVQuery.CachePolicy.CACHE_ELSE_NETWORK);
-        query.findInBackground(new FindCallback<UserModel>() {
-            @Override
-            public void done(List<UserModel> list, AVException e) {
-                if (e == null) {
-                    UserCacheUtils.cacheUsers(list);
-                    mRecyclerView.setLoadComplete(list.toArray(), isRefresh);
-                } else {
-                    DebugLog.e("discover" + list);
-                    DebugLog.e("discover e" + e);
-                    UtilManger.handleError(getContext(), e.getCode());
-                }
-            }
-        });
-
+    private boolean isUser() {
+        boolean valid = UserInstance.getInstance().getmUserStatus().equals(UserHelper.USER_STATUS.VALID);
+        DebugLog.e("isUser " + valid);
+        return valid;
     }
 
-//
-//
-//    Error:A problem occurred configuring project ':app'.
-//            > Could not resolve all dependencies for configuration ':app:_debugApkCopy'.
-//            > Could not find any matches for cn.leancloud.android:avoscloud-push:v3.+ as no versions of cn.leancloud.android:avoscloud-push are available.
-//    Required by:
-//    project :app
-//    project :app > cn.leancloud.android:chatkit:1.0.7
+    private void loadMoreDiscoverData(int skip, int limit, final boolean isRefresh) {
 
+        if (isUser()) {
+            AVQuery<UserModel> query = UserModel.getQuery(UserModel.class);
+            UserModel user = UserModel.getCurrentUser();
+            query.whereNotEqualTo("objectId", user.getObjectId());
+
+            query.skip(skip);
+            query.limit(limit);
+            query.setCachePolicy(AVQuery.CachePolicy.CACHE_ELSE_NETWORK);
+            query.findInBackground(new FindCallback<UserModel>() {
+                @Override
+                public void done(List<UserModel> list, AVException e) {
+                    if (e == null) {
+                        UserCacheUtils.cacheUsers(list);
+                        mRecyclerView.setLoadComplete(list.toArray(), isRefresh);
+                    } else {
+                        DebugLog.e("discover" + list);
+                        DebugLog.e("discover e" + e);
+                        UtilManger.handleError(getContext(), e.getCode());
+                    }
+                }
+            });
+        }
+    }
 
 }

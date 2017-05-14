@@ -7,17 +7,23 @@ import android.widget.TextView;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.SaveCallback;
 import com.avos.avoscloud.UpdatePasswordCallback;
+import com.avos.avoscloud.im.v2.AVIMClient;
+import com.avos.avoscloud.im.v2.AVIMException;
+import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
 import com.chen.xyweather.model.UserHelper;
 import com.chen.xyweather.model.UserInstance;
+import com.chen.xyweather.model.UserModel;
 import com.chen.xyweather.utils.DebugLog;
+import com.chen.xyweather.utils.UiUtil;
 import com.chen.xyweather.utils.UtilManger;
 import com.chen.xyweather.view.CircleImageView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.leancloud.chatkit.LCChatKit;
 
 public class InfoActivity extends BaseActivity {
 
@@ -47,6 +53,12 @@ public class InfoActivity extends BaseActivity {
     protected Button mBtnLogout;
 
 
+    @OnClick(R.id.info_user_img)
+    protected void changeAvatar() {
+        Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, REQUEST_IMAGE);
+    }
+
     @OnClick(R.id.change_nick_name)
     protected void changeName() {
         Intent intent = new Intent(this, ChangeNameActivity.class);
@@ -62,7 +74,14 @@ public class InfoActivity extends BaseActivity {
 
     @OnClick(R.id.logout_ensure)
     protected void logOut() {
-
+        LCChatKit.getInstance().close(new AVIMClientCallback() {
+            @Override
+            public void done(AVIMClient avimClient, AVIMException e) {
+            }
+        });
+        UserModel.logOut();
+        mUserHelper.refresh();
+        finish();
     }
 
     @Override
@@ -85,13 +104,17 @@ public class InfoActivity extends BaseActivity {
     protected void setupViews() {
 
         mUserHelper = UserInstance.getInstance();
-        mInfoUsername.setText(mUserHelper.getmUser().getUsername() == null ?
-                mUserHelper.getmPhone() : mUserHelper.getmUser().getUsername());
+        initUser();
+
+    }
+
+    private void initUser() {
+        mInfoUsername.setText(mUserHelper.getmUser().getNickName() == null ?
+                mUserHelper.getmPhone() : mUserHelper.getmUser().getNickName());
         mPhone.setText(mUserHelper.getmPhone());
         if (mUserHelper.getmAvatar() != null) {
             mUserImage.setImageBitmap(mUserHelper.getmAvatar());
         }
-
     }
 
     @Override
@@ -116,6 +139,10 @@ public class InfoActivity extends BaseActivity {
                     mInfoUsername.setText(temp);
                     break;
                 case REQUEST_IMAGE:
+                    mUserHelper.changeAvatar(UiUtil.decodeUriAsBitmap(data.getData(), this), this);
+                    if (null != mUserHelper.getmAvatar()) {
+                        mUserImage.setImageBitmap(mUserHelper.getmAvatar());
+                    }
                     break;
                 case REQUEST_PSW:
                     String oldPassword;
@@ -128,6 +155,7 @@ public class InfoActivity extends BaseActivity {
                             if (e == null) {
                                 UtilManger.showCreditToast(R.layout.toast_success, InfoActivity.this);
                             } else {
+                                DebugLog.e("password error " + e + e.getCode());
                                 UtilManger.handleError(InfoActivity.this, e.getCode());
                             }
                         }
@@ -137,7 +165,6 @@ public class InfoActivity extends BaseActivity {
                     break;
             }
         }
-
     }
 
     @Override

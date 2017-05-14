@@ -1,5 +1,7 @@
 package com.chen.xyweather.utils;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -12,6 +14,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetrics;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -35,6 +38,18 @@ public class UiUtil {
     public static float px2dip(Context context, float px) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (px / scale);
+    }
+
+    public static byte[] decodeUriAsBitmap(Uri uri, Context context) {
+        try {
+            Bitmap bitmap = BitmapFactory.decodeStream(context.getContentResolver().openInputStream(uri));
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            return stream.toByteArray();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public static Bitmap bytesToBitmap(byte[] bytes) {

@@ -26,17 +26,17 @@ import cn.leancloud.chatkit.activity.LCIMConversationFragment;
 
 public class CareActivity extends BaseActivity {
 
-    protected List<Fragment> fragments;
-    protected String [] mTabTitle;
+//    protected List<Fragment> fragments;
+//    protected String [] mTabTitle;
 
     @Bind(R.id.toolbar_title)
     protected TextView mTitle;
 
-    @Bind(R.id.tab_layout)
-    protected TabLayout mTab;
-
-    @Bind(R.id.view_pager)
-    protected ViewPager mViewPager;
+//    @Bind(R.id.tab_layout)
+//    protected TabLayout mTab;
+//
+//    @Bind(R.id.view_pager)
+//    protected ViewPager mViewPager;
 
 
     @Override
@@ -61,29 +61,33 @@ public class CareActivity extends BaseActivity {
 
     @Override
     protected void setupViews() {
-        initFragment();
-        initViewPager();
+
         UserCacheUtils.cacheUser(UserModel.getCurrentUser());
+        init();
+    }
+
+    private void init() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.container,
+                new DiscoverFragment()).commit();
     }
 
 
-
-    private void initFragment() {
-        mTabTitle = getResources().getStringArray(R.array.tab_title);
-        fragments = new ArrayList<>();
-        fragments.add(new LCIMConversationFragment());
-        fragments.add(new DiscoverFragment());
-
-    }
-
-    private void initViewPager() {
-        CareViewPagerAdapter careViewPagerAdapter = new CareViewPagerAdapter(getSupportFragmentManager(),
-                mTabTitle, fragments);
-        mViewPager.setAdapter(careViewPagerAdapter);
-        mTab.setupWithViewPager(mViewPager);
-        mTab.setTabsFromPagerAdapter(careViewPagerAdapter);
-
-    }
+//    private void initFragment() {
+//        mTabTitle = getResources().getStringArray(R.array.tab_title);
+//        fragments = new ArrayList<>();
+//        fragments.add(new LCIMConversationFragment());
+//        fragments.add(new DiscoverFragment());
+//
+//    }
+//
+//    private void initViewPager() {
+//        CareViewPagerAdapter careViewPagerAdapter = new CareViewPagerAdapter(getSupportFragmentManager(),
+//                mTabTitle, fragments);
+//        mViewPager.setAdapter(careViewPagerAdapter);
+//        mTab.setupWithViewPager(mViewPager);
+//        mTab.setTabsFromPagerAdapter(careViewPagerAdapter);
+//
+//    }
 
 
     @Override
