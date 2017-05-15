@@ -4,6 +4,7 @@ package com.chen.xyweather.ui.activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.widget.RecyclerView;
 
 import com.avos.avoscloud.AVStatus;
 import com.avos.avoscloud.AVUser;
@@ -29,7 +30,7 @@ public class StatusListActivity extends BaseActivity {
 
     private static final int SEND_REQUEST = 2;
 
-    @Bind(R.id.status_List)
+    @Bind(R.id.status_list)
     protected BaseListView<Status> statusList;
 
     @OnClick(R.id.share_take_photo)

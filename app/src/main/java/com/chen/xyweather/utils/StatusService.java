@@ -68,6 +68,9 @@ public class StatusService {
           datas.put(App.DETAIL_ID, statusDetail.getObjectId());
           status.setData(datas);
           AVStatus.sendStatusToFollowersInBackgroud(status, saveCallback);
+//          status.setInboxType("system");
+//          status.sendInBackgroundWithBlock(saveCallback);
+
         }
       }
     });

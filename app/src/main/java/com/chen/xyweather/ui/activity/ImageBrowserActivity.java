@@ -8,6 +8,7 @@ import com.chen.xyweather.utils.StatusUtils;
 import com.chen.xyweather.base.BaseActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -28,9 +29,10 @@ public class ImageBrowserActivity extends BaseActivity {
         ButterKnife.bind(this);
         Intent intent = getIntent();
         url = intent.getStringExtra("url");
-        ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(ImageBrowserActivity.this));
+        Picasso.with(this).load(url).into(imageView);
+//        ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(ImageBrowserActivity.this));
 
-        ImageLoader.getInstance().displayImage(url, imageView, StatusUtils.normalImageOptions);
+//        ImageLoader.getInstance().displayImage(url, imageView, StatusUtils.normalImageOptions);
     }
 
     @Override

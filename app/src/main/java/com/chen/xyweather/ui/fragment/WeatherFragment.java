@@ -40,7 +40,7 @@ public class WeatherFragment extends BaseFragment {
 
     private static final String CITY_NAME = "city_name";
 
-    private static String cityName = "Test";
+    private static String cityName = "武汉";
 
     @Bind(R.id.pull_refresh)
     protected PullRefreshLayout pullRefreshLayout;

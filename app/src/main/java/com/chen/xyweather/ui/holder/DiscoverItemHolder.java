@@ -4,12 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.chen.xyweather.R;
 import com.chen.xyweather.model.UserModel;
 import com.chen.xyweather.ui.activity.ContactInfoActivity;
+import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.view.CircleImageView;
 
 
@@ -35,7 +35,7 @@ public class DiscoverItemHolder extends LCIMCommonViewHolder<UserModel> {
 
     private void initView() {
         nameView = (TextView) itemView.findViewById(R.id.name_text);
-        loginTimeView = (TextView) itemView.findViewById(R.id.login_time_text);
+        loginTimeView = (TextView) itemView.findViewById(R.id.login_hello);
         avatarView = (CircleImageView) itemView.findViewById(R.id.avatar_view);
         avatarView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +53,7 @@ public class DiscoverItemHolder extends LCIMCommonViewHolder<UserModel> {
     public void bindData(UserModel userModel) {
         user = userModel;
         if (userModel != null) {
-            nameView.setText(user.getNickName());
+            nameView.setText(user.getNickName() == null ? user.getUsername() : user.getNickName());
         } else {
             nameView.setText("");
             loginTimeView.setText("");

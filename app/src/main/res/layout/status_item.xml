@@ -12,8 +12,16 @@
     <ImageView
         android:id="@+id/statusImage"
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_marginTop="5dp" />
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:minWidth="70dp"
+        android:minHeight="100dp"
+        android:maxHeight="100dp"
+        android:maxWidth="70dp"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="5dp"
+        android:background="@mipmap/about"/>
 
     <TextView
         android:id="@+id/statusText"
@@ -23,6 +31,7 @@
         android:layout_alignLeft="@id/statusImage"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
+        android:textColor="@color/white_background"
         android:textSize="14sp" />
 
     <LinearLayout

@@ -42,7 +42,7 @@
 
 
         <TextView
-            android:id="@+id/login_time_text"
+            android:id="@+id/login_hello"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

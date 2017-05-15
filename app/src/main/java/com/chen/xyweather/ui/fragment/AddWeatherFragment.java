@@ -40,7 +40,7 @@ public class AddWeatherFragment extends BaseFragment {
 
     private static final String CITY_NAME = "city_name";
 
-    private static String cityName = "Test";
+    private static String cityName = "厦门";
 
     @Bind(R.id.pull_refresh)
     protected PullRefreshLayout pullRefreshLayout;
@@ -186,7 +186,6 @@ public class AddWeatherFragment extends BaseFragment {
         if (weather.hasAqi()) {
             setTextView(R.id.w_aqi_text, weatherData.aqi.city.qlty);
 
-//            setTextView(R.id.w_aqi_detail_text, weatherData.aqi.city.qlty);
             setTextView(R.id.w_aqi_pm25, weatherData.aqi.city.pm25 + "μg/m³");
             setTextView(R.id.w_aqi_pm10, weatherData.aqi.city.pm10 + "μg/m³");
             setTextView(R.id.w_aqi_so2, weatherData.aqi.city.so2 + "μg/m³");

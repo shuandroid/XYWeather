@@ -21,7 +21,7 @@
 
         <ImageView
             style="@style/setting_item_i"
-            android:src="@mipmap/account" />
+            android:src="@mipmap/account_1" />
 
         <TextView
             style="@style/setting_item_tv"
@@ -84,7 +84,7 @@
 
         <ImageView
             style="@style/setting_item_i"
-            android:src="@mipmap/clear" />
+            android:src="@mipmap/clear_1" />
 
         <TextView
             style="@style/setting_item_tv"

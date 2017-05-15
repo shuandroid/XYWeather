@@ -3,7 +3,7 @@
     android:id="@+id/status_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@color/white_background"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
@@ -11,16 +11,15 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar_share" />
 
-    <com.chen.xyweather.base.BaseListView
-        android:id="@+id/status_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <!--<android.support.v7.widget.RecyclerView
-        android:id="@+id/status_list"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
--->
+        <com.chen.xyweather.ui.recycler.RefreshableRecyclerView
+            android:id="@+id/status_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 </LinearLayout>

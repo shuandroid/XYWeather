@@ -97,13 +97,15 @@
         <activity android:name=".ui.activity.ImageBrowserActivity" />
         <activity
             android:name=".ui.activity.ChatRoomActivity"
-            android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar">
             <intent-filter>
                 <action android:name="cn.leanclud.imkit.conversation_item_click_action" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.activity.ShareWeatherActivity"></activity>
     </application>
 
 </manifest>

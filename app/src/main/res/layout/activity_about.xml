@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/layout_background">
 
     <include
         android:id="@+id/toolbar"
@@ -12,44 +12,46 @@
         android:layout_width="match_parent"
         android:layout_height="30dp" />
 
-    <com.chen.xyweather.view.CircleImageView
+    <ImageView
+        android:id="@+id/icon"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@mipmap/logo"
-        android:layout_gravity="center"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/padding_large"
+        android:src="@mipmap/logo" />
+
     <TextView
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/icon"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
+        android:layout_marginTop="@dimen/padding_medium"
         android:text="@string/title"
-        android:textSize="28sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
+        android:layout_marginTop="@dimen/padding_medium"
         android:text="@string/version"
-        android:textSize="20sp"
-        android:textColor="#999999"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="60dp" />
+        android:textColor="@color/hint_text_color"
+        android:textSize="@dimen/text_size_huge" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/padding_medium"
         android:text="@string/team"
-        android:textSize="20sp" />
+        android:textColor="@color/hint_text_color"
+        android:textSize="@dimen/text_size_medium" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/members"
-        android:textSize="20sp" />
-</LinearLayout>
+</RelativeLayout>

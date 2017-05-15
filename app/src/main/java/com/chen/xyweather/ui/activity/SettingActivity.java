@@ -4,10 +4,12 @@ package com.chen.xyweather.ui.activity;
 import android.content.Intent;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
+import com.chen.xyweather.model.UserModel;
 import com.chen.xyweather.utils.DataCleanManager;
 
 
@@ -45,7 +47,7 @@ public class SettingActivity extends BaseActivity {
 
     @OnClick(R.id.s_changebg)
     protected void changebg() {
-
+        Toast.makeText(this, "暂无背景可替换", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -57,9 +59,13 @@ public class SettingActivity extends BaseActivity {
 
     @OnClick(R.id.s_account)
     protected void account() {
-        Intent intent = new Intent(SettingActivity.this, LoginActivity.class);
-        startActivity(intent);
-        finish();
+        if (UserModel.getCurrentUser() != null) {
+            Intent intent = new Intent(this, InfoActivity.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
     }
 
 

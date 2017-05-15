@@ -104,36 +104,29 @@ public class DiscoverFragment extends BaseFragment {
         mRecyclerView.setAdapter(discoverListAdapter);
     }
 
-    private boolean isUser() {
-        boolean valid = UserInstance.getInstance().getmUserStatus().equals(UserHelper.USER_STATUS.VALID);
-        DebugLog.e("isUser " + valid);
-        return valid;
-    }
 
     private void loadMoreDiscoverData(int skip, int limit, final boolean isRefresh) {
 
-        if (isUser()) {
-            AVQuery<UserModel> query = UserModel.getQuery(UserModel.class);
-            UserModel user = UserModel.getCurrentUser();
-            query.whereNotEqualTo("objectId", user.getObjectId());
+        AVQuery<UserModel> query = UserModel.getQuery(UserModel.class);
+        UserModel user = UserModel.getCurrentUser();
+        query.whereNotEqualTo("objectId", user.getObjectId());
 
-            query.skip(skip);
-            query.limit(limit);
-            query.setCachePolicy(AVQuery.CachePolicy.CACHE_ELSE_NETWORK);
-            query.findInBackground(new FindCallback<UserModel>() {
-                @Override
-                public void done(List<UserModel> list, AVException e) {
-                    if (e == null) {
-                        UserCacheUtils.cacheUsers(list);
-                        mRecyclerView.setLoadComplete(list.toArray(), isRefresh);
-                    } else {
-                        DebugLog.e("discover" + list);
-                        DebugLog.e("discover e" + e);
-                        UtilManger.handleError(getContext(), e.getCode());
-                    }
+        query.skip(skip);
+        query.limit(limit);
+        query.setCachePolicy(AVQuery.CachePolicy.CACHE_ELSE_NETWORK);
+        query.findInBackground(new FindCallback<UserModel>() {
+            @Override
+            public void done(List<UserModel> list, AVException e) {
+                if (e == null) {
+                    UserCacheUtils.cacheUsers(list);
+                    mRecyclerView.setLoadComplete(list.toArray(), isRefresh);
+                } else {
+                    DebugLog.e("discover" + list);
+                    DebugLog.e("discover e" + e);
+                    UtilManger.handleError(getContext(), e.getCode());
                 }
-            });
-        }
+            }
+        });
     }
 
 }

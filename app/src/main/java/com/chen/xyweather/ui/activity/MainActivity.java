@@ -238,7 +238,12 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.nav_menu_care:
                         item.setChecked(true);
-                        startActivity(new Intent(MainActivity.this, CareActivity.class));
+                        if (isUser()) {
+                            startActivity(new Intent(MainActivity.this, CareActivity.class));
+                        } else {
+                            Toast.makeText(MainActivity.this, "尚未登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        }
                         break;
                     default:
                         break;
