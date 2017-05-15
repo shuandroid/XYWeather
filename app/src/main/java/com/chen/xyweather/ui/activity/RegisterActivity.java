@@ -18,6 +18,7 @@ import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
 import com.chen.xyweather.model.UserModel;
+import com.chen.xyweather.utils.DebugLog;
 import com.chen.xyweather.utils.UtilManger;
 
 import butterknife.Bind;

@@ -79,7 +79,7 @@
                 android:singleLine="true"
                 android:textColor="@color/text_black_light"
                 android:textColorHint="@color/choose_city_edit_text_color"
-                android:textSize="@dimen/text_size_large" />
+                android:textSize="@dimen/text_size_huge" />
         </LinearLayout>
 
 

@@ -4,7 +4,6 @@ import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVStatus;
 
 /**
- * Created by lzw on 15/1/3.
  */
 public class Status {
   private AVStatus innerStatus;

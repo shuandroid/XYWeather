@@ -25,6 +25,7 @@ public class UtilManger {
 
     /**
      * 判断是否为今天数据
+     *
      * @param date 传入ｄａｔｅ
      * @return true or false
      */
@@ -147,7 +148,7 @@ public class UtilManger {
 
 
     /**
-     *  判断是否为ｗｉｆｉ条件
+     * 判断是否为ｗｉｆｉ条件
      */
     public static boolean isWifiConnect(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context
@@ -162,6 +163,7 @@ public class UtilManger {
 
     public static void handleError(Context context, int error) {
         String tip = "";
+        DebugLog.e("error" + error);
         switch (error) {
             case 0:
                 tip = context.getString(R.string.network_invalid);
@@ -171,6 +173,9 @@ public class UtilManger {
                 break;
             case 210:
                 tip = context.getString(R.string.password_wrong);
+                break;
+            case 214:
+                tip = context.getString(R.string.phone_occupied);
                 break;
             case 403:
                 tip = "没有权限操作";

@@ -21,7 +21,7 @@
 
         <ImageView
             style="@style/setting_item_i"
-            android:src="@mipmap/account_1" />
+            android:src="@mipmap/user" />
 
         <TextView
             style="@style/setting_item_tv"
