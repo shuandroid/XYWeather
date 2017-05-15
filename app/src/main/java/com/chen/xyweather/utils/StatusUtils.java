@@ -28,7 +28,8 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- * Created by lzw on 15/5/4.
+ * Created by zhoutao on 17/5/11.
+ *
  */
 public class StatusUtils {
   public static ProgressDialog showSpinnerDialog(Activity activity) {

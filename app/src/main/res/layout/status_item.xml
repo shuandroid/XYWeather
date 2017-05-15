@@ -5,8 +5,8 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
     android:paddingTop="10dp">
 
     <ImageView
@@ -14,14 +14,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        android:minWidth="70dp"
-        android:minHeight="100dp"
-        android:maxHeight="100dp"
-        android:maxWidth="70dp"
+
         android:layout_centerHorizontal="true"
         android:adjustViewBounds="true"
-        android:layout_marginTop="5dp"
-        android:background="@mipmap/about"/>
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:id="@+id/statusText"
