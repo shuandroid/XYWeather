@@ -53,7 +53,7 @@ public class DiscoverItemHolder extends LCIMCommonViewHolder<UserModel> {
     public void bindData(UserModel userModel) {
         user = userModel;
         if (userModel != null) {
-            nameView.setText(user.getUsername());
+            nameView.setText(user.getNickName());
         } else {
             nameView.setText("");
             loginTimeView.setText("");

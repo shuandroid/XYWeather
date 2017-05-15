@@ -102,7 +102,7 @@ public class WeatherFragment extends BaseFragment {
         rootView = inflater.inflate(R.layout.fragment_weather, null);
         ButterKnife.bind(this, rootView);
         getCityName();
-        init();
+//        init();
         pullListener();
         return rootView;
     }

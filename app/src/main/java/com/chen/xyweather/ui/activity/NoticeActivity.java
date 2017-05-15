@@ -2,6 +2,7 @@ package com.chen.xyweather.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.chen.xyweather.R;
 import com.chen.xyweather.base.BaseActivity;
@@ -9,36 +10,38 @@ import com.chen.xyweather.base.BaseActivity;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+import com.suke.widget.SwitchButton;
+
 public class NoticeActivity extends BaseActivity {
 
     @Bind(R.id.precipitation)
-    protected com.suke.widget.SwitchButton mPre;
+    protected SwitchButton mPre;
 
     @Bind(R.id.disaster)
-    protected com.suke.widget.SwitchButton mDisaster;
+    protected SwitchButton mDisaster;
 
     @Bind(R.id.friend)
-    protected com.suke.widget.SwitchButton mFriend;
+    protected SwitchButton mFriend;
 
     @Bind(R.id.interactive)
-    protected com.suke.widget.SwitchButton mIntera;
+    protected SwitchButton mIntera;
 
+    @Bind(R.id.toolbar_title)
+    protected TextView mTitle;
 
     @Override
     protected void setupContentView() {
         setContentView(R.layout.activity_notice);
-        ButterKnife.bind(this);
-
     }
 
     @Override
     protected void findViews() {
-
+        ButterKnife.bind(this);
     }
 
     @Override
     protected void setupActionbar() {
-
+        mTitle.setText("通知设置");
     }
 
     @Override

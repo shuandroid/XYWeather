@@ -52,14 +52,6 @@ public class LoginActivity extends BaseActivity {
     @Bind(R.id.forget_password)
     protected TextView mForgetPassword;
 
-    /**
-     * 忘记密码
-     */
-    @OnClick(R.id.forget_password)
-    protected void forgetPassword() {
-
-
-    }
 
     @Bind(R.id.sign_up)
     protected TextView mSignUp;
@@ -75,6 +67,15 @@ public class LoginActivity extends BaseActivity {
         LoginActivity.this.finish();
     }
 
+    /**
+     * 忘记密码
+     */
+    @OnClick(R.id.forget_password)
+    protected void forgetPassword() {
+        Intent intent = new Intent(this, ForgotPswActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
     @Override
     protected void setupContentView() {

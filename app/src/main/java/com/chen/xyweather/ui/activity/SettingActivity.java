@@ -33,6 +33,9 @@ public class SettingActivity extends BaseActivity {
     @Bind(R.id.s_account)
     protected RelativeLayout mAccount;
 
+    @Bind(R.id.toolbar_title)
+    protected TextView mTitle;
+
 
     @OnClick(R.id.s_notice)
     protected void notice() {
@@ -73,7 +76,7 @@ public class SettingActivity extends BaseActivity {
 
     @Override
     protected void setupActionbar() {
-
+        mTitle.setText("设置");
     }
 
     @Override

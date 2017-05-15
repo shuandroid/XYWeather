@@ -91,13 +91,13 @@ public class ContactInfoActivity extends BaseActivity {
     private void initView() {
         List<String> cacheFriends = FriendsManger.getFriendIds();
         boolean isFriend = cacheFriends.contains(mUserId);
-        if (isFriend) {
-            mChat.setVisibility(View.VISIBLE);
-
-        } else {
-            mChat.setVisibility(View.GONE);
-            mAdd.setVisibility(View.VISIBLE);
-        }
+//        if (isFriend) {
+//            mChat.setVisibility(View.VISIBLE);
+//
+//        } else {
+//            mChat.setVisibility(View.GONE);
+//            mAdd.setVisibility(View.VISIBLE);
+//        }
 
 //        Picasso.with(this).load(mUser.getAvatarUrl()).error(R.mipmap.head).into(mUserHead);
         mUsername.setText(mUser.getNickName() == null ? mUser.getUsername() : mUser.getNickName());

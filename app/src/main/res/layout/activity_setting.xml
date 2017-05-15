@@ -21,7 +21,7 @@
 
         <ImageView
             style="@style/setting_item_i"
-            android:src="@mipmap/s_account" />
+            android:src="@mipmap/account" />
 
         <TextView
             style="@style/setting_item_tv"
@@ -42,7 +42,7 @@
 
         <ImageView
             style="@style/setting_item_i"
-            android:src="@mipmap/s_notice" />
+            android:src="@mipmap/message" />
 
         <TextView
             style="@style/setting_item_tv"
@@ -63,7 +63,7 @@
 
         <ImageView
             style="@style/setting_item_i"
-            android:src="@mipmap/s_changebg" />
+            android:src="@mipmap/background" />
 
         <TextView
             style="@style/setting_item_tv"
@@ -84,7 +84,7 @@
 
         <ImageView
             style="@style/setting_item_i"
-            android:src="@mipmap/s_cleardata" />
+            android:src="@mipmap/clear" />
 
         <TextView
             style="@style/setting_item_tv"

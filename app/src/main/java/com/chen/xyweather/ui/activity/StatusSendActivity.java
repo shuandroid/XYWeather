@@ -44,26 +44,9 @@ public class StatusSendActivity extends BaseActivity {
     @Bind(R.id.image)
     protected ImageView imageView;
 
-    @Bind(R.id.imageAction)
-    protected Button imageAction;
 
-    @Bind(R.id.toolbar_title)
-    protected TextView mTitle;
-
-
-    @OnClick(R.id.imageAction)
-    void imageAction() {
-        if (haveImage == false) {
-            pickImage(this, IMAGE_PICK_REQUEST);
-        } else {
-            bitmap = null;
-            haveImage = false;
-            setButtonAndImage();
-        }
-    }
-
-    @OnClick(R.id.send)
-    protected void send() {
+    @OnClick(R.id.share_send)
+    protected void sendPicture() {
         String text = editText.getText().toString();
         if (TextUtils.isEmpty(text) == false || bitmap != null) {
             final ProgressDialog dialog = StatusUtils.showSpinnerDialog(this);
@@ -80,6 +63,17 @@ public class StatusSendActivity extends BaseActivity {
         }
     }
 
+    @OnClick(R.id.add_picture)
+    protected void imageAction() {
+        if (!haveImage) {
+            pickImage(this, IMAGE_PICK_REQUEST);
+        } else {
+            bitmap = null;
+            haveImage = false;
+            setButtonAndImage();
+        }
+    }
+
     @Override
     protected void setupContentView() {
         context = this;
@@ -93,13 +87,11 @@ public class StatusSendActivity extends BaseActivity {
 
     @Override
     protected void setupActionbar() {
-        mTitle.setText("编辑");
     }
 
     @Override
     protected void setupViews() {
         setButtonAndImage();
-
     }
 
     @Override
@@ -115,10 +107,8 @@ public class StatusSendActivity extends BaseActivity {
     private void setButtonAndImage() {
         imageView.setImageBitmap(bitmap);
         if (haveImage) {
-            imageAction.setText("取消图片");
             imageView.setVisibility(View.VISIBLE);
         } else {
-            imageAction.setText("添加图片");
             imageView.setVisibility(View.INVISIBLE);
         }
     }
