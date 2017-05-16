@@ -209,7 +209,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
 
-                switch (item.getItemId()) {
+                    switch (item.getItemId()) {
                     case R.id.nav_menu_setting:
                         item.setChecked(true);
                         startActivity(new Intent(MainActivity.this, SettingActivity.class));
